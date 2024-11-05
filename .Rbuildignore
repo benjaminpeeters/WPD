@@ -1,0 +1,26 @@
+# R and RStudio files
+^.*\.Rproj$       # RStudio project files
+^\.Rproj\.user$   # RStudio user files
+
+# Documentation and website
+^data-raw$        # Raw data processing scripts
+^docs$            # Documentation website
+^_pkgdown\.yml$   # pkgdown configuration
+^README\.Rmd$     # R Markdown source of README
+
+# CI/CD and development
+^\.github$        # GitHub-specific files
+^codecov\.yml$    # Code coverage configuration
+^\.travis\.yml$   # Travis CI configuration
+^appveyor\.yml$   # AppVeyor CI configuration
+
+# Package development support files
+^\.gitignore$     # Git ignore file
+^LICENSE\.md$     # License file in markdown format
+^cran-comments\.md$ # CRAN submission comments
+^CRAN-RELEASE$    # CRAN release marker
+
+# Additional directories
+^vignettes/articles$ # Article source files
+^\.lintr$         # Lintr configuration
+^LICENSE\.md$
