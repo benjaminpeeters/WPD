@@ -18,3 +18,5 @@ Imports:
     cowplot,
     zoo,
     seasonal
+URL: https://github.com/benjaminpeeters/WPD
+BugReports: https://github.com/benjaminpeeters/WPD/issues
