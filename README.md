@@ -6,7 +6,7 @@ This package is available under a dual-licensing model:
 
 1. **AGPL-3.0 License** (Open Source)
    - Free for open-source projects, academic research, and personal use
-   - Full terms in [LICENSE](LICENSE)
+   - Full terms in [LICENSE.md](LICENSE.md)
 
 2. **Commercial License**
    - For proprietary/commercial applications

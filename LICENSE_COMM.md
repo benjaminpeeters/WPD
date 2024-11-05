@@ -125,19 +125,19 @@ We offer tailored licensing solutions for:
 - Deployment restrictions
 - User limitation enforcement
 
-## Frequently Asked Questions
-
-**Q: Can I try before purchasing?**
-A: Yes, we offer 30-day evaluation licenses for all commercial tiers.
-
-**Q: What happens if I don't renew?**
-A: You can continue using the version you have, but won't receive updates or support.
-
-**Q: Can I upgrade my license?**
-A: Yes, pro-rated upgrades are available at any time.
-
-**Q: Is there a refund policy?**
-A: We offer a 30-day money-back guarantee for first-time purchases.
+<!-- ## Frequently Asked Questions -->
+<!---->
+<!-- **Q: Can I try before purchasing?** -->
+<!-- A: Yes, we offer 30-day evaluation licenses for all commercial tiers. -->
+<!---->
+<!-- **Q: What happens if I don't renew?** -->
+<!-- A: You can continue using the version you have, but won't receive updates or support. -->
+<!---->
+<!-- **Q: Can I upgrade my license?** -->
+<!-- A: Yes, pro-rated upgrades are available at any time. -->
+<!---->
+<!-- **Q: Is there a refund policy?** -->
+<!-- A: We offer a 30-day money-back guarantee for first-time purchases. -->
 
 ## Contact Information
 
