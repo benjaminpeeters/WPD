@@ -1,14 +1,20 @@
 Package: WPD
 Title: World Panel Data
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     person("Benjamin", "Peeters", , "benjaminpeeters@protonmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-5095-2021"))
 Description: What the package does (one paragraph).
+    This package includes a comprehensive panel-data database (approximately 50MB). 
+    The data is loaded on demand when using the function wp_data to minimize memory usage during normal package operation.
+SystemRequirements: At least 100MB disk space for installation.
 License: AGPL (>= 3) | file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+LazyData: true
+Depends: 
+    R (>= 3.5.0)
 Imports:
     ggplot2 (>= 3.4.0, < 3.5.0),
     scales,

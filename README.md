@@ -15,6 +15,5 @@ This package is available under a dual-licensing model:
 
 For commercial licensing inquiries:
 - Email: benjaminpeeters@protonmail.com
-- Subject: "Commercial License - [Your Use Case]"
+- Subject: "Commercial License - R Package WPD - [Your Use Case]"
 
-➡️ [Read our complete licensing terms](LICENSE_COMM.md)
