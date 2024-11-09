@@ -19,7 +19,7 @@ LazyData: true
 Depends: 
     R (>= 3.5.0)
 Imports:
-    ggplot2 (< 3.5.0),
+    ggplot2 (>= 3.4.0),
     scales,
     extrafont,
     patchwork,
