@@ -6,28 +6,28 @@ extract_metadata <- function(data) {
     }
     
     # Get unique combinations and sort them
-    metadata <- unique(data[, c("Origin", "Symbol", "Indicator")])
+    metadata <- unique(data[, c("Origin", "Symbol", "Indicator", "Reference", "Frequency")])
     metadata <- metadata[order(metadata$Origin, metadata$Symbol), ]
     
     return(metadata)
 }
 
 # Load the original data
-load("inst/extdata/DATA.RData")  # This loads DATA_Q and DATA_Y
+load("inst/extdata/DATA_Q.RData")  # This loads DATA_Q and DATA_Y
+load("inst/extdata/DATA_Y.RData")  # This loads DATA_Q and DATA_Y
 
 # Extract metadata for both frequencies
 METADATA_Q <- extract_metadata(DATA_Q)
 METADATA_Y <- extract_metadata(DATA_Y)
 
-# Add a frequency column to each metadata for potential future use
-METADATA_Q$Frequency <- "Q"
-METADATA_Y$Frequency <- "Y"
 
-# Save metadata to data/ directory (for lazy loading)
-dir.create("data", showWarnings = FALSE)
-save(METADATA_Q, METADATA_Y, 
-     file = "data/METADATA.RData", 
-     compress = FALSE)  # No compression needed for small data
+# Save metadata using usethis::use_data
+usethis::use_data(METADATA_Q, METADATA_Y, overwrite = TRUE)
+
+# Write the dataframe to a CSV file
+write.csv(METADATA_Q, "inst/extdata/METADATA_Q.csv", row.names = FALSE)
+write.csv(METADATA_Y, "inst/extdata/METADATA_Y.csv", row.names = FALSE)
+
 
 # Optional: Print some information about the metadata
 cat("Quarterly data:\n")

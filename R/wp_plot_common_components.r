@@ -76,17 +76,17 @@ in_create_references_panel <- function(reference_col,         # character: colum
     
     wrapped_refs <- wrap_text_block(references, max_chars)
     
-    ggplot() + 
-        theme_void() +
-        labs(caption = wrapped_refs) +
-        theme(
-            plot.caption = element_text(
+    ggplot2::ggplot() + 
+        ggplot2::theme_void() +
+        ggplot2::labs(caption = wrapped_refs) +
+        ggplot2::theme(
+            plot.caption = ggplot2::element_text(
                 hjust = 0,
                 vjust = 1,
-                family = "CM Roman",
+                # family = "CM Roman",
                 size = base_size,  # Changed from hardcoded 16
                 lineheight = 1.2,
-                margin = margin(t = 0, b = 0)
+                margin = ggplot2::margin(t = 0, b = 0)
             ),
             plot.caption.position = "plot"
         )
@@ -187,22 +187,22 @@ in_create_legend_panel <- function(base_plot,                 # ggplot object: p
     
     # Create appropriate guides based on plot type and fill
     if (legend_fill) {
-        legend_guides <- guides(
-            color = guide_legend(byrow = TRUE, ncol = 1),
-            fill = guide_legend(byrow = TRUE, ncol = legend_cols - 1)
+        legend_guides <- ggplot2::guides(
+            color = ggplot2::guide_legend(byrow = TRUE, ncol = 1),
+            fill = ggplot2::guide_legend(byrow = TRUE, ncol = legend_cols - 1)
         )
     } else {
-        legend_guides <- guides(
-            color = guide_legend(byrow = TRUE, ncol = legend_cols)
+        legend_guides <- ggplot2::guides(
+            color = ggplot2::guide_legend(byrow = TRUE, ncol = legend_cols)
         )
     }
     
     # Get legend panel
-    legend_panel <- get_legend(
+    legend_panel <- cowplot::get_legend(
         base_plot + 
-        theme(
+        ggplot2::theme(
             legend.position = "bottom",
-            legend.text = element_text(size = base_size)
+            legend.text = ggplot2::element_text(size = base_size)
         ) +
         legend_guides
     )
@@ -357,35 +357,35 @@ in_create_title_panel <- function(title = NULL,           # string/NULL: main ti
                                  subtitle = NULL,         # string/NULL: subtitle text
                                  base_size = 16) {        # numeric: base font size for scaling
 
-    theme_settings <- theme(
-        plot.margin = margin(t = 15, r = 0, b = 0, l = 0, unit = "pt")
+    theme_settings <- ggplot2::theme(
+        plot.margin = ggplot2::margin(t = 15, r = 0, b = 0, l = 0, unit = "pt")
     )
     
     if (!is.null(title)) {
         theme_settings <- theme_settings + 
-            theme(
-                plot.title = element_text(
+            ggplot2::theme(
+                plot.title = ggplot2::element_text(
                     size = base_size * 1.25,  # Changed from hardcoded 20
                     face = "bold",
-                    family = "CM Roman",
-                    margin = margin(b = 10)
+                    # family = "CM Roman",
+                    margin = ggplot2::margin(b = 10)
                 )
             )
     }
     
     if (!is.null(subtitle)) {
         theme_settings <- theme_settings + 
-            theme(
-                plot.subtitle = element_text(
+            ggplot2::theme(
+                plot.subtitle = ggplot2::element_text(
                     size = base_size,  # Changed from hardcoded 16
-                    family = "CM Roman",
-                    margin = margin(b = 10)
+                    # family = "CM Roman",
+                    margin = ggplot2::margin(b = 10)
                 )
             )
     }
     
     list(
-        annotation = plot_annotation(
+        annotation = patchwork::plot_annotation(
             title = title,
             subtitle = subtitle,
             theme = theme_settings
@@ -421,46 +421,46 @@ in_create_title_panel <- function(title = NULL,           # string/NULL: main ti
 #' @keywords internal
 in_theme_plot <- function(base_size = 16) {         # numeric: base font size that scales all text elements
 
-    theme_minimal(base_size = base_size) +
-        theme(
+    ggplot2::theme_minimal(base_size = base_size) +
+        ggplot2::theme(
             # Main plot elements
             legend.position = "bottom",
             legend.box = "horizontal",
-            axis.text = element_text(color = "black"),  # Set all axis text to black
-            axis.text.x = element_text(angle = 45, hjust = 1, size = base_size),
-            axis.text.y = element_text(size = base_size),
-            axis.title.y = element_text(size = base_size * 1.25),
-            axis.title.y.right = element_text(size = base_size * 1.25, angle = 90),
-            axis.text.y.right = element_text(size = base_size, angle = 0),
-            legend.text = element_text(
+            axis.text = ggplot2::element_text(color = "black"),  # Set all axis text to black
+            axis.text.x = ggplot2::element_text(angle = 45, hjust = 1, size = base_size),
+            axis.text.y = ggplot2::element_text(size = base_size),
+            axis.title.y = ggplot2::element_text(size = base_size * 1.25),
+            axis.title.y.right = ggplot2::element_text(size = base_size * 1.25, angle = 90),
+            axis.text.y.right = ggplot2::element_text(size = base_size, angle = 0),
+            legend.text = ggplot2::element_text(
                 size = base_size,
-                margin = margin(t = 0, r = 30, b = 0, l = 0, unit = "pt")
+                margin = ggplot2::margin(t = 0, r = 30, b = 0, l = 0, unit = "pt")
             ),
             
             # Panel elements
-            panel.grid.major = element_line(color = "gray50", size = 0.05),
-            panel.grid.minor = element_blank(),
-            plot.background = element_rect(fill = "white", color = NA),
-            panel.background = element_rect(fill = NA),
-            plot.margin = margin(t = 5, r = 0, b = 0, l = 5, unit = "pt"),
+            panel.grid.major = ggplot2::element_line(color = "gray50", size = 0.05),
+            panel.grid.minor = ggplot2::element_blank(),
+            plot.background = ggplot2::element_rect(fill = "white", color = NA),
+            panel.background = ggplot2::element_rect(fill = NA),
+            plot.margin = ggplot2::margin(t = 5, r = 0, b = 0, l = 5, unit = "pt"),
             panel.ontop = TRUE,
             
             # Strip text (for faceting)
-            strip.text = element_text(size = base_size, face = "bold"),
+            strip.text = ggplot2::element_text(size = base_size, face = "bold"),
             
             # Caption styling
-            plot.caption = element_text(
+            plot.caption = ggplot2::element_text(
                 size = base_size,  # Changed from hardcoded 16
-                family = "CM Roman",
+                # family = "CM Roman",
                 hjust = 0,
                 vjust = 1,
                 lineheight = 1.2,
-                margin = margin(t = 0, b = 0)
+                margin = ggplot2::margin(t = 0, b = 0)
             ),
-            plot.caption.position = "plot",
+            plot.caption.position = "plot"
             
             # Common text properties
-            text = element_text(family = "CM Roman")
+            # text = ggplot2::element_text(family = "CM Roman")
         )
 }
 
@@ -485,12 +485,12 @@ in_scale_x <- function(data) {                    # data.frame: input data conta
     start_date <- min(data$Date)
     end_date <- max(data$Date)
     years_difference <- as.numeric(difftime(end_date, start_date, units = "days")) / 365.25
-    breaks_years <- max(round(years_difference/16), 1)
+    breaks_years <- max(round(years_difference/12), 1)
     
-    scale_x_date(date_breaks = paste0(breaks_years," years"), 
+    ggplot2::scale_x_date(date_breaks = paste0(breaks_years," years"), 
                  date_labels = "%Y",
                  limits = c(start_date, end_date),
-                 expand = expansion(mult = c(0, 0)))
+                 expand = ggplot2::expansion(mult = c(0, 0)))
 }
 
 
@@ -502,7 +502,7 @@ in_scale_x <- function(data) {                    # data.frame: input data conta
 #' Handles axis labeling and break determination.
 #' 
 #' Used by: All plotting functions
-#' Uses: scale_y_continuous, scales::comma_format, scales::pretty_breaks
+#' Uses: ggplot2::scale_y_continuous, scales::comma_format, scales::pretty_breaks
 #' 
 #' Features:
 #' - Comma formatting for large numbers
@@ -516,7 +516,7 @@ in_scale_y <- function(y_axis = NULL,             # string/NULL: axis label
     if (!is.null(y_axis) && (isFALSE(y_axis) || is.na(y_axis))) {
         y_axis <- NULL
     }
-    scale_y_continuous(
+    ggplot2::scale_y_continuous(
         name = y_axis,
         labels = scales::comma_format(scale = 1),
         breaks = scales::pretty_breaks(n = n_breaks)
@@ -563,14 +563,14 @@ in_print_and_save <- function(plot,                    # ggplot2 object: the plo
     
     # Save if filename provided
     if (!is.null(filename) && filename != '') {
-        ggsave(paste0("img/", filename, ".png"), 
+        ggplot2::ggsave(paste0(filename, ".png"), 
                plot = plot, 
                width = dim[1], 
                height = dim[2], 
                dpi = 300, 
                bg = "white")
         
-        ggsave(paste0("img/", filename, ".pdf"), 
+        ggplot2::ggsave(paste0(filename, ".pdf"), 
                plot = plot, 
                width = dim[1], 
                height = dim[2], 

@@ -279,7 +279,7 @@ in_plot_scatter_two_vars <- function(data,                    # data.frame: inpu
     y_var <- data_prep$y_var
     
     # 2. Initialize Base Plot
-    plot <- ggplot(plot_data, aes(x = .data[[x_var]], y = .data[[y_var]]))
+    plot <- ggplot2::ggplot(plot_data, ggplot2::aes(x = .data[[x_var]], y = .data[[y_var]]))
     
     # 3. Add Zero Lines (if requested and within data range)
     if(highlight_zero) {
@@ -293,12 +293,12 @@ in_plot_scatter_two_vars <- function(data,                    # data.frame: inpu
         
         # Add horizontal line only if 0 is within y-axis range + margin
         if((y_range[1] - y_margin) <= 0 && 0 <= (y_range[2] + y_margin)) {
-            plot <- plot + geom_hline(yintercept = 0, color = "gray80", size = 0.6)
+            plot <- plot + ggplot2::geom_hline(yintercept = 0, color = "gray80", size = 0.6)
         }
         
         # Add vertical line only if 0 is within x-axis range + margin
         if((x_range[1] - x_margin) <= 0 && 0 <= (x_range[2] + x_margin)) {
-            plot <- plot + geom_vline(xintercept = 0, color = "gray80", size = 0.6)
+            plot <- plot + ggplot2::geom_vline(xintercept = 0, color = "gray80", size = 0.6)
         }
     }
     
@@ -360,42 +360,42 @@ in_plot_scatter_two_vars <- function(data,                    # data.frame: inpu
             if (no_other) {
                 # Split plotting for labeled and Other groups
                 plot <- plot + 
-                    geom_point(data = subset(plot_data, color_group != "Other"),
-                              aes(color = color_group),
+                    ggplot2::geom_point(data = subset(plot_data, color_group != "Other"),
+                              ggplot2::aes(color = color_group),
                               size = 3) +
-                    geom_point(data = subset(plot_data, color_group == "Other"),
+                    ggplot2::geom_point(data = subset(plot_data, color_group == "Other"),
                               color = "gray50",
                               size = 3)
             } else {
                 # Plot all points with color mapping
                 plot <- plot + 
-                    geom_point(data = plot_data,
-                              aes(color = color_group),
+                    ggplot2::geom_point(data = plot_data,
+                              ggplot2::aes(color = color_group),
                               size = 3)
             }
         } else {
             if (no_other) {
                 # Split text labels for labeled and Other groups
                 plot <- plot + 
-                    geom_text(data = subset(plot_data, color_group != "Other"),
-                             aes(label = ISO, color = color_group),
+                    ggplot2::geom_text(data = subset(plot_data, color_group != "Other"),
+                             ggplot2::aes(label = ISO, color = color_group),
                              size = base_size/3) +
-                    geom_text(data = subset(plot_data, color_group == "Other"),
-                             aes(label = ISO),
+                    ggplot2::geom_text(data = subset(plot_data, color_group == "Other"),
+                             ggplot2::aes(label = ISO),
                              color = "gray50",
                              size = base_size/3)
             } else {
                 # All text labels with color mapping
                 plot <- plot + 
-                    geom_text(data = plot_data,
-                             aes(label = ISO, color = color_group),
+                    ggplot2::geom_text(data = plot_data,
+                             ggplot2::aes(label = ISO, color = color_group),
                              size = base_size/3)
             }
         }
         
         # Add color scale
         plot <- plot + 
-            scale_color_manual(
+            ggplot2::scale_color_manual(
                 values = color_mapping,
                 name = NULL,
                 labels = labels,
@@ -418,7 +418,7 @@ in_plot_scatter_two_vars <- function(data,                    # data.frame: inpu
             plot <- plot + 
                 ggrepel::geom_text_repel(
                     data = plot_data,
-                    aes(label = ISO),
+                    ggplot2::aes(label = ISO),
                     size = base_size/3,
                     color = iso_colors[plot_data$ISO],
                     nudge_x = label_nudge,
@@ -427,17 +427,17 @@ in_plot_scatter_two_vars <- function(data,                    # data.frame: inpu
         }
     } else {
         # No color mapping case
-        plot <- plot + geom_point(size = 3, color = "black")
+        plot <- plot + ggplot2::geom_point(size = 3, color = "black")
         
         if (identical(ISO, TRUE)) {
             plot <- plot + 
-                geom_text(aes(label = ISO),
+                ggplot2::geom_text(ggplot2::aes(label = ISO),
                          size = base_size/3,
                          color = "black")
         } else if (identical(ISO, "Both")) {
             plot <- plot + 
                 ggrepel::geom_text_repel(
-                    aes(label = ISO),
+                    ggplot2::aes(label = ISO),
                     size = base_size/3,
                     color = "gray40",
                     nudge_x = label_nudge,
@@ -458,7 +458,7 @@ in_plot_scatter_two_vars <- function(data,                    # data.frame: inpu
         if (interpolation %in% c(TRUE, "Linear", "Square", "Cubic")) {
             # Polynomial interpolation
             plot <- plot + 
-                geom_smooth(
+                ggplot2::geom_smooth(
                     method = "lm",
                     formula = as.formula(sprintf("y ~ poly(x, %d, raw = TRUE)", degree)),
                     color = "black",
@@ -475,7 +475,7 @@ in_plot_scatter_two_vars <- function(data,                    # data.frame: inpu
             }
             
             plot <- plot + 
-                geom_smooth(
+               ggplot2::geom_smooth(
                     method = "loess",
                     span = spline_bw,
                     color = "black",
@@ -508,7 +508,7 @@ in_plot_scatter_two_vars <- function(data,                    # data.frame: inpu
         }
         
         # Build plot to get actual dimensions
-        built <- ggplot_build(plot)
+        built <- ggplot2::ggplot_build(plot)
         plot_dims <- built$layout$panel_params[[1]]
         
         # Get actual plot limits
@@ -527,7 +527,7 @@ in_plot_scatter_two_vars <- function(data,                    # data.frame: inpu
         
         # Add text annotation
         plot <- plot +
-            annotate("text",
+            ggplot2::annotate("text",
                     x = x_pos + margin_x,
                     y = y_pos + margin_y,
                     label = r2_text,
@@ -554,10 +554,10 @@ in_plot_scatter_two_vars <- function(data,                    # data.frame: inpu
         }
 
     plot <- plot +
-        labs(x = x_lab, y = y_lab) +
+        ggplot2::labs(x = x_lab, y = y_lab) +
         in_theme_plot(base_size = base_size) + 
-        theme(
-            axis.text.x = element_text(angle = 0, hjust = 1, size = base_size)
+        ggplot2::theme(
+            axis.text.x = ggplot2::element_text(angle = 0, hjust = 1, size = base_size)
         )
 
 
@@ -704,7 +704,7 @@ in_plot_scatter_multi_vars <- function(data,                    # data.frame: in
             debug = debug
         )
         
-        plot <- plot + theme(legend.position = "none")
+        plot <- plot + ggplot2::theme(legend.position = "none")
         
 
 
@@ -715,8 +715,8 @@ in_plot_scatter_multi_vars <- function(data,                    # data.frame: in
             plot_title <- if (isTRUE(subfig_title)) paste(pair[1], "vs", pair[2]) else subfig_title[i]
 
             plot <- plot + 
-                ggtitle(plot_title) +
-                theme(plot.title = element_text(size = rel(0.8)))
+                ggplot2::ggtitle(plot_title) +
+                ggplot2::theme(plot.title = ggplot2::element_text(size = rel(0.8)))
         }
         
         plots[[i]] <- plot

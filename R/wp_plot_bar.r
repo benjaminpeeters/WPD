@@ -252,14 +252,14 @@ in_plot_one_indic_bar <- function(data,                    # data.frame: input d
     legend_info <- in_create_bar_legend(all_data, type, show_median, show_range)
     
     # 6. Create base plot
-    plot <- ggplot() +
+    plot <- ggplot2::ggplot() +
         {if(!is.null(color) && !isFALSE(color))
             geom_bar(data = all_data, 
-                    aes(x = Country, y = display_value, fill = color_group_label), 
+                    ggplot2::aes(x = Country, y = display_value, fill = color_group_label), 
                     stat = "identity", width = 0.5)
         else 
             geom_bar(data = all_data, 
-                    aes(x = Country, y = display_value, fill = "Values"), 
+                    ggplot2::aes(x = Country, y = display_value, fill = "Values"), 
                     stat = "identity", width = 0.5, fill = "gray50")
         }
     
@@ -268,7 +268,7 @@ in_plot_one_indic_bar <- function(data,                    # data.frame: input d
         plot <- plot +
             geom_errorbar(
                 data = all_data,
-                aes(x = Country, ymin = min_value, ymax = max_value),
+                ggplot2::aes(x = Country, ymin = min_value, ymax = max_value),
                 width = 0.25,
                 color = if(!is.null(color) && !isFALSE(color)) 
                     sapply(all_data$color_group, function(g) dark_color_mapping[g]) 
@@ -280,7 +280,7 @@ in_plot_one_indic_bar <- function(data,                    # data.frame: input d
         plot <- plot +
             geom_point(
                 data = all_data,
-                aes(x = Country, y = median_value),
+                ggplot2::aes(x = Country, y = median_value),
                 size = 3,
                 color = if(!is.null(color) && !isFALSE(color)) 
                     sapply(all_data$color_group, function(g) dark_color_mapping[g]) 
@@ -292,7 +292,7 @@ in_plot_one_indic_bar <- function(data,                    # data.frame: input d
     plot <- plot +
         geom_point(
             data = legend_info$data, 
-            aes(x = x, y = y, shape = type), 
+            ggplot2::aes(x = x, y = y, shape = type), 
             show.legend = TRUE, 
             alpha = 0
         ) +
@@ -368,7 +368,7 @@ in_plot_one_indic_bar <- function(data,                    # data.frame: input d
         plot <- plot +
             geom_text(
                 data = all_data,
-                aes(x = Country, y = value_pos, label = sprintf("%.1f", display_value)),
+                ggplot2::aes(x = Country, y = value_pos, label = sprintf("%.1f", display_value)),
                 vjust = value_vjust,
                 size = base_size/3
             )
@@ -376,15 +376,15 @@ in_plot_one_indic_bar <- function(data,                    # data.frame: input d
     
     # 11. Complete plot formatting
     plot <- plot +
-        scale_y_continuous(
+        ggplot2::scale_y_continuous(
             name = y_axis,
             labels = scales::comma_format(scale = 1),
             breaks = scales::pretty_breaks(n = 9),
             limits = c(-limits$y_margin_bottom, limits$y_max + limits$y_margin_top),
-            expand = expansion(mult = c(0.02, 0.02))
+            expand = ggplot2::expansion(mult = c(0.02, 0.02))
         ) +
-        scale_x_discrete(labels = all_data$label) +
-        labs(x = NULL) +
+        ggplot2::scale_x_discrete(labels = all_data$label) +
+        ggplot2::labs(x = NULL) +
         in_theme_plot(base_size = base_size) +
         theme(
             legend.direction = "horizontal",
@@ -831,11 +831,11 @@ in_plot_multi_indic_bar <- function(data,                    # data.frame: input
     limits <- in_calculate_plot_limits(all_data, show_values)
     
     # 5. Create base plot
-    plot <- ggplot(all_data, aes(x = Country, y = display_value, group = Variable))
+    plot <- ggplot2::ggplot(all_data, ggplot2::aes(x = Country, y = display_value, group = Variable))
     
     # Add bars with appropriate aesthetics
     plot <- plot + 
-        geom_bar(aes(fill = Variable),
+        geom_bar(ggplot2::aes(fill = Variable),
                 stat = "identity",
                 position = position_dodge(width = position_dodge_width),
                 width = bar_width)
@@ -846,7 +846,7 @@ in_plot_multi_indic_bar <- function(data,                    # data.frame: input
     if(show_range) {
         plot <- plot +
             geom_errorbar(
-                aes(ymin = min_value, 
+                ggplot2::aes(ymin = min_value, 
                     ymax = max_value,
                     group = Variable),
                 position = position_dodge(width = position_dodge_width),
@@ -858,7 +858,7 @@ in_plot_multi_indic_bar <- function(data,                    # data.frame: input
     if(show_median && type == "Mean") {
         plot <- plot +
             geom_point(
-                aes(y = median_value,
+                ggplot2::aes(y = median_value,
                     group = Variable),
                 position = position_dodge(width = position_dodge_width),
                 size = 3,
@@ -873,7 +873,7 @@ in_plot_multi_indic_bar <- function(data,                    # data.frame: input
         
         plot <- plot +
             geom_text(
-                aes(y = value_pos,
+                ggplot2::aes(y = value_pos,
                     label = sprintf("%.1f", display_value),
                     group = Variable),
                 position = position_dodge(width = position_dodge_width),
@@ -899,7 +899,7 @@ in_plot_multi_indic_bar <- function(data,                    # data.frame: input
         plot <- plot +
             geom_point(
                 data = legend_data,
-                aes(x = x, y = y, shape = type),
+                ggplot2::aes(x = x, y = y, shape = type),
                 show.legend = TRUE,
                 alpha = 0
             ) +
@@ -932,7 +932,7 @@ in_plot_multi_indic_bar <- function(data,                    # data.frame: input
     )
     
     plot <- plot +
-        scale_fill_manual(
+        ggplot2::scale_fill_manual(
             values = color_mapping,
             name = NULL,
             guide = guide_legend(
@@ -945,14 +945,14 @@ in_plot_multi_indic_bar <- function(data,                    # data.frame: input
     
     # 10. Complete plot formatting
     plot <- plot +
-        scale_y_continuous(
+        ggplot2::scale_y_continuous(
             name = y_axis,
             labels = scales::comma_format(scale = 1),
             breaks = scales::pretty_breaks(n = 9),
             limits = c(-limits$y_margin_bottom, limits$y_max + limits$y_margin_top),
-            expand = expansion(mult = c(0.02, 0.02))
+            expand = ggplot2::expansion(mult = c(0.02, 0.02))
         ) +
-        labs(x = NULL) +
+        ggplot2::labs(x = NULL) +
         in_theme_plot(base_size = base_size) +
         theme(
             legend.direction = "horizontal",

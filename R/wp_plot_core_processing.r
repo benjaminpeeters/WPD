@@ -138,7 +138,7 @@ in_plot_core <- function(data,                   # data.frame with required colu
                           filtered_args))
     
     # Remove legend from base plot
-    plot_without_legend <- base_plot + theme(legend.position = "none")
+    plot_without_legend <- base_plot + ggplot2::theme(legend.position = "none")
     
     # Initialize panels
     panels <- list()
@@ -179,7 +179,7 @@ in_plot_core <- function(data,                   # data.frame with required colu
     
     # Combine all panels
     panel_list <- c(list(plot_without_legend), panels)
-    final_plot <- wrap_plots(panel_list, ncol = 1, heights = heights)
+    final_plot <- patchwork::wrap_plots(panel_list, ncol = 1, heights = heights)
     
     # Add title and subtitle if provided
     title_result <- in_create_title_panel(

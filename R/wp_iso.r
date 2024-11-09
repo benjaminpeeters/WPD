@@ -482,17 +482,26 @@ in_get_ctry_name <- function(iso_code, verbose = TRUE) {
 
 
 #' Get all categories that contain specific countries
-#' 
+#'
 #' @param country_codes Character vector of ISO3 country codes
+#'
 #' @return Character vector of category names
-#' @examples
-#' # For one country
-#' categories_for_france <- in_get_ctry_categories("FRA")
-#' 
-#' # For multiple countries
-#' common_categories <- in_get_ctry_categories(c("FRA", "DEU", "ITA"))
-#' 
+#'
 #' @keywords internal
+in_get_ctry_categories <- function(country_codes) {
+  if (!is.character(country_codes) || any(nchar(country_codes) != 3)) {
+    stop("country_codes must be ISO3 codes")
+  }
+  
+  result <- character(0)
+  for (cat in list_categories) {
+    category_countries <- wp_get_category(cat, verbose = FALSE)
+    if (all(country_codes %in% category_countries)) {
+      result <- c(result, cat)
+    }
+  }
+  return(result)
+}
 in_get_ctry_categories <- function(country_codes) {
   if (!is.character(country_codes) || any(nchar(country_codes) != 3)) {
     stop("country_codes must be ISO3 codes")
@@ -528,6 +537,7 @@ in_get_ctry_categories <- function(country_codes) {
 #' eu_brics_overlap <- get_category_overlap("EU", "BRICS")
 #' 
 #' @keywords internal
+#' @noRd
 in_get_category_overlap <- function(category1, category2) {
   countries1 <- wp_get_category(category1, verbose = FALSE)
   countries2 <- wp_get_category(category2, verbose = FALSE)
@@ -541,9 +551,13 @@ in_get_category_overlap <- function(category1, category2) {
 #' @param category2 Character, second category name
 #' @return Character vector of ISO3 codes present in category1 but not in category2
 #' @examples
-#' eu_not_nato <- get_category_difference("EU", "NATO")
-#' 
+#' \dontrun{
+#' # Find advanced economies (CTR) that are not in the European Union (EU)
+#' ctr_not_eu <- in_get_category_difference("CTR", "EU")
+#' # Returns: c("USA", "GBR", "JPN", "AUS", "CAN", "CHE", "ISL", "NOR", "NZL")
+#' }
 #' @keywords internal
+#' @noRd
 in_get_category_difference <- function(category1, category2) {
   countries1 <- wp_get_category(category1, verbose = FALSE)
   countries2 <- wp_get_category(category2, verbose = FALSE)

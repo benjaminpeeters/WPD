@@ -16,12 +16,13 @@ LazyData: true
 Depends: 
     R (>= 3.5.0)
 Imports:
-    ggplot2 (>= 3.4.0, < 3.5.0),
+    ggplot2 (>= 3.4.0),
+    ggplot2 (< 3.5.0),
     scales,
     extrafont,
     patchwork,
     cowplot,
     zoo,
     seasonal
-URL: https://github.com/benjaminpeeters/WPD
+URL: https://benjaminpeeters.github.io/WPD
 BugReports: https://github.com/benjaminpeeters/WPD/issues

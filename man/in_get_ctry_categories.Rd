@@ -15,12 +15,4 @@ Character vector of category names
 \description{
 Get all categories that contain specific countries
 }
-\examples{
-# For one country
-categories_for_france <- in_get_ctry_categories("FRA")
-
-# For multiple countries
-common_categories <- in_get_ctry_categories(c("FRA", "DEU", "ITA"))
-
-}
 \keyword{internal}

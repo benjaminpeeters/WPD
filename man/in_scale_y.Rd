@@ -11,7 +11,7 @@ Internal function that creates a standardized continuous y-axis scale.
 Handles axis labeling and break determination.
 
 Used by: All plotting functions
-Uses: scale_y_continuous, scales::comma_format, scales::pretty_breaks
+Uses: ggplot2::scale_y_continuous, scales::comma_format, scales::pretty_breaks
 
 Features:
 \itemize{

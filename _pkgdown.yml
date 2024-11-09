@@ -1,0 +1,40 @@
+url: https://benjaminpeeters.github.io/WPD
+
+template:
+  bootstrap: 5
+
+navbar:
+  structure:
+    left:  [intro, reference, articles, news]
+    right: [github]
+
+reference:
+- title: "Data Management"
+  desc: "Functions for data loading and manipulation"
+  contents:
+  - starts_with("wp_data")
+  - wp_info
+  - wp_get_category
+  
+- title: "Plotting Functions"
+  desc: "Functions for creating visualizations"
+  contents:
+  - wp_plot_series
+  - wp_plot_bar
+  - wp_plot_scatter
+  
+- title: "ISO Code Utilities"
+  desc: "Functions for handling country codes"
+  contents:
+  - starts_with("wp_iso")
+  - wp_ctry2iso
+  - wp_from_iso
+
+- title: "Data Documentation"
+  desc: "Documentation for included datasets"
+  contents:
+  - METADATA_Q
+  - METADATA_Y
+  - ISO_DATA
+
+# Note: Internal functions are excluded by default

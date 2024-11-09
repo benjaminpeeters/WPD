@@ -168,14 +168,14 @@ wp_plot_series <- function(data,                # data.frame with required colum
                           right_axis = NULL,    # TRUE/FALSE/NULL/char vector: variables for right axis; TRUE for auto-assignment
                           key_dates = NULL,     # data.frame with 2 cols or NULL: event descriptions and dates
                           area = FALSE,         # logical: create stacked area plot for single country multi-indicator
-                          by_indicator = TRUE,  # logical: facet by indicator (TRUE) or country (FALSE) for multi-panel plots
+                          by_indicator = NULL,  # logical: facet by indicator (TRUE) or country (FALSE) for multi-panel plots
                           filename = NULL,      # string/NULL/FALSE: output filename without extension (saved as PNG and PDF)
                           print = TRUE,         # logical: display the plot
                           legend = TRUE,        # logical: include legend
                           reference = TRUE,     # logical: include reference panel (requires Reference column)
                           title = NULL,         # string/NULL/FALSE: main title
                           subtitle = NULL,      # string/NULL/FALSE: subtitle
-                          subfig_title = TRUE,  # TRUE/FALSE/char vector: titles for multi-panel plots
+                          subfig_title = NULL,  # TRUE/FALSE/char vector: titles for multi-panel plots
                           verbose = TRUE,       # logical: print processing information
                           debug = FALSE,        # logical: print detailed debugging information
                           size = NULL,          # 1-4 or NULL: plot size presets or auto-sizing
@@ -220,12 +220,12 @@ in_plot_multi_indic_one_ctry <- function(data,                    # data.frame: 
                                            key_dates = NULL,         # data.frame/NULL: event markers data
                                            base_size = 16) {         # numeric: base font size in points
     
-    plot <- ggplot(data, aes(x = Date, y = Value, color = Variable)) +
-        geom_line(linewidth = 1.2) +
+    plot <- ggplot2::ggplot(data, ggplot2::aes(x = Date, y = Value, color = Variable)) +
+        ggplot2::geom_line(linewidth = 1.2) +
         in_scale_y(y_axis) +
-        scale_color_manual(values = custom_colors[1:length(unique(data$Variable))]) +
+        ggplot2::scale_color_manual(values = custom_colors[1:length(unique(data$Variable))]) +
         in_scale_x(data) +
-        labs(x = NULL, color = "") +
+        ggplot2::labs(x = NULL, color = "") +
         in_theme_plot(base_size = base_size)
     
     # Add key dates if specified
@@ -257,12 +257,12 @@ in_plot_one_indic_multi_ctry <- function(data,                    # data.frame: 
                                              key_dates = NULL,         # data.frame/NULL: event markers data
                                              base_size = 16) {         # numeric: base font size in points
     
-    plot <- ggplot(data, aes(x = Date, y = Value, color = Country)) +
-        geom_line(linewidth = 1.2) +
+    plot <- ggplot2::ggplot(data, ggplot2::aes(x = Date, y = Value, color = Country)) +
+        ggplot2::geom_line(linewidth = 1.2) +
         in_scale_y(y_axis) +
-        scale_color_manual(values = custom_colors[1:length(unique(data$Country))]) +
+        ggplot2::scale_color_manual(values = custom_colors[1:length(unique(data$Country))]) +
         in_scale_x(data) +
-        labs(x = NULL,
+        ggplot2::labs(x = NULL,
              y = y_axis,
              color = "") +
         in_theme_plot(base_size = base_size)
@@ -328,19 +328,19 @@ in_plot_multi_by_indic <- function(data,                    # data.frame: input 
 
         # Add title with extra margin if key_dates are present
         if (add_subfig_title) {
-            plot <- plot + ggtitle(subfig_title[i]) +
-                theme(plot.title = element_text(
+            plot <- plot + ggplot2::ggtitle(subfig_title[i]) +
+                ggplot2::theme(plot.title = ggplot2::element_text(
                                             size = base_size,  # Scale title size
-                                            margin = margin(b = ifelse(!is.null(key_dates), 25, 5), t = 0, unit = "pt")
+                                            margin = ggplot2::margin(b = ifelse(!is.null(key_dates), 25, 5), t = 0, unit = "pt")
                                             ))
         }
         
         # Remove legend
-        plot + theme(legend.position = "none")
+        plot + ggplot2::theme(legend.position = "none")
     })
     
     # Combine plots in a grid
-    combined_plot <- wrap_plots(plot_list)
+    combined_plot <- patchwork::wrap_plots(plot_list)
     
     return(combined_plot)
 }
@@ -397,20 +397,20 @@ in_plot_multi_by_ctry <- function(data,                    # data.frame: input d
 
         # Add title only if title parameter is TRUE
         if (add_subfig_title) {
-            plot <- plot + ggtitle(subfig_title[i]) +
-                theme(plot.title = element_text(
+            plot <- plot + ggplot2::ggtitle(subfig_title[i]) +
+                ggplot2::theme(plot.title = ggplot2::element_text(
                                             size = base_size,  # Scale title size
-                                            margin = margin(b = ifelse(!is.null(key_dates), 25, 5), t = 0, unit = "pt")
+                                            margin = ggplot2::margin(b = ifelse(!is.null(key_dates), 25, 5), t = 0, unit = "pt")
                                             ))
         }
         
         # Remove legend
-        plot + theme(legend.position = "none")
+        plot + ggplot2::theme(legend.position = "none")
 
     })
     
     # Combine plots in a grid
-    combined_plot <- wrap_plots(plot_list)
+    combined_plot <- patchwork::wrap_plots(plot_list)
     
     return(combined_plot)
 }
@@ -474,20 +474,20 @@ in_plot_one_ctry_area <- function(data,                    # data.frame: input d
     names(color_palette) <- variable_order
     
     # Create plot
-    plot <- ggplot(data_area, aes(x = Date, y = Value)) +
-        geom_area(data = subset(data_area, Variable != sum_variable),
-                 aes(fill = Variable), position = "stack") +
-        geom_line(data = subset(data_area, Variable == sum_variable),
-                 aes(color = Variable), linewidth = 1.2) +
+    plot <- ggplot2::ggplot(data_area, ggplot2::aes(x = Date, y = Value)) +
+        ggplot2::geom_area(data = subset(data_area, Variable != sum_variable),
+                 ggplot2::aes(fill = Variable), position = "stack") +
+        ggplot2::geom_line(data = subset(data_area, Variable == sum_variable),
+                 ggplot2::aes(color = Variable), linewidth = 1.2) +
         in_scale_y(y_axis) +
         in_scale_x(data) +
-        scale_fill_manual(values = color_palette[-1], breaks = variable_order[-1]) +
-        scale_color_manual(values = color_palette[1], breaks = variable_order[1]) +
-        labs(x = NULL, fill = "", color = "") +
+        ggplot2::scale_fill_manual(values = color_palette[-1], breaks = variable_order[-1]) +
+        ggplot2::scale_color_manual(values = color_palette[1], breaks = variable_order[1]) +
+        ggplot2::labs(x = NULL, fill = "", color = "") +
         in_theme_plot(base_size = base_size) +
-        guides(fill = guide_legend(order = 2),
-               color = guide_legend(override.aes = list(linetype = 1, shape = NA)),
-               fill = guide_legend(override.aes = list(linetype = 0, shape = 15)))
+        ggplot2::guides(fill = ggplot2::guide_legend(order = 2),
+               color = ggplot2::guide_legend(override.aes = list(linetype = 1, shape = NA)),
+               fill = ggplot2::guide_legend(override.aes = list(linetype = 0, shape = 15)))
     
     # Add key dates if specified
     plot <- in_add_date_markers(plot, key_dates)
@@ -548,20 +548,20 @@ in_plot_multi_area <- function(data,                    # data.frame: input data
 
         # Add title only if title parameter is TRUE
         if (add_subfig_title) {
-            plot <- plot + ggtitle(subfig_title[i]) +
-                theme(plot.title = element_text(
+            plot <- plot + ggplot2::ggtitle(subfig_title[i]) +
+                ggplot2::theme(plot.title = ggplot2::element_text(
                                             size = base_size,  # Scale title size
-                                            margin = margin(b = ifelse(!is.null(key_dates), 25, 5), t = 0, unit = "pt")
+                                            margin = ggplot2::margin(b = ifelse(!is.null(key_dates), 25, 5), t = 0, unit = "pt")
                                             ))
         }
         
         # Remove legend
-        plot + theme(legend.position = "none")
+        plot + ggplot2::theme(legend.position = "none")
 
     })
     
     # Combine plots in a grid
-    combined_plot <- wrap_plots(plot_list)
+    combined_plot <- patchwork::wrap_plots(plot_list)
     
     return(combined_plot)
 }
@@ -629,19 +629,19 @@ in_plot_multi_indic_one_ctry_two_axes <- function(data,                    # dat
     scale_factor <- left_max / right_max
     
     # Create base plot with explicit mapping for correct legend handling
-    plot <- ggplot(mapping = aes(x = Date, y = Value, colour = Variable)) +
+    plot <- ggplot2::ggplot(mapping = ggplot2::aes(x = Date, y = Value, colour = Variable)) +
         # Add left axis data
-        geom_line(data = left_data,
+        ggplot2::geom_line(data = left_data,
                  linewidth = 1.2) +
         # Add right axis data (scaled)
-        geom_line(data = right_data,
-                 aes(y = Value * scale_factor),
+        ggplot2::geom_line(data = right_data,
+                 ggplot2::aes(y = Value * scale_factor),
                  linewidth = 1.2)
     
     # Set up scales
     plot <- plot +
         in_scale_x(data) +
-        scale_color_manual(
+        ggplot2::scale_color_manual(
             values = custom_colors[1:length(unique(data$Variable))],
             breaks = unique(data$Variable),
             labels = function(x) {
@@ -652,11 +652,11 @@ in_plot_multi_indic_one_ctry_two_axes <- function(data,                    # dat
     # Add y-axis scales and labels with consistent rotation
     if(!is.null(y_axis)) {
         plot <- plot +
-            scale_y_continuous(
+            ggplot2::scale_y_continuous(
                 name = y_axis[1],
                 labels = scales::comma_format(scale = 1),
                 breaks = scales::pretty_breaks(n = 9),
-                sec.axis = sec_axis(
+                sec.axis = ggplot2::sec_axis(
                     ~./scale_factor,
                     name = y_axis[2],
                     labels = scales::comma_format(scale = 1),
@@ -665,10 +665,10 @@ in_plot_multi_indic_one_ctry_two_axes <- function(data,                    # dat
             )
     } else {
         plot <- plot +
-            scale_y_continuous(
+            ggplot2::scale_y_continuous(
                 labels = scales::comma_format(scale = 1),
                 breaks = scales::pretty_breaks(n = 9),
-                sec.axis = sec_axis(
+                sec.axis = ggplot2::sec_axis(
                     ~./scale_factor,
                     labels = scales::comma_format(scale = 1),
                     breaks = scales::pretty_breaks(n = 9)
@@ -678,7 +678,7 @@ in_plot_multi_indic_one_ctry_two_axes <- function(data,                    # dat
     
     # Add theme and labels with consistent axis text rotation
     plot <- plot + in_theme_plot(base_size = base_size) + 
-                labs(x = NULL, color = "")
+                ggplot2::labs(x = NULL, color = "")
     
     # Add key dates if specified
     plot <- in_add_date_markers(plot, key_dates)
@@ -810,7 +810,7 @@ in_add_date_markers <- function(plot,                    # ggplot object: base p
         # Extract the current margins if they exist
         if (!is.null(current_theme$plot.margin)) {
             current_margins <- as.numeric(current_theme$plot.margin)
-            new_margins <- margin(
+            new_margins <- ggplot2::margin(
                 t = current_margins[1] + extra_top_margin,       # Set top margin for key dates
                 r = current_margins[2],  # Preserve right margin
                 b = current_margins[3],  # Preserve bottom margin
@@ -819,25 +819,25 @@ in_add_date_markers <- function(plot,                    # ggplot object: base p
             )
         } else {
             # If no margins exist, create new ones
-            new_margins <- margin(t = 20, r = 0, b = 0, l = 0, unit = "pt")
+            new_margins <- ggplot2::margin(t = 20, r = 0, b = 0, l = 0, unit = "pt")
         }
         
         plot <- plot +
-            geom_vline(data = key_dates_df, 
-                      aes(xintercept = date), 
+            ggplot2::geom_vline(data = key_dates_df, 
+                      ggplot2::aes(xintercept = date), 
                       color = "black", 
                       alpha = 0.5, 
                       size = 0.5) +
-            geom_text(data = key_dates_df, 
-                     aes(x = date, y = Inf, label = event),
+            ggplot2::geom_text(data = key_dates_df, 
+                     ggplot2::aes(x = date, y = Inf, label = event),
                      vjust = -0.5,
                      hjust = 1,
                      angle = 0,
                      size = 5,
                      color = "black",
                      nudge_x = -1.) +
-            coord_cartesian(clip = "off") +
-            theme(plot.margin = new_margins)
+            ggplot2::coord_cartesian(clip = "off") +
+            ggplot2::theme(plot.margin = new_margins)
     }
     
     return(plot)
