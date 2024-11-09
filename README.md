@@ -1,7 +1,7 @@
 # WPD: World Panel Data
 
 [![R-CMD-check](https://github.com/benjaminpeeters/WPD/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/benjaminpeeters/WPD/actions)
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 
