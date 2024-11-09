@@ -1,3 +1,5 @@
+
+# TODO add comments
 in_convert_single_date <- function(date_string, period_type = "middle") {
   # Function to convert a single date string to as.Date
   

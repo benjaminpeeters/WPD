@@ -1,6 +1,6 @@
 Package: WPD
 Title: World Panel Data
-Version: 0.0.1
+Version: 0.0.7
 Authors@R: 
     person("Benjamin", "Peeters", , "benjaminpeeters@protonmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-5095-2021"))
@@ -23,6 +23,7 @@ Imports:
     patchwork,
     cowplot,
     zoo,
-    seasonal
+    seasonal,
+    dplyr
 URL: https://benjaminpeeters.github.io/WPD
 BugReports: https://github.com/benjaminpeeters/WPD/issues

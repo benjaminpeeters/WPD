@@ -494,7 +494,7 @@ in_data_one_formula <- function(countries,                  # ISO3 codes
         # STEP 7
         # Create country result
         in_print_debug("Step 7: Create country result and merge.", FALSE, debug, "debug")
-        country_result <- in_create_country_result(country_data, variable, date_cols, result, reference)
+        country_result <- in_create_country_result(country_data, variable, date_cols, result)
         
         # Only merge if country_result was successfully created
         if (!is.null(country_result)) {
