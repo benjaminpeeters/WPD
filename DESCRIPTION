@@ -1,12 +1,15 @@
 Package: WPD
-Title: World Panel Data
-Version: 0.0.10
+Title: World Panel Data: A Macroeconomic Data Visualization and Analysis Toolkit
+Version: 0.0.11
 Authors@R: 
     person("Benjamin", "Peeters", , "benjaminpeeters@protonmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-5095-2021"))
-Description: What the package does (one paragraph).
-    This package includes a comprehensive panel-data database (approximately 50MB). 
-    The data is loaded on demand when using the function wp_data to minimize memory usage during normal package operation.
+Description: A comprehensive panel-data package providing access to global economic 
+    and social indicators. The package includes a large database (approximately 50MB) 
+    of world panel data that is efficiently loaded on demand through the 'wp_data' 
+    function to optimize memory usage. Features include data visualization tools, 
+    time series analysis capabilities, and functions for handling seasonal adjustments 
+    and trend analysis.
 SystemRequirements: At least 100MB disk space for installation.
 License: AGPL (>= 3) | file LICENSE
 Encoding: UTF-8
@@ -22,10 +25,19 @@ Imports:
     extrafont,
     patchwork,
     cowplot,
+    ggrepel,
     zoo,
     seasonal
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    covr
+Config/testthat/edition: 3
+VignetteBuilder: knitr
 URL: https://benjaminpeeters.github.io/WPD
 BugReports: https://github.com/benjaminpeeters/WPD/issues
 Date: 2024-11-09
 Year: 2024
 Month: 11
+Language: en-US
