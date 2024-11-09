@@ -30,7 +30,7 @@ in_load_frequency_data <- function(frequency, verbose = TRUE, force = FALSE) {
     # If not found in development path, try installed package path
     if (!file.exists(dev_path)) {
         pkg_path <- system.file("extdata", paste0(data_name, ".RData"), 
-                              package = "yourpackage")
+                              package = "WPD")
         if (pkg_path == "") {
             stop("Data file ", data_name, ".RData not found")
         }
