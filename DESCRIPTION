@@ -1,6 +1,6 @@
 Package: WPD
 Title: World Panel Data: A Macroeconomic Data Visualization and Analysis Toolkit
-Version: 0.0.13
+Version: 0.0.15
 Authors@R: 
     person("Benjamin", "Peeters", , "benjaminpeeters@protonmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-5095-2021"))
@@ -19,7 +19,6 @@ LazyData: true
 Depends: 
     R (>= 3.5.0)
 Imports:
-    ggplot2 (>= 3.4.0),
     ggplot2 (< 3.5.0),
     scales,
     extrafont,
