@@ -195,12 +195,12 @@ main <- function() {
   })
   
   # Build pkgdown site
-  # message("Building pkgdown site...")
-  # tryCatch({
-  #   pkgdown::build_site(preview = FALSE)
-  # }, error = function(e) {
-  #   stop("Pkgdown site building failed: ", e$message)
-  # })
+  message("Building pkgdown site...")
+  tryCatch({
+    pkgdown::build_site(preview = FALSE)
+  }, error = function(e) {
+    stop("Pkgdown site building failed: ", e$message)
+  })
   
   # 5. Git Operations
   message("\n=== Handling Git Operations ===")
@@ -288,10 +288,10 @@ main <- function() {
                           system("git config user.name", intern = TRUE),
                           pkg_name)
     message("\nYou can view your website at: ", website_url)
-    response <- readline(prompt = "Would you like to open the website? (y/n): ")
-    if (tolower(response) == "y") {
-      browseURL(website_url)
-    }
+    # response <- readline(prompt = "Would you like to open the website? (y/n): ")
+    # if (tolower(response) == "y") {
+    #   browseURL(website_url)
+    # }
   }
 }
 
