@@ -9,6 +9,11 @@ navbar:
   structure:
     left: [intro, reference, articles]
     right: [search, github]
+  components:
+    articles:
+      text: Articles
+      href: articles/index.html
+
 
 reference:
 - title: "Data Management"

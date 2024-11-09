@@ -1,6 +1,6 @@
 Package: WPD
 Title: World Panel Data
-Version: 0.0.9
+Version: 0.0.10
 Authors@R: 
     person("Benjamin", "Peeters", , "benjaminpeeters@protonmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-5095-2021"))
@@ -26,3 +26,6 @@ Imports:
     seasonal
 URL: https://benjaminpeeters.github.io/WPD
 BugReports: https://github.com/benjaminpeeters/WPD/issues
+Date: 2024-11-09
+Year: 2024
+Month: 11

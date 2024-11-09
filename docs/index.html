@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">WPD</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.9</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.10</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,23 +32,7 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
-<li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/1-introduction-wp_data.html">UNKNOWN TITLE</a></li>
-    <li><a class="dropdown-item" href="articles/2.1-wp_plot_series_basics.html">UNKNOWN TITLE</a></li>
-    <li><a class="dropdown-item" href="articles/2.2-wp_plot_series_multi.html">UNKNOWN TITLE</a></li>
-    <li><a class="dropdown-item" href="articles/2.3-wp_plot_series_area.html">UNKNOWN TITLE</a></li>
-    <li><a class="dropdown-item" href="articles/3.1-wp_plot_bar.html">UNKNOWN TITLE</a></li>
-    <li><a class="dropdown-item" href="articles/3.2-wp_plot_bar_multi.html">UNKNOWN TITLE</a></li>
-    <li><a class="dropdown-item" href="articles/4.1-wp_plot_scatter.html">UNKNOWN TITLE</a></li>
-    <li><a class="dropdown-item" href="articles/4.2-wp_plot_scatter_multi.html">UNKNOWN TITLE</a></li>
-    <li><a class="dropdown-item" href="articles/4.3-wp_plot_scatter_interpolation.html">UNKNOWN TITLE</a></li>
-    <li><a class="dropdown-item" href="articles/5.1-code-structure-wp_data.html">UNKNOWN TITLE</a></li>
-    <li><a class="dropdown-item" href="articles/5.2-code-structure-wp_plot.html">UNKNOWN TITLE</a></li>
-    <li><a class="dropdown-item" href="articles/6-data.html">UNKNOWN TITLE</a></li>
-  </ul>
-</li>
+<li class="nav-item"><a class="nav-link" href="articles/index.html">Articles</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -62,7 +46,229 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9">
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header"><h1 id="wpd-world-panel-data">WPD: World Panel Data<a class="anchor" aria-label="anchor" href="#wpd-world-panel-data"></a>
+</h1></div>
+<p><a href="https://github.com/benjaminpeeters/WPD/actions" class="external-link"><img src="https://github.com/benjaminpeeters/WPD/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a> <a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a> <a href="https://www.gnu.org/licenses/agpl-3.0" class="external-link"><img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg" alt="License: AGPL v3"></a></p>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
+<p>WPD (World Panel Data) is an R package that simplifies access to and visualization of global panel data from major international organizations. It serves as a bridge between publicly available datasets and researchers, making it easier to work with cross-country panel data.</p>
+<!-- Place overview.png here: A visual showing the package's workflow from data sources to visualization --><div class="section level3">
+<h3 id="key-features">Key Features<a class="anchor" aria-label="anchor" href="#key-features"></a>
+</h3>
+<ul>
+<li>
+<strong>Unified Data Access</strong>: Load and manipulate data from multiple sources through a single interface</li>
+<li>
+<strong>Data Harmonization</strong>: Standardized country names and ISO3 codes across all sources</li>
+<li>
+<strong>Advanced Data Processing</strong>:<ul>
+<li>Frequency matching (quarterly to yearly or vice versa)</li>
+<li>Multiple interpolation methods</li>
+<li>Seasonal adjustments for quarterly data</li>
+<li>Group aggregation with various methods</li>
+<li>Automatic data validation and cleaning</li>
+</ul>
+</li>
+<li>
+<strong>Publication-Ready Visualizations</strong>:<ul>
+<li>Time series plots with multiple customization options</li>
+<li>Scatter plots with statistical annotations</li>
+<li>Bar plots with flexible grouping</li>
+<li>Support for multi-panel layouts</li>
+<li>Export in various formats (PNG, PDF)</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section level2">
+<h2 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
+</h2>
+<p>Visit our <a href="https://benjaminpeeters.github.io/WPD/index.html">Documentation Website</a> for comprehensive guides and tutorials. We recommend starting with:</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://benjaminpeeters.github.io/WPD/articles/1-introduction-wp_data.html">Introduction to Data Loading</a></li>
+<li><a href="https://benjaminpeeters.github.io/WPD/articles/2.1-wp_plot_series_basics.html">Basic Time Series Plotting</a></li>
+<li><a href="https://benjaminpeeters.github.io/WPD/articles/2.2-wp_plot_series_multi.html">Multi-Variable Plots</a></li>
+<li><a href="https://benjaminpeeters.github.io/WPD/articles/4.1-wp_plot_scatter.html">Scatter Plot Features</a></li>
+</ol>
+<p>Click here for <a href="https://benjaminpeeters.github.io/WPD/reference/index.html">complete function reference</a>.</p>
+<div class="section level3">
+<h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h3>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Install from GitHub</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"benjaminpeeters/WPD"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="technical-requirements">Technical Requirements<a class="anchor" aria-label="anchor" href="#technical-requirements"></a>
+</h3>
+<ul>
+<li>R version ≥ 3.5.0</li>
+<li>Disk space: ~100MB for installation</li>
+<li>Runtime memory: 15-50MB (depending on data loaded)</li>
+<li>Dependencies: ggplot2 (≥3.4.0, &lt;3.5.0), scales, patchwork, zoo, seasonal</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="basic-example">Basic Example<a class="anchor" aria-label="anchor" href="#basic-example"></a>
+</h3>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benjaminpeeters.github.io/WPD">WPD</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Load data for G7 countries</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wp_data.html">wp_data</a></span><span class="op">(</span></span>
+<span>  ISO <span class="op">=</span> <span class="st">"G7"</span>,</span>
+<span>  formula <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"GDP_C"</span>, <span class="st">"CU_C/GDP_C*100"</span><span class="op">)</span>,</span>
+<span>  variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"GDP"</span>, <span class="st">"Current Account"</span><span class="op">)</span>,</span>
+<span>  years <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2000</span>, <span class="fl">2023</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create a time series plot</span></span>
+<span><span class="fu"><a href="reference/wp_plot_series.html">wp_plot_series</a></span><span class="op">(</span><span class="va">data</span>, </span>
+<span>               y_axis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Billion USD"</span>, <span class="st">"% of GDP"</span><span class="op">)</span>,</span>
+<span>               right_axis <span class="op">=</span> <span class="st">"Current Account"</span>,</span>
+<span>               title <span class="op">=</span> <span class="st">"GDP and Current Account in G7 Countries"</span><span class="op">)</span></span></code></pre></div>
+<!-- Place example1.png here: Output of the above code showing GDP and Current Account for G7 -->
+</div>
+</div>
+<div class="section level2">
+<h2 id="available-data">Available Data<a class="anchor" aria-label="anchor" href="#available-data"></a>
+</h2>
+<p>Browse available data using the <code><a href="reference/wp_info.html">wp_info()</a></code> function:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># View all available variables</span></span>
+<span><span class="fu"><a href="reference/wp_info.html">wp_info</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># View only quarterly data</span></span>
+<span><span class="fu"><a href="reference/wp_info.html">wp_info</a></span><span class="op">(</span><span class="st">"Q"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># View only yearly data</span></span>
+<span><span class="fu"><a href="reference/wp_info.html">wp_info</a></span><span class="op">(</span><span class="st">"Y"</span><span class="op">)</span></span></code></pre></div>
+<!-- Place data_coverage.png here: Visual showing temporal and geographical coverage of different data sources -->
+</div>
+<div class="section level2">
+<h2 id="advanced-features">Advanced Features<a class="anchor" aria-label="anchor" href="#advanced-features"></a>
+</h2>
+<div class="section level3">
+<h3 id="data-processing">Data Processing<a class="anchor" aria-label="anchor" href="#data-processing"></a>
+</h3>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Complex data manipulation example</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wp_data.html">wp_data</a></span><span class="op">(</span></span>
+<span>  ISO <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"EU"</span>, <span class="st">"BRICS"</span><span class="op">)</span>,  <span class="co"># Multiple country groups</span></span>
+<span>  formula <span class="op">=</span> <span class="st">"100*CU_C/GDP_C"</span>,  <span class="co"># Custom formula</span></span>
+<span>  years <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2000</span>, <span class="fl">2023</span><span class="op">)</span>,</span>
+<span>  adjust_seasonal <span class="op">=</span> <span class="cn">TRUE</span>,  <span class="co"># Apply seasonal adjustment</span></span>
+<span>  aggregate_iso <span class="op">=</span> <span class="st">"Mean"</span>,  <span class="co"># Average across countries</span></span>
+<span>  aggregate_period <span class="op">=</span> <span class="st">"CAGR"</span>  <span class="co"># Calculate compound growth</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="visualization-examples">Visualization Examples<a class="anchor" aria-label="anchor" href="#visualization-examples"></a>
+</h3>
+<div class="section level4">
+<h4 id="time-series-plots">Time Series Plots<a class="anchor" aria-label="anchor" href="#time-series-plots"></a>
+</h4>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Multi-panel time series with events</span></span>
+<span><span class="va">events</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  Event <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Global Financial Crisis"</span>, <span class="st">"Covid-19 Pandemic"</span><span class="op">)</span>,</span>
+<span>  Date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2008-09-15"</span>, <span class="st">"2020-03-11"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/wp_plot_series.html">wp_plot_series</a></span><span class="op">(</span><span class="va">data</span>,</span>
+<span>               key_dates <span class="op">=</span> <span class="va">events</span>,</span>
+<span>               area <span class="op">=</span> <span class="cn">TRUE</span>,  <span class="co"># Create area plot</span></span>
+<span>               reference <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="co"># Add data sources</span></span></code></pre></div>
+<!-- Place timeseries.png here: Example of multi-panel time series with event markers -->
+</div>
+<div class="section level4">
+<h4 id="scatter-plots">Scatter Plots<a class="anchor" aria-label="anchor" href="#scatter-plots"></a>
+</h4>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Scatter plot with regression and grouping</span></span>
+<span><span class="fu"><a href="reference/wp_plot_scatter.html">wp_plot_scatter</a></span><span class="op">(</span><span class="va">data</span>,</span>
+<span>                color <span class="op">=</span> <span class="st">"Region"</span>,</span>
+<span>                interpolation <span class="op">=</span> <span class="st">"Spline"</span>,</span>
+<span>                r_squared <span class="op">=</span> <span class="fl">3</span>,  <span class="co"># Show full equation</span></span>
+<span>                ISO <span class="op">=</span> <span class="st">"Both"</span><span class="op">)</span>  <span class="co"># Show both points and labels</span></span></code></pre></div>
+<!-- Place scatter.png here: Example scatter plot with regression line and country labels -->
+</div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="citation-and-data-attribution">Citation and Data Attribution<a class="anchor" aria-label="anchor" href="#citation-and-data-attribution"></a>
+</h2>
+<p>When using WPD, please cite both the package and the original data sources:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get package citation</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"WPD"</span><span class="op">)</span></span></code></pre></div>
+<pre><code>To cite WPD in publications use:
+
+  Peeters, B. (2024). WPD: World Panel Data. R package version 0.0.9.
+  https://github.com/benjaminpeeters/WPD
+
+A BibTeX entry for LaTeX users is:
+
+  @Manual{,
+    title = {WPD: World Panel Data},
+    author = {Benjamin Peeters},
+    year = {2024},
+    note = {R package version 0.0.9},
+    url = {https://github.com/benjaminpeeters/WPD},
+  }</code></pre>
+</div>
+<div class="section level2">
+<h2 id="data-sources-and-references">Data Sources and References<a class="anchor" aria-label="anchor" href="#data-sources-and-references"></a>
+</h2>
+<div class="section level3">
+<h3 id="international-organizations">International Organizations<a class="anchor" aria-label="anchor" href="#international-organizations"></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>World Bank Development Indicators</strong><br>
+Comprehensive collection of development indicators.<br><a href="https://data.worldbank.org/indicator" class="external-link uri">https://data.worldbank.org/indicator</a></p></li>
+<li>
+<p><strong>International Monetary Fund</strong></p>
+<ul>
+<li>International Financial Statistics (IFS)<br>
+Global financial and economic indicators.</li>
+<li>Balance of Payments Statistics<br>
+International transactions data.</li>
+</ul>
+</li>
+<li><p><strong>Bank for International Settlements (BIS)</strong><br>
+Credit aggregates, property prices, and exchange rates.</p></li>
+<li><p><strong>OECD Main Economic Indicators</strong><br>
+Economic indicators for OECD members and partners.</p></li>
+</ol>
+</div>
+<div class="section level3">
+<h3 id="research-databases">Research Databases<a class="anchor" aria-label="anchor" href="#research-databases"></a>
+</h3>
+<ol start="5" style="list-style-type: decimal">
+<li>
+<p><strong>Jordà-Schularick-Taylor Macrohistory Database</strong></p>
+<ul>
+<li>Jordà, Ò., Schularick, M., &amp; Taylor, A. M. (2017). “Macrofinancial History and the New Business Cycle Facts.” <em>NBER Macroeconomics Annual</em>, 31(1), 213-263.</li>
+<li>Jordà, Ò., et al. (2019). “The Rate of Return on Everything, 1870–2015.” <em>The Quarterly Journal of Economics</em>, 134(3), 1225-1298.</li>
+<li>Jordà, Ò., et al. (2021). “Bank Capital Redux: Solvency, Liquidity, and Crisis.” <em>Review of Financial Studies</em>, 34(7), 3062-3107.</li>
+</ul>
+</li>
+<li><p><strong>KOF Globalisation Index</strong><br>
+Gygli, S., Haelg, F., Potrafke, N., &amp; Sturm, J. E. (2019). “The KOF Globalisation Index – Revisited.” <em>Review of International Organizations</em>, 14(3), 543-574.</p></li>
+<li><p><strong>Emergency Events Database (EM-DAT)</strong><br>
+Centre for Research on the Epidemiology of Disasters (CRED). (2024). EM-DAT: The International Disaster Database.</p></li>
+<li><p><strong>Sovereign Default Database</strong><br>
+Beers, D., Ndukwe, C. I., &amp; Charron, S. (2024). BoC–BoE Sovereign Default Database. Bank of Canada, Bank of England.</p></li>
+<li><p><strong>Capital Account Openness</strong><br>
+Quinn, D., &amp; Toyoda, A. M. (2008). “Does Capital Account Liberalization Lead to Economic Growth?” <em>Review of Financial Studies</em>, 21(3), 1403-1449.</p></li>
+<li><p><strong>Maddison Project Database</strong><br>
+Maddison Project Database 2023.</p></li>
+</ol>
+</div>
+</div>
 <div class="section level2">
 <h2 id="licensing">Licensing<a class="anchor" aria-label="anchor" href="#licensing"></a>
 </h2>
@@ -86,7 +292,20 @@
 </ol>
 <p>For commercial licensing inquiries: - Email: <a href="mailto:benjaminpeeters@protonmail.com" class="email">benjaminpeeters@protonmail.com</a> - Subject: “Commercial License - R Package WPD - [Your Use Case]”</p>
 </div>
-
+<div class="section level2">
+<h2 id="development-and-contributions">Development and Contributions<a class="anchor" aria-label="anchor" href="#development-and-contributions"></a>
+</h2>
+<p>We welcome contributions! Please read our <a href="CONTRIBUTING.html">Contributing Guide</a> for details on how to submit pull requests, report issues, and contribute to documentation.</p>
+<p>In the future I would like to:</p>
+<ul>
+<li>include additional database such as WID data, work by Aizenman, etc.</li>
+<li>make possible to use ISO2 and full names instead of only ISO3</li>
+<li>make possible to enter only one year</li>
+<li>make wp_get_category able to return previous URSS ISO codes</li>
+<li>create wp_quick which jointly use wp_data and wp_plot_* to produce useful graphs (for example, on balance of payments)</li>
+</ul>
+</div>
+</div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
@@ -118,14 +337,7 @@
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://github.com/benjaminpeeters/WPD/actions" class="external-link"><img src="https://github.com/benjaminpeeters/WPD/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://www.gnu.org/licenses/agpl-3.0" class="external-link"><img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg" alt="License: AGPL v3"></a></li>
-</ul>
-</div>
+
 
   </aside>
 </div>

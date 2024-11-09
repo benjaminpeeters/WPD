@@ -69,8 +69,33 @@ get_valid_commit_message <- function() {
   }
 }
 
-#' Update package version
-#' @param increment_type Type of version increment: "patch", "minor", or "major"
+#' Update dates in DESCRIPTION file
+#' @return Boolean indicating success
+update_description_dates <- function() {
+  tryCatch({
+    # Get current date
+    current_date <- Sys.Date()
+    current_year <- format(current_date, "%Y")
+    current_month <- format(current_date, "%m")
+    
+    # Update year and month in DESCRIPTION
+    desc::desc_set("Date", as.character(current_date))
+    desc::desc_set("Year", current_year)
+    desc::desc_set("Month", current_month)
+    
+    message("Updated dates in DESCRIPTION file")
+    message("Date: ", current_date)
+    message("Year: ", current_year)
+    message("Month: ", current_month)
+    
+    return(TRUE)
+  }, error = function(e) {
+    message("Error updating dates: ", e$message)
+    return(FALSE)
+  })
+}
+
+# Modified update_version function to include date updates
 update_version <- function(increment_type = "patch") {
   tryCatch({
     # Read current version
@@ -96,16 +121,24 @@ update_version <- function(increment_type = "patch") {
     # Create new version string
     new_version <- sprintf("%d.%d.%d", major, minor, patch)
     
-    # Update DESCRIPTION file
+    # Update DESCRIPTION file with new version
     desc::desc_set_version(new_version)
-    
     message("Version updated to: ", new_version)
+    
+    # Update dates
+    if (!update_description_dates()) {
+      warning("Failed to update dates in DESCRIPTION file")
+    }
+    
     return(TRUE)
   }, error = function(e) {
     message("Error updating version: ", e$message)
     return(FALSE)
   })
 }
+
+
+
 
 #' Main execution function
 main <- function() {
