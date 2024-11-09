@@ -3,7 +3,6 @@
 #' Comprehensive GitHub Update Script
 #' Handles version updates, package checks, documentation, and GitHub synchronization
 
-
 #' Execute git commands with error handling
 #' @param cmd The git command to execute
 #' @param silent Whether to suppress command echo
@@ -24,6 +23,50 @@ git_command <- function(cmd, silent = FALSE) {
     message("Error in git command: ", result$error)
   }
   return(result)
+}
+
+#' Function to validate commit message
+#' @param msg The commit message to validate
+#' @return List with validation result and error message if any
+validate_commit_message <- function(msg) {
+  # Remove leading/trailing whitespace
+  msg <- trimws(msg)
+  
+  # Check for problematic characters
+  if (grepl('["|\'|`]', msg)) {
+    return(list(valid = FALSE, error = "Commit message should not contain quotes"))
+  }
+  
+  # Check for other potential problematic patterns
+  if (grepl("^[[:punct:]]+$", msg)) {
+    return(list(valid = FALSE, error = "Commit message should contain some text, not just punctuation"))
+  }
+  
+  return(list(valid = TRUE, msg = msg))
+}
+
+#' Get and validate commit message in a loop
+#' @return Valid commit message
+get_valid_commit_message <- function() {
+  while (TRUE) {
+    commit_msg <- readline(prompt = "Enter commit message (or press Enter for default message): ")
+    
+    # Handle empty input (default message)
+    if (commit_msg == "") {
+      default_msg <- sprintf("Update package to version %s", desc::desc_get_version())
+      message("Using default message: ", default_msg)
+      return(default_msg)
+    }
+    
+    # Validate the message
+    result <- validate_commit_message(commit_msg)
+    if (result$valid) {
+      return(result$msg)
+    } else {
+      message("Invalid commit message: ", result$error)
+      message("Please try again.")
+    }
+  }
 }
 
 #' Update package version
@@ -172,14 +215,11 @@ main <- function() {
     return(invisible())
   }
   
-  # Get commit message
-  commit_msg <- readline(prompt = "Enter commit message (or press Enter for default message): ")
-  if (commit_msg == "") {
-    commit_msg <- sprintf("Update package to version %s", desc::desc_get_version())
-  }
+  # Get valid commit message
+  commit_msg <- get_valid_commit_message()
   
   # Commit and push changes
-  commit_result <- git_command(sprintf('git commit -m "%s"', commit_msg))
+  commit_result <- git_command(sprintf("git commit -m '%s'", commit_msg))
   if (!commit_result$success) {
     stop("Failed to commit changes")
   }
