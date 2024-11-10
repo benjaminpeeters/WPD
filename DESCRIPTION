@@ -1,17 +1,22 @@
 Package: WPD
 Title: World Panel Data: A Macroeconomic Data Visualization and Analysis Toolkit
-Version: 0.0.24
+Version: 0.0.25
 Authors@R: 
     person("Benjamin", "Peeters", , "benjaminpeeters@protonmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-5095-2021"))
-Description: A comprehensive panel-data package providing access to global economic 
-    and social indicators. The package includes a large database (approximately 50MB) 
-    of world panel data that is efficiently loaded on demand through the 'wp_data' 
-    function to optimize memory usage. Features include data visualization tools, 
-    time series analysis capabilities, and functions for handling seasonal adjustments 
-    and trend analysis.
+Description: A panel-data package providing access to global economic and
+    social indicators. The package includes a large database (approximately 50MB)
+    of world panel data that is loaded on demand through the 'wp_data' function.
+    Features include customizable time series plots, cross-sectional analysis
+    tools, scatter plots with trend analysis, bar charts for comparative analysis,
+    built-in seasonal adjustment capabilities, and support for both annual and
+    quarterly frequencies. The package focuses on macroeconomic indicators
+    including GDP, trade, prices, employment, and financial data across multiple
+    countries and regions.
+    Note: Optional seasonal adjustment features depend on the 'seasonal' package 
+    which may use x13binary, subject to additional licensing restrictions.
 SystemRequirements: At least 100MB disk space for installation.
-License: AGPL (>= 3) + file LICENSE
+License: AGPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
@@ -35,9 +40,7 @@ Suggests:
 Config/Lifecycle: maturing
 Config/testthat/edition: 3
 VignetteBuilder: knitr
-URL: https://benjaminpeeters.github.io/WPD
+URL: https://benjaminpeeters.github.io/WPD/
 BugReports: https://github.com/benjaminpeeters/WPD/issues
 Date: 2024-11-10
-Year: 2024
-Month: 11
 Language: en-US

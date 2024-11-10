@@ -11,8 +11,8 @@
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="World Panel Data: A Macroeconomic Data Visualization and Analysis Toolkit">
-<meta name="description" content="A comprehensive panel-data package providing access to global economic and social indicators. The package includes a large database (approximately 50MB) of world panel data that is efficiently loaded on demand through the wp_data function to optimize memory usage. Features include data visualization tools, time series analysis capabilities, and functions for handling seasonal adjustments and trend analysis.">
-<meta property="og:description" content="A comprehensive panel-data package providing access to global economic and social indicators. The package includes a large database (approximately 50MB) of world panel data that is efficiently loaded on demand through the wp_data function to optimize memory usage. Features include data visualization tools, time series analysis capabilities, and functions for handling seasonal adjustments and trend analysis.">
+<meta name="description" content="A panel-data package providing access to global economic and social indicators. The package includes a large database (approximately 50MB) of world panel data that is loaded on demand through the wp_data function. Features include customizable time series plots, cross-sectional analysis tools, scatter plots with trend analysis, bar charts for comparative analysis, built-in seasonal adjustment capabilities, and support for both annual and quarterly frequencies. The package focuses on macroeconomic indicators including GDP, trade, prices, employment, and financial data across multiple countries and regions. Note: Optional seasonal adjustment features depend on the seasonal package which may use x13binary, subject to additional licensing restrictions.">
+<meta property="og:description" content="A panel-data package providing access to global economic and social indicators. The package includes a large database (approximately 50MB) of world panel data that is loaded on demand through the wp_data function. Features include customizable time series plots, cross-sectional analysis tools, scatter plots with trend analysis, bar charts for comparative analysis, built-in seasonal adjustment capabilities, and support for both annual and quarterly frequencies. The package focuses on macroeconomic indicators including GDP, trade, prices, employment, and financial data across multiple countries and regions. Note: Optional seasonal adjustment features depend on the seasonal package which may use x13binary, subject to additional licensing restrictions.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">WPD</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.24</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.25</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +53,8 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>WPD (World Panel Data) is an R package that simplifies access to and visualization of global panel data from major international organizations. It serves as a bridge between publicly available datasets and researchers, making it easier to work with cross-country panel data.</p>
+<p>WPD (World Panel Data) is an R package that simplifies access to and visualization of global economic and social panel data from major international organizations and academic researchers. It aims to serve as a bridge between publicly available datasets and researchers, students, and the general public, making cross-country panel data easier to work with.</p>
+<p>The package includes a large database (approximately 50MB) of world panel data that is loaded on demand through the ‘wp_data’ function. Features include customizable time series plots, cross-sectional analysis tools, scatter plots with trend analysis, bar charts for comparative analysis, built-in seasonal adjustment capabilities, and support for both annual and quarterly frequencies. The package focuses on macroeconomic indicators such as GDP, trade, prices, employment, and financial and balance-of-payments data across multiple countries and regions.</p>
 <!-- Place overview.png here: A visual showing the package's workflow from data sources to visualization --><div class="section level3">
 <h3 id="key-features">Key Features<a class="anchor" aria-label="anchor" href="#key-features"></a>
 </h3>
@@ -81,6 +82,7 @@
 </ul>
 </li>
 </ul>
+<!-- Dynamic content: Documentation links -->
 </div>
 </div>
 <div class="section level2">
@@ -88,10 +90,8 @@
 </h2>
 <p>Visit our <a href="https://benjaminpeeters.github.io/WPD/index.html">Documentation Website</a> for comprehensive guides and tutorials. We recommend starting with:</p>
 <ol style="list-style-type: decimal">
-<li><a href="https://benjaminpeeters.github.io/WPD/articles/1-introduction-wp_data.html">Introduction to Data Loading</a></li>
-<li><a href="https://benjaminpeeters.github.io/WPD/articles/2.1-wp_plot_series_basics.html">Basic Time Series Plotting</a></li>
-<li><a href="https://benjaminpeeters.github.io/WPD/articles/2.2-wp_plot_series_multi.html">Multi-Variable Plots</a></li>
-<li><a href="https://benjaminpeeters.github.io/WPD/articles/4.1-wp_plot_scatter.html">Scatter Plot Features</a></li>
+<li><a href="vignettes/a_getting_started.html">Getting Started with WPD</a></li>
+<li><a href="vignettes/b_loading_data_with_wp_data.html">Loading data with wp_data()</a></li>
 </ol>
 <p>Click here for <a href="https://benjaminpeeters.github.io/WPD/reference/index.html">complete function reference</a>.</p>
 <div class="section level3">
@@ -115,7 +115,7 @@
 <h3 id="basic-example">Basic Example<a class="anchor" aria-label="anchor" href="#basic-example"></a>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benjaminpeeters.github.io/WPD">WPD</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benjaminpeeters.github.io/WPD/">WPD</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Load data for G7 countries</span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wp_data.html">wp_data</a></span><span class="op">(</span></span>
@@ -194,7 +194,7 @@
 <span>                interpolation <span class="op">=</span> <span class="st">"Spline"</span>,</span>
 <span>                r_squared <span class="op">=</span> <span class="fl">3</span>,  <span class="co"># Show full equation</span></span>
 <span>                ISO <span class="op">=</span> <span class="st">"Both"</span><span class="op">)</span>  <span class="co"># Show both points and labels</span></span></code></pre></div>
-<!-- Place scatter.png here: Example scatter plot with regression line and country labels -->
+<!-- Place scatter.png here: Example scatter plot with regression line and country labels --><!-- Dynamic content: Citation -->
 </div>
 </div>
 </div>
@@ -203,21 +203,23 @@
 </h2>
 <p>When using WPD, please cite both the package and the original data sources:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Get package citation</span></span>
+<code class="sourceCode R"><span><span class="co"># Generate citation dynamically</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"WPD"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>To cite WPD in publications use:
+<pre><code>
+To cite package 'WPD' in publications use:
 
-  Peeters, B. (2024). WPD: World Panel Data. R package version 0.0.9.
-  https://github.com/benjaminpeeters/WPD
+  Benjamin Peeters (2024). WPD: World Panel Data: A Macroeconomic Data
+  Visualization and Analysis Toolkit. R package version 0.0.25.
+  https://benjaminpeeters.github.io/WPD/
 
-A BibTeX entry for LaTeX users is:
+A BibTeX entry for LaTeX users is
 
   @Manual{,
-    title = {WPD: World Panel Data},
+    title = {WPD: World Panel Data: A Macroeconomic Data Visualization and Analysis Toolkit},
     author = {Benjamin Peeters},
     year = {2024},
-    note = {R package version 0.0.9},
-    url = {https://github.com/benjaminpeeters/WPD},
+    note = {R package version 0.0.25},
+    url = {https://benjaminpeeters.github.io/WPD/},
   }</code></pre>
 </div>
 <div class="section level2">
@@ -318,7 +320,7 @@ Maddison Project Database 2023.</p></li>
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small>AGPL (&gt;= 3) + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small>AGPL (&gt;= 3)</small></li>
 </ul>
 </div>
 

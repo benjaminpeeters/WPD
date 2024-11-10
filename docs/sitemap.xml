@@ -1,15 +1,16 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://benjaminpeeters.github.io/WPD/404.html</loc></url>
-<url><loc>https://benjaminpeeters.github.io/WPD/LICENSE-text.html</loc></url>
 <url><loc>https://benjaminpeeters.github.io/WPD/LICENSE.html</loc></url>
 <url><loc>https://benjaminpeeters.github.io/WPD/LICENSE_COMM.html</loc></url>
-<url><loc>https://benjaminpeeters.github.io/WPD/articles/a_introduction_wp_data.html</loc></url>
+<url><loc>https://benjaminpeeters.github.io/WPD/articles/a_getting_started.html</loc></url>
+<url><loc>https://benjaminpeeters.github.io/WPD/articles/b_loading_data_with_wp_data.html</loc></url>
 <url><loc>https://benjaminpeeters.github.io/WPD/articles/index.html</loc></url>
 <url><loc>https://benjaminpeeters.github.io/WPD/authors.html</loc></url>
 <url><loc>https://benjaminpeeters.github.io/WPD/index.html</loc></url>
 <url><loc>https://benjaminpeeters.github.io/WPD/reference/ISO_DATA.html</loc></url>
 <url><loc>https://benjaminpeeters.github.io/WPD/reference/METADATA_Q.html</loc></url>
 <url><loc>https://benjaminpeeters.github.io/WPD/reference/METADATA_Y.html</loc></url>
+<url><loc>https://benjaminpeeters.github.io/WPD/reference/WPD.html</loc></url>
 <url><loc>https://benjaminpeeters.github.io/WPD/reference/calculate_yoy_growth.html</loc></url>
 <url><loc>https://benjaminpeeters.github.io/WPD/reference/geometric_mean.html</loc></url>
 <url><loc>https://benjaminpeeters.github.io/WPD/reference/in_add_date_markers.html</loc></url>

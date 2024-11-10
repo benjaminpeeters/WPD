@@ -170,7 +170,7 @@ main <- function() {
   }
   
   # 4. Package Checks and Documentation
-  message("\n=== Updating Documentation and Website ===")
+  message("\n=== Updating Documentation ===")
   
   
   # Update documentation
@@ -181,6 +181,34 @@ main <- function() {
     stop("Documentation generation failed: ", e$message)
   })
   
+
+    message("\n=== Updating vignettes and README.md ===")
+
+    # Build vignettes
+    message("Building vignettes...")
+    tryCatch({
+      devtools::build_vignettes()
+    }, error = function(e) {
+      stop("Vignette building failed: ", e$message)
+    })
+
+    # Update README.md from README.Rmd
+    message("Updating README.md...")
+    tryCatch({
+      if (file.exists("README.Rmd")) {
+        rmarkdown::render("README.Rmd")
+        message("README.md successfully updated")
+      } else {
+        message("No README.Rmd found, skipping README generation")
+      }
+    }, error = function(e) {
+      stop("README generation failed: ", e$message)
+    })
+
+
+  message("\n=== Updating Website ===")
+
+
   # Build pkgdown site
   message("Building pkgdown site...")
   tryCatch({

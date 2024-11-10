@@ -1,0 +1,38 @@
+
+---
+title: "Loading data with wp_data()"
+author: "Benjamin Peeters"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Loading data with wp_data()}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7,
+  fig.height = 5,
+  fig.align = 'center'
+)
+```
+
+# Installation
+
+
+
+
+# Advanced Features
+
+## Seasonal Adjustment
+
+The package provides tools for seasonal adjustment (in process).
+
+## Custom Visualizations
+
+Create more complex visualizations by combining multiple indicators (in process).
+
+
