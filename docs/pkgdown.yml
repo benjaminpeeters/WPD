@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   articles/1-introduction-wp_data: 1-introduction-wp_data.html
-last_built: 2024-11-09T14:54Z
+last_built: 2024-11-10T06:44Z
 urls:
   reference: https://benjaminpeeters.github.io/WPD/reference
   article: https://benjaminpeeters.github.io/WPD/articles

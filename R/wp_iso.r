@@ -119,7 +119,7 @@ wp_ctry2iso <- function(country_name, verbose = TRUE, min_letter = 5) {
       for (name in names(list_ctry2iso)) {
         normalized_name <- normalize_name(name)
         if (grepl(paste0("^", normalized_input), normalized_name)) {
-            print_debug(sprintf("Found prefix match: input '%s' matched with country '%s'", one_country, name),
+            in_print_debug(sprintf("Found prefix match: input '%s' matched with country '%s'", one_country, name),
                     verbose, FALSE, "info", "PREFIX")
             return(list_ctry2iso[[name]])
         }
@@ -129,7 +129,7 @@ wp_ctry2iso <- function(country_name, verbose = TRUE, min_letter = 5) {
       for (name in names(list_ctry2iso)) {
         normalized_name <- normalize_name(name)
         if (grepl(normalized_input, normalized_name)) {
-            print_debug(sprintf("Found prefix match: input '%s' matched with country '%s'", one_country, name),
+            in_print_debug(sprintf("Found prefix match: input '%s' matched with country '%s'", one_country, name),
                     verbose, FALSE, "info", "PARTIAL")
             return(list_ctry2iso[[name]])
         }
@@ -137,7 +137,7 @@ wp_ctry2iso <- function(country_name, verbose = TRUE, min_letter = 5) {
     }
     
     # If no match is found, return NA with warning
-    print_debug(sprintf("ISO code for country name '%s' (%s) not found. NA value returned.", one_country, normalize_name(one_country)),
+    in_print_debug(sprintf("ISO code for country name '%s' (%s) not found. NA value returned.", one_country, normalize_name(one_country)),
             verbose, FALSE, "warning")
     return(NA_character_)
   }
@@ -452,7 +452,7 @@ in_get_ctry_name <- function(iso_code, verbose = TRUE) {
     # If not found, check in others list
     name <- list_iso2country_others[[code]]
     if (!is.null(name)) {
-        print_debug(sprintf("ISO code '%s' (%s) found in special/regional pseudo-ISO codes list", code, name), 
+        in_print_debug(sprintf("ISO code '%s' (%s) found in special/regional pseudo-ISO codes list", code, name), 
                     verbose, FALSE, "info", "Special")
         return(name)
     }
@@ -460,13 +460,13 @@ in_get_ctry_name <- function(iso_code, verbose = TRUE) {
     # If still not found, check in historical list
     name <- list_iso2country_old[[code]]
     if (!is.null(name)) {
-        print_debug(sprintf("ISO code '%s' (%s) found in historical ISO codes list", code, name), 
+        in_print_debug(sprintf("ISO code '%s' (%s) found in historical ISO codes list", code, name), 
                     verbose, FALSE, "info", "Archive")
         return(name)
     }
     
     # If no match found in any list
-    print_debug(sprintf("ISO not in any lists: %s", code),
+    in_print_debug(sprintf("ISO not in any lists: %s", code),
                 verbose, FALSE, "warning")
     return(NA)
   }
