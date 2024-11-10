@@ -212,7 +212,8 @@ main <- function() {
   # Build pkgdown site
   message("Building pkgdown site...")
   tryCatch({
-    pkgdown::build_site(preview = FALSE)
+      pkgdown::clean_site()
+      pkgdown::build_site(preview = FALSE)
   }, error = function(e) {
     stop("Pkgdown site building failed: ", e$message)
   })
@@ -223,7 +224,12 @@ main <- function() {
   # Run R CMD check / R-CMD
   check_result <- tryCatch({
     # devtools::check(document = FALSE, quiet = FALSE)
-    devtools::check(remote = TRUE, manual = TRUE, cran = TRUE)
+    devtools::check(
+                remote = TRUE, 
+                manual = TRUE, 
+                cran = TRUE,
+                vignettes = FALSE # Skip rebuilding and rechecking the vignettes
+                )
     TRUE
   }, error = function(e) {
     message("Warning: Package check failed: ", e$message)

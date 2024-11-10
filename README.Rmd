@@ -61,7 +61,7 @@ get_vignette_links <- function() {
   # Extract titles and filenames
   vig_info <- lapply(vig_files, function(file) {
     # Read the YAML header
-    lines <- readLines(file, n = 20) # Read first 20 lines to find title
+    lines <- readLines(file, n = 20)
     yaml_start <- which(lines == "---")[1]
     yaml_end <- which(lines == "---")[2]
     yaml_content <- lines[(yaml_start+1):(yaml_end-1)]
@@ -83,10 +83,12 @@ get_vignette_links <- function() {
   vig_info <- vig_info[order(vig_info$file), ]
   
   # Create markdown links
+  base_url <- "https://benjaminpeeters.github.io/WPD/articles/"
   vig_links <- sprintf(
-    "%d. [%s](vignettes/%s.html)",
+    "%d. [%s](%s%s.html)",
     seq_len(nrow(vig_info)),
     vig_info$title,
+    base_url,
     vig_info$file
   )
   
