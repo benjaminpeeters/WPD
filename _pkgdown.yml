@@ -21,7 +21,6 @@ reference:
   contents:
   - wp_data
   - wp_info
-  - wp_get_category
   
 - title: "Plotting Functions"
   desc: "Main plotting functions"
@@ -29,11 +28,12 @@ reference:
   - starts_with("wp_plot")
 
 - title: "ISO Code Utilities"
-  desc: "Country code handling functions"
+  desc: "Country ISO3 code handling functions"
   contents:
   - starts_with("wp_iso")
   - wp_ctry2iso
   - wp_from_iso
+  - wp_get_category
 
 - title: "Internal Functions"
   desc: "Internal helper functions"

@@ -58,7 +58,7 @@ comprehensive guides and tutorials. We recommend starting with:
 1.  [Getting Started with
     WPD](https://benjaminpeeters.github.io/WPD/articles/a_getting_started.html)
 2.  [Loading data with
-    wp\_data()](https://benjaminpeeters.github.io/WPD/articles/b_loading_data_with_wp_data.html)
+    `wp_data()`](https://benjaminpeeters.github.io/WPD/articles/b_loading_data_with_wp_data.html)
 
 Click here for [complete function
 reference](https://benjaminpeeters.github.io/WPD/reference/index.html).
@@ -182,7 +182,7 @@ citation("WPD")
 To cite package 'WPD' in publications use:
 
   Benjamin Peeters (2024). WPD: World Panel Data: A Macroeconomic Data
-  Visualization and Analysis Toolkit. R package version 0.0.27.
+  Visualization and Analysis Toolkit. R package version 0.0.28.
   https://benjaminpeeters.github.io/WPD/
 
 A BibTeX entry for LaTeX users is
@@ -191,7 +191,7 @@ A BibTeX entry for LaTeX users is
     title = {WPD: World Panel Data: A Macroeconomic Data Visualization and Analysis Toolkit},
     author = {Benjamin Peeters},
     year = {2024},
-    note = {R package version 0.0.27},
+    note = {R package version 0.0.28},
     url = {https://benjaminpeeters.github.io/WPD/},
   }
 ```

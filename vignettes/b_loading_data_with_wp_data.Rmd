@@ -1,11 +1,11 @@
 
 ---
-title: "Loading data with wp_data()"
+title: "Loading data with `wp_data()`"
 author: "Benjamin Peeters"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Loading data with wp_data()}
+  %\VignetteIndexEntry{Loading data with `wp_data()`}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

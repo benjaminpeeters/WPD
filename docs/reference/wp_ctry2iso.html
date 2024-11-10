@@ -11,7 +11,7 @@ partial matches if the input is long enough, while avoiding matches on common wo
 
     <a class="navbar-brand me-2" href="../index.html">WPD</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.27</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.28</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,7 +69,7 @@ when exact match fails (default: TRUE)</p></dd>
 
 <dt id="arg-min-letter">min_letter<a class="anchor" aria-label="anchor" href="#arg-min-letter"></a></dt>
 <dd><p>Integer, minimum number of letters required for prefix and
-partial matching attempts (default: 3). Only used if exact match fails.</p></dd>
+partial matching attempts (default: 5). Only used if exact match fails.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -104,17 +104,18 @@ standardizes spacing)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  "FRA" </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Multiple countries</span></span></span>
-<span class="r-in"><span><span class="fu">wp_ctry2iso</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"France"</span>, <span class="st">"Germany"</span>, <span class="st">"Italy"</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Returns c("FRA", "DEU", "ITA")</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  France Germany   Italy </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   "FRA"   "DEU"   "ITA" </span>
+<span class="r-in"><span><span class="fu">wp_ctry2iso</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"India"</span>, <span class="st">"China"</span>, <span class="st">"Italy"</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Returns c("IND", "CHN", "ITA")</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> India China Italy </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "IND" "CHN" "ITA" </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Mixed cases with some partial matches</span></span></span>
-<span class="r-in"><span><span class="fu">wp_ctry2iso</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"fra"</span>, <span class="st">"Deutsche"</span>, <span class="st">"Kingdom"</span><span class="op">)</span><span class="op">)</span>  </span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">/!\  ISO code for country name 'fra' (fra) not found. NA value returned.</span> </span>
+<span class="r-in"><span><span class="co"># Mixed cases with some partial matches, short abbreviations, and errors</span></span></span>
+<span class="r-in"><span><span class="fu">wp_ctry2iso</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"franc"</span>, <span class="st">"Deutsche"</span>, <span class="st">"Kingdom"</span>, <span class="st">"us"</span>, <span class="st">"UAE"</span>, <span class="st">"Jamai"</span><span class="op">)</span><span class="op">)</span> </span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [PREFIX] Found prefix match: input 'franc' matched with country 'France'</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">/!\  ISO code for country name 'Deutsche' (deutsche) not found. NA value returned.</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">/!\  ISO code for country name 'Kingdom' (kingdom) not found. NA value returned.</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      fra Deutsche  Kingdom </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       NA       NA       NA </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [PREFIX] Found prefix match: input 'Jamai' matched with country 'Jamaica'</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    franc Deutsche  Kingdom       us      UAE    Jamai </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    "FRA"       NA       NA    "USA"    "ARE"    "JAM" </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

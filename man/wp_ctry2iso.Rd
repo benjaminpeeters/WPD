@@ -21,7 +21,7 @@ The function accepts various formats and spellings, including:
 when exact match fails (default: TRUE)}
 
 \item{min_letter}{Integer, minimum number of letters required for prefix and
-partial matching attempts (default: 3). Only used if exact match fails.}
+partial matching attempts (default: 5). Only used if exact match fails.}
 }
 \value{
 Character vector of the same length as country_name containing ISO3 codes.
@@ -52,10 +52,10 @@ standardizes spacing)
 wp_ctry2iso("France")  # Returns "FRA"
 
 # Multiple countries
-wp_ctry2iso(c("France", "Germany", "Italy"))  # Returns c("FRA", "DEU", "ITA")
+wp_ctry2iso(c("India", "China", "Italy"))  # Returns c("IND", "CHN", "ITA")
 
-# Mixed cases with some partial matches
-wp_ctry2iso(c("fra", "Deutsche", "Kingdom"))  
+# Mixed cases with some partial matches, short abbreviations, and errors
+wp_ctry2iso(c("franc", "Deutsche", "Kingdom", "us", "UAE", "Jamai")) 
 
 }
 \seealso{
