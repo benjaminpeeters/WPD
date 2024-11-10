@@ -70,18 +70,17 @@ wp_ctry2iso <- function(country_name, verbose = TRUE, min_letter = 5) {
     name <- trimws(name)                      # Remove leading/trailing whitespace
 
     # Handle special characters and diacritics
-    name <- gsub("['']", "", name)            # Remove apostrophes
-    name <- gsub("[èéêë]", "e", name)         # e variations
-    name <- gsub("[àáâãäå]", "a", name)       # a variations
-    name <- gsub("[ìíîï]", "i", name)         # i variations
-    name <- gsub("[òóôõö]", "o", name)        # o variations
-    name <- gsub("[ùúûü]", "u", name)         # u variations
-    name <- gsub("[ýÿ]", "y", name)           # y variations
-    name <- gsub("æ", "ae", name)             # special letters
-    name <- gsub("œ", "oe", name)             # special letters
-    name <- gsub("ñ", "n", name)              # spanish n
-    name <- gsub("ß", "ss", name)             # german ss
-    name <- gsub("ç", "c", name)              # c cedilla
+    name <- gsub("[\u00e8\u00e9\u00ea\u00eb]", "e", name)  # e variations
+    name <- gsub("[\u00e0\u00e1\u00e2\u00e3\u00e4\u00e5]", "a", name)  # a variations
+    name <- gsub("[\u00ec\u00ed\u00ee\u00ef]", "i", name)  # i variations
+    name <- gsub("[\u00f2\u00f3\u00f4\u00f5\u00f6]", "o", name)  # o variations
+    name <- gsub("[\u00f9\u00fa\u00fb\u00fc]", "u", name)  # u variations
+    name <- gsub("[\u00fd\u00ff]", "y", name)  # y variations
+    name <- gsub("\u00e6", "ae", name)  # ae ligature
+    name <- gsub("\u0153", "oe", name)  # oe ligature
+    name <- gsub("\u00f1", "n", name)   # n with tilde
+    name <- gsub("\u00df", "ss", name)  # sharp s
+    name <- gsub("\u00e7", "c", name)   # c cedilla
 
     # Replace common abbreviations
     name <- gsub("\\bdem\\.?\\b", "democratic", name)
@@ -165,6 +164,8 @@ wp_ctry2iso <- function(country_name, verbose = TRUE, min_letter = 5) {
 #'     \item "NaturalRent": Natural resource status (NRS_REN or NA)
 #'     \item "Category": All categories the country belongs to
 #'   }
+#' @param verbose Logical, whether to print informative messages about special cases 
+#'   (default: TRUE)
 #' 
 #' @return A character vector of the same length as the input iso vector containing the requested information.
 #'         For "Category" option, returns a character vector of categories for each ISO code.

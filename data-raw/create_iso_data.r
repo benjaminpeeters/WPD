@@ -52,11 +52,11 @@ list_ctry2iso <- list(
     "Congo, Rep. of" = "COG",
     "Congo, Dem. Rep. of the" = "COD",
     "Costa Rica" = "CRI",
-    "Côte d'Ivoire" = "CIV",
+    "C\u00f4te d'Ivoire" = "CIV",
     "Croatia, Rep. of" = "HRV",
     "Rep. of Croatia" = "HRV",
     "Croatia" = "HRV",
-    "Curaçao, Kingdom of the Netherlands" = "CUW",
+    "Cura\u00e7ao, Kingdom of the Netherlands" = "CUW",
     "Cyprus" = "CYP",
     "Czech Rep." = "CZE",
     "Denmark" = "DNK",
@@ -178,7 +178,7 @@ list_ctry2iso <- list(
     "Russia" = "RUS",
     "Rwanda" = "RWA",
     "Samoa" = "WSM",
-    "São Tomé and Príncipe, Dem. Rep. of" = "STP",
+    "S\u00e3o Tom\u00e9 and Pr\u00edncipe, Dem. Rep. of" = "STP",
     "Saudi Arabia" = "SAU",
     "Senegal" = "SEN",
     "Serbia, Rep. of" = "SRB",
@@ -214,9 +214,9 @@ list_ctry2iso <- list(
     "Tonga" = "TON",
     "Trinidad and Tobago" = "TTO",
     "Tunisia" = "TUN",
-    "Türkiye, Rep. of" = "TUR",
-    "Türkiye, Rep of" = "TUR",
-    "Türkiye, Rep of" = "TUR",
+    "T\u00fcrkiye, Rep. of" = "TUR",
+    "T\u00fcrkiye, Rep of" = "TUR",
+    "T\u00fcrkiye, Rep of" = "TUR",
     "Taiwan" = "TWN",
     "Republic of China" = "TWN",
     "ROC" = "TWN",
@@ -255,7 +255,7 @@ list_ctry2iso <- list(
     "Barbados" = "BRB",
     "Chad" = "TCD",
     "Comoros, Union of the" = "COM",
-    "Curaçao" = "CUW",
+    "Cura\u00e7ao" = "CUW",
     "Sint Maarten" = "SXM",
     "Micronesia, Federated States of" = "FSM",
     "Palau, Rep. of" = "PLW",
@@ -281,8 +281,8 @@ list_ctry2iso <- list(
     "Anguila" = "AIA",
     "Bosnia & Herzegovina" = "BIH",
     "Cook Islands" = "COK",
-    "C“te d?Ivoire" = "CIV",
-    "Cura‡ao" = "CUW",
+    "C\u0094te d\u003FIvoire" = "CIV",
+    "Cura\u00e7ao" = "CUW",
     "Democratic Republic of Congo (Kinshasa)" = "COD",
     "eSwatini (Swaziland)" = "SWZ",
     "The Gambia" = "GMB",
@@ -293,7 +293,7 @@ list_ctry2iso <- list(
     "Netherlands Antilles" = "ANT",
     "Puerto Rico" = "PRI",
     "Republic of Congo (Brazzaville)" = "COG",
-    "S?o Tom‚ and Pr¡ncipe" = "STP",
+    "S\u003Fo Tom\u0082 and Pr\u00A1ncipe" = "STP",
     "St. Kitts & Nevis" = "KNA",
     "Trinidad & Tobago" = "TTO",
     "Turkey" = "TUR",
@@ -351,7 +351,7 @@ list_ctry2iso <- list(
     "Holy See" = "VAT",
     "Vatican City State" = "VAT",
     "Vatican City" = "VAT",
-    "État de la Cité du Vatican" = "VAT",
+    "État de la Cit\u00e9 du Vatican" = "VAT",
     "East Timor" = "TLS",
     "Timor" = "TLS",
     "Democratic Republic of Timor-Leste" = "TLS",
@@ -408,7 +408,7 @@ list_ctry2iso <- list(
     "Kingdom of Morocco" = "MAR",
     "Republic of Turkey" = "TUR",
     "Turkiye" = "TUR",
-    "Türkiye" = "TUR",
+    "T\u00fcrkiye" = "TUR",
     "Republic of Cyprus" = "CYP",
     "Kingdom of Bahrain" = "BHR",
     "Bahrain" = "BHR",
@@ -514,7 +514,7 @@ list_ctry2iso <- list(
     "Serbia and Montenegro" = "SCG",
     "Serbia, Montenegro and Kosovo" = "SPI",
     "Azores" = "AZO",
-    "Saint Barthélemy" = "BLM",
+    "Saint Barth\u00e9lemy" = "BLM",
     "East Germany" = "DDR",
     "West Germany" = "DFR",
     "Guadeloupe" = "GLP",
@@ -575,9 +575,9 @@ list_iso2country <- list(
 "COD" = "Congo (DRC)",
 "COG" = "Congo (Rep. of)",
 "CRI" = "Costa Rica",
-"CIV" = "Côte d'Ivoire",
+"CIV" = "C\u00f4te d'Ivoire",
 "HRV" = "Croatia",
-"CUW" = "Curaçao",
+"CUW" = "Cura\u00e7ao",
 "CYP" = "Cyprus",
 "CZE" = "Czech Republic",
 "DNK" = "Denmark",
@@ -669,7 +669,7 @@ list_iso2country <- list(
 "RUS" = "Russia",
 "RWA" = "Rwanda",
 "WSM" = "Samoa",
-"STP" = "São Tomé and Príncipe",
+"STP" = "S\u00e3o Tom\u00e9 and Pr\u00edncipe",
 "SAU" = "Saudi Arabia",
 "SEN" = "Senegal",
 "SRB" = "Serbia",
@@ -757,7 +757,7 @@ list_iso2country <- list(
 "TUV" = "Tuvalu",
 "VIR" = "U.S. Virgin Islands",
 "AZO" = "Azores",
-"BLM" = "Saint Barthélemy",
+"BLM" = "Saint Barth\u00e9lemy",
 "DFR" = "West Germany",
 "DDR" = "East Germany",
 "GLP" = "Guadeloupe",
@@ -778,7 +778,7 @@ list_iso2country <- list(
 # The goal of this list is to convert old ISO3 codes into simplified country names
 # The goal of this list is to complement list_iso2names by providing additional ISO3 codes not currently in used but still used in some database
 list_iso2country_old <- list(
-    "ANT" = "Netherlands Antilles", # Was dissolved in 2010 into Curaçao (CUW) and Sint Maarten (SXM)
+    "ANT" = "Netherlands Antilles", # Was dissolved in 2010 into Cura\u00e7ao (CUW) and Sint Maarten (SXM)
     "SUN" = "Soviet Union", # Dissolved in 1991 into 15 independent states (ARM, AZE, BLR, EST, GEO, KAZ, KGZ, LTU, LVA, MDA, RUS, TJK, TKM, UKR, UZB)
     "ROM" = "Romania", # Changed to ROU in 2002 (same country, different ISO code)
     "CSK" = "Czechoslovakia", # Dissolved in 1993 into Czech Republic (CZE) and Slovakia (SVK)
@@ -889,7 +889,7 @@ list_iso_old2new <- list(
     "BUR" = "MMR", # Myanmar
     "YMD" = "YEM", # Yemen
     "YMN" = "YEM", # Yemen
-    "ANT" = "CUW", # Curaçao
+    "ANT" = "CUW", # Cura\u00e7ao
     "BYS" = "BLR", # Belarus
     "CSK" = "CZE", # Czech Republic
     "SCG" = "SRB", # Serbia

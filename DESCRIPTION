@@ -1,6 +1,6 @@
 Package: WPD
 Title: World Panel Data: A Macroeconomic Data Visualization and Analysis Toolkit
-Version: 0.0.23
+Version: 0.0.24
 Authors@R: 
     person("Benjamin", "Peeters", , "benjaminpeeters@protonmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-5095-2021"))
@@ -11,7 +11,7 @@ Description: A comprehensive panel-data package providing access to global econo
     time series analysis capabilities, and functions for handling seasonal adjustments 
     and trend analysis.
 SystemRequirements: At least 100MB disk space for installation.
-License: AGPL (>= 3) | file LICENSE.md
+License: AGPL (>= 3) + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3

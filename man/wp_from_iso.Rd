@@ -20,6 +20,9 @@ wp_from_iso(iso, opt = "Name", verbose = TRUE)
 \item "NaturalRent": Natural resource status (NRS_REN or NA)
 \item "Category": All categories the country belongs to
 }}
+
+\item{verbose}{Logical, whether to print informative messages about special cases
+(default: TRUE)}
 }
 \value{
 A character vector of the same length as the input iso vector containing the requested information.

@@ -7,7 +7,8 @@
 \format{
 A data frame with the following columns:
 \describe{
-\item{Origin}{Source of the data}
+\item{Origin}{Short identifier for the data source}
+\item{Reference}{Detailed source of the data}
 \item{Symbol}{Variable identifier}
 \item{Indicator}{Description of the variable}
 \item{Frequency}{Always "Q" for this dataset}

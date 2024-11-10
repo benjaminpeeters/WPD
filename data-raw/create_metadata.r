@@ -21,6 +21,39 @@ METADATA_Q <- extract_metadata(DATA_Q)
 METADATA_Y <- extract_metadata(DATA_Y)
 
 
+
+########################
+# Transform column Reference into ASCII characters
+
+
+# Function to convert non-ASCII characters to ASCII equivalents
+clean_reference <- function(text) {
+    # Convert to ASCII, replacing special characters
+    text <- iconv(text, to = "ASCII//TRANSLIT")
+    
+    # Manual replacements for common special characters
+    text <- gsub("\u2013", "-", text)  # em dash
+    text <- gsub("\u2014", "-", text)  # en dash
+    text <- gsub("\u2018", "'", text)  # smart single quotes
+    text <- gsub("\u2019", "'", text)  # smart single quotes
+    text <- gsub("\u201C", '"', text)  # smart double quotes
+    text <- gsub("\u201D", '"', text)  # smart double quotes
+    
+    # Clean up any remaining non-ASCII characters
+    text <- stringi::stri_trans_general(text, "Latin-ASCII")
+    
+    # Remove any remaining non-ASCII characters
+    text <- iconv(text, "UTF-8", "ASCII", sub = "")
+    
+    return(text)
+}
+
+# Apply the transformation to the Reference column in both metadata dataframes
+METADATA_Q$Reference <- clean_reference(METADATA_Q$Reference)
+METADATA_Y$Reference <- clean_reference(METADATA_Y$Reference)
+
+#######################
+
 # Save metadata using usethis::use_data
 usethis::use_data(METADATA_Q, METADATA_Y, overwrite = TRUE)
 

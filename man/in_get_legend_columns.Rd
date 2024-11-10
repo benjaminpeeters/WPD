@@ -12,7 +12,7 @@ Considers plot width, text length, and item count.
 
 Calculate optimal number of legend columns based on:
 \enumerate{
-\item Plot width in inches (dim\link{1})
+\item Plot width in inches (dim[1])
 \item Length of legend items
 \item Font size and approximate character width
 }

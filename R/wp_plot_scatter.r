@@ -496,9 +496,9 @@ in_plot_scatter_two_vars <- function(data,                    # data.frame: inpu
         
         # Create R-squared text based on option
         r2_text <- switch(r_squared,
-                         sprintf("R² = %.3f", stats$r_squared),
-                         sprintf("R² = %.3f\nAdj. R² = %.3f", stats$r_squared, stats$adj_r_squared),
-                         sprintf("%s\nR² = %.3f\nAdj. R² = %.3f", stats$equation, stats$r_squared, stats$adj_r_squared))
+                         sprintf("R\u00b2 = %.3f", stats$r_squared),
+                         sprintf("R\u00b2 = %.3f\nAdj. R\u00b2 = %.3f", stats$r_squared, stats$adj_r_squared),
+                         sprintf("%s\nR\u00b2 = %.3f\nAdj. R\u00b2 = %.3f", stats$equation, stats$r_squared, stats$adj_r_squared))
         
         # Determine position
         if (r_squared_pos == "flexible") {
@@ -976,7 +976,7 @@ in_calculate_r_squared <- function(x,                          # numeric vector:
         c <- in_format_coef(coef[1])
         
         # Build equation term by term with proper signs
-        equation <- sprintf("y = %sx²", a)
+        equation <- sprintf("y = %sx\u00b2", a)
         if (coef[2] > 0) equation <- paste0(equation, " + ", b, "x")
         if (coef[2] < 0) equation <- paste0(equation, " - ", sub("-", "", b), "x")
         if (coef[1] > 0) equation <- paste0(equation, " + ", c)
@@ -991,9 +991,9 @@ in_calculate_r_squared <- function(x,                          # numeric vector:
         d <- in_format_coef(coef[1])
         
         # Build equation term by term with proper signs
-        equation <- sprintf("y = %sx³", a)
-        if (coef[3] > 0) equation <- paste0(equation, " + ", b, "x²")
-        if (coef[3] < 0) equation <- paste0(equation, " - ", sub("-", "", b), "x²")
+        equation <- sprintf("y = %sx\u00b3", a)
+        if (coef[3] > 0) equation <- paste0(equation, " + ", b, "x\u00b2")
+        if (coef[3] < 0) equation <- paste0(equation, " - ", sub("-", "", b), "x\u00b2")
         if (coef[2] > 0) equation <- paste0(equation, " + ", c, "x")
         if (coef[2] < 0) equation <- paste0(equation, " - ", sub("-", "", c), "x")
         if (coef[1] > 0) equation <- paste0(equation, " + ", d)

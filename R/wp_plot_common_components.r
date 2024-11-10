@@ -272,9 +272,11 @@ in_get_legend_type <- function(plot) {                    # ggplot object: plot 
 #' Considers plot width, text length, and item count.
 #' 
 #' Calculate optimal number of legend columns based on:
-#' 1. Plot width in inches (dim[1])
-#' 2. Length of legend items
-#' 3. Font size and approximate character width
+#' \enumerate{
+#'   \item Plot width in inches (dim\[1\])
+#'   \item Length of legend items
+#'   \item Font size and approximate character width
+#' }
 #'
 #' Used by: in_create_legend_panel, in_plot_multi_indic_bar
 #' Uses: No direct function calls

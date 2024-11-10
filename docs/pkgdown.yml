@@ -2,8 +2,8 @@ pandoc: 2.9.2.1
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
-  1-introduction-wp_data: 1-introduction-wp_data.html
-last_built: 2024-11-10T07:49Z
+  a_introduction_wp_data: a_introduction_wp_data.html
+last_built: 2024-11-10T11:31Z
 urls:
   reference: https://benjaminpeeters.github.io/WPD/reference
   article: https://benjaminpeeters.github.io/WPD/articles

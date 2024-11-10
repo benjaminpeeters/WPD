@@ -75,18 +75,18 @@ update_description_dates <- function() {
   tryCatch({
     # Get current date
     current_date <- Sys.Date()
-    current_year <- format(current_date, "%Y")
-    current_month <- format(current_date, "%m")
+    # current_year <- format(current_date, "%Y")
+    # current_month <- format(current_date, "%m")
     
     # Update year and month in DESCRIPTION
     desc::desc_set("Date", as.character(current_date))
-    desc::desc_set("Year", current_year)
-    desc::desc_set("Month", current_month)
+    # desc::desc_set("Year", current_year)
+    # desc::desc_set("Month", current_month)
     
     message("Updated dates in DESCRIPTION file")
     message("Date: ", current_date)
-    message("Year: ", current_year)
-    message("Month: ", current_month)
+    # message("Year: ", current_year)
+    # message("Month: ", current_month)
     
     return(TRUE)
   }, error = function(e) {
@@ -192,9 +192,10 @@ main <- function() {
 
   message("\n=== Running Package Checks ===")
 
-  # Run R CMD check
+  # Run R CMD check / R-CMD
   check_result <- tryCatch({
-    devtools::check(document = FALSE, quiet = FALSE)
+    # devtools::check(document = FALSE, quiet = FALSE)
+    devtools::check(remote = TRUE, manual = TRUE, cran = TRUE)
     TRUE
   }, error = function(e) {
     message("Warning: Package check failed: ", e$message)
