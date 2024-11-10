@@ -254,11 +254,11 @@ in_plot_one_indic_bar <- function(data,                    # data.frame: input d
     # 6. Create base plot
     plot <- ggplot2::ggplot() +
         {if(!is.null(color) && !isFALSE(color))
-            geom_bar(data = all_data, 
+            ggplot2::geom_bar(data = all_data, 
                     ggplot2::aes(x = Country, y = display_value, fill = color_group_label), 
                     stat = "identity", width = 0.5)
         else 
-            geom_bar(data = all_data, 
+            ggplot2::geom_bar(data = all_data, 
                     ggplot2::aes(x = Country, y = display_value, fill = "Values"), 
                     stat = "identity", width = 0.5, fill = "gray50")
         }
@@ -266,7 +266,7 @@ in_plot_one_indic_bar <- function(data,                    # data.frame: input d
     # 7. Add statistical elements
     if(show_range) {
         plot <- plot +
-            geom_errorbar(
+            ggplot2::geom_errorbar(
                 data = all_data,
                 ggplot2::aes(x = Country, ymin = min_value, ymax = max_value),
                 width = 0.25,
@@ -278,7 +278,7 @@ in_plot_one_indic_bar <- function(data,                    # data.frame: input d
     
     if(show_median && type == "Mean") {
         plot <- plot +
-            geom_point(
+            ggplot2::geom_point(
                 data = all_data,
                 ggplot2::aes(x = Country, y = median_value),
                 size = 3,
@@ -290,20 +290,20 @@ in_plot_one_indic_bar <- function(data,                    # data.frame: input d
     
     # 8. Add unified legend
     plot <- plot +
-        geom_point(
+        ggplot2::geom_point(
             data = legend_info$data, 
             ggplot2::aes(x = x, y = y, shape = type), 
             show.legend = TRUE, 
             alpha = 0
         ) +
-        scale_shape_manual(
+        ggplot2::scale_shape_manual(
             values = setNames(
                 c(15, if(show_median && type == "Mean") 19 else NULL, if(show_range) 95 else NULL),
                 legend_info$elements
             ),
             breaks = legend_info$elements,
             name = NULL,
-            guide = guide_legend(
+            guide = ggplot2::guide_legend(
                 order = 1,
                 direction = "horizontal",
                 override.aes = list(
@@ -332,14 +332,14 @@ in_plot_one_indic_bar <- function(data,                    # data.frame: input d
         )
         
         plot <- plot +
-            scale_fill_manual(
+            ggplot2::scale_fill_manual(
                 values = display_color_mapping,
                 name = NULL,
                 breaks = sapply(
                     in_get_ordered_groups(color, color_mapping, category_labels), 
                     function(g) if(g == "Other") "Other" else category_labels[[g]]
                 ),
-                guide = guide_legend(
+                guide = ggplot2::guide_legend(
                     order = 2,
                     ncol = ncol,
                     byrow = TRUE,
@@ -348,10 +348,10 @@ in_plot_one_indic_bar <- function(data,                    # data.frame: input d
             )
     } else {
         plot <- plot +
-            scale_fill_manual(
+            ggplot2::scale_fill_manual(
                 values = c(Values = "transparent"),
                 name = NULL,
-                guide = guide_legend(
+                guide = ggplot2::guide_legend(
                     order = 2,
                     ncol = 1,
                     byrow = TRUE,
@@ -366,7 +366,7 @@ in_plot_one_indic_bar <- function(data,                    # data.frame: input d
         value_vjust <- if(identical(show_values, "Bottom")) 1.5 else -0.5
         
         plot <- plot +
-            geom_text(
+            ggplot2::geom_text(
                 data = all_data,
                 ggplot2::aes(x = Country, y = value_pos, label = sprintf("%.1f", display_value)),
                 vjust = value_vjust,
@@ -386,11 +386,11 @@ in_plot_one_indic_bar <- function(data,                    # data.frame: input d
         ggplot2::scale_x_discrete(labels = all_data$label) +
         ggplot2::labs(x = NULL) +
         in_theme_plot(base_size = base_size) +
-        theme(
+        ggplot2::theme(
             legend.direction = "horizontal",
             legend.box = "vertical",
-            legend.spacing = unit(0.1, "cm"),
-            legend.margin = margin(0, 0, 0, 0)
+            legend.spacing = grid::unit(0.1, "cm"),
+            legend.margin = ggplot2::margin(0, 0, 0, 0)
         )
     
     return(plot)
@@ -515,8 +515,8 @@ in_calculate_plot_limits <- function(data,                    # data.frame: data
                                    show_values) {             # string/FALSE: "Bottom"/"Top" - value label position
 
     y_max <- max(c(data$display_value, data$max_value), na.rm = TRUE)
-    y_margin_top <- if(show_values %in% c(TRUE, "Top")) y_max * 0.08 else 0
-    y_margin_bottom <- if(identical(show_values, "Bottom")) y_max * 0.08 else 0
+    y_margin_top <- if (show_values %in% c(TRUE, "Top")) y_max * 0.08 else 0
+    y_margin_bottom <- if (identical(show_values, "Bottom")) y_max * 0.08 else 0
     
     list(
         y_max = y_max,
@@ -835,9 +835,9 @@ in_plot_multi_indic_bar <- function(data,                    # data.frame: input
     
     # Add bars with appropriate aesthetics
     plot <- plot + 
-        geom_bar(ggplot2::aes(fill = Variable),
+        ggplot2::geom_bar(ggplot2::aes(fill = Variable),
                 stat = "identity",
-                position = position_dodge(width = position_dodge_width),
+                position = ggplot2::position_dodge(width = position_dodge_width),
                 width = bar_width)
     
     in_print_debug("Base plot created", verbose, debug, type = "info", "PLOT")
@@ -845,11 +845,11 @@ in_plot_multi_indic_bar <- function(data,                    # data.frame: input
     # 6. Add statistical elements
     if(show_range) {
         plot <- plot +
-            geom_errorbar(
+            ggplot2::geom_errorbar(
                 ggplot2::aes(ymin = min_value, 
                     ymax = max_value,
                     group = Variable),
-                position = position_dodge(width = position_dodge_width),
+                position = ggplot2::position_dodge(width = position_dodge_width),
                 width = bar_width * 0.5,
                 color = sapply(all_data$Variable, function(v) dark_color_mapping[v])
             )
@@ -857,10 +857,10 @@ in_plot_multi_indic_bar <- function(data,                    # data.frame: input
     
     if(show_median && type == "Mean") {
         plot <- plot +
-            geom_point(
+            ggplot2::geom_point(
                 ggplot2::aes(y = median_value,
                     group = Variable),
-                position = position_dodge(width = position_dodge_width),
+                position = ggplot2::position_dodge(width = position_dodge_width),
                 size = 3,
                 color = sapply(all_data$Variable, function(v) dark_color_mapping[v])
             )
@@ -868,15 +868,15 @@ in_plot_multi_indic_bar <- function(data,                    # data.frame: input
     
     # 7. Add value labels if requested
     if(!isFALSE(show_values)) {
-        value_pos <- if(identical(show_values, "Bottom")) 0 else all_data$display_value
-        value_vjust <- if(identical(show_values, "Bottom")) 1.5 else -0.5
+        value_pos <- if (identical(show_values, "Bottom")) 0 else all_data$display_value
+        value_vjust <- if (identical(show_values, "Bottom")) 1.5 else -0.5
         
         plot <- plot +
-            geom_text(
+            ggplot2::geom_text(
                 ggplot2::aes(y = value_pos,
                     label = sprintf("%.1f", display_value),
                     group = Variable),
-                position = position_dodge(width = position_dodge_width),
+                position = ggplot2::position_dodge(width = position_dodge_width),
                 vjust = value_vjust,
                 size = base_size/3
             )
@@ -885,10 +885,10 @@ in_plot_multi_indic_bar <- function(data,                    # data.frame: input
     # 8. Add statistical legend elements
     legend_elements <- c()
     legend_elements <- c(legend_elements, if(type == "Mean") "Mean values" else "Latest values")
-    if(show_median && type == "Mean") legend_elements <- c(legend_elements, "Median values")
-    if(show_range) legend_elements <- c(legend_elements, "Range (Min to Max)")
+    if (show_median && type == "Mean") legend_elements <- c(legend_elements, "Median values")
+    if (show_range) legend_elements <- c(legend_elements, "Range (Min to Max)")
     
-    if(length(legend_elements) > 0) {
+    if (length(legend_elements) > 0) {
         legend_data <- data.frame(
             x = rep(1, length(legend_elements)),
             y = rep(1, length(legend_elements)),
@@ -897,20 +897,20 @@ in_plot_multi_indic_bar <- function(data,                    # data.frame: input
         )
         
         plot <- plot +
-            geom_point(
+            ggplot2::geom_point(
                 data = legend_data,
                 ggplot2::aes(x = x, y = y, shape = type),
                 show.legend = TRUE,
                 alpha = 0
             ) +
-            scale_shape_manual(
+            ggplot2::scale_shape_manual(
                 values = setNames(
                     c(15, if(show_median && type == "Mean") 19 else NULL, if(show_range) 95 else NULL),
                     legend_elements
                 ),
                 breaks = legend_elements,
                 name = NULL,
-                guide = guide_legend(
+                guide = ggplot2::guide_legend(
                     order = 1,
                     direction = "horizontal",
                     override.aes = list(
@@ -935,7 +935,7 @@ in_plot_multi_indic_bar <- function(data,                    # data.frame: input
         ggplot2::scale_fill_manual(
             values = color_mapping,
             name = NULL,
-            guide = guide_legend(
+            guide = ggplot2::guide_legend(
                 order = 2,
                 ncol = ncol,
                 byrow = TRUE,
@@ -954,11 +954,11 @@ in_plot_multi_indic_bar <- function(data,                    # data.frame: input
         ) +
         ggplot2::labs(x = NULL) +
         in_theme_plot(base_size = base_size) +
-        theme(
+        ggplot2::theme(
             legend.direction = "horizontal",
             legend.box = "vertical",
-            legend.spacing = unit(0.1, "cm"),
-            legend.margin = margin(0, 0, 0, 0)
+            legend.spacing = grid::unit(0.1, "cm"),
+            legend.margin = ggplot2::margin(0, 0, 0, 0)
         )
     
     in_print_debug("Plot formatting completed", verbose, debug, type = "info", "PLOT")

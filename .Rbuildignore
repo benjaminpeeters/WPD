@@ -24,3 +24,5 @@
 ^vignettes/articles$ # Article source files
 ^\.lintr$         # Lintr configuration
 ^LICENSE\.md$
+^doc$
+^Meta$

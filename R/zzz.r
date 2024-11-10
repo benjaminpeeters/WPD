@@ -11,6 +11,16 @@
 # }
 
 
+.onLoad <- function(libname, pkgname) {
+  # Get the ISO_DATA object
+  utils::data("ISO_DATA", package = pkgname, envir = parent.env(environment()))
+  
+  # Unpack the list into individual objects in the package namespace
+  list2env(ISO_DATA, envir = parent.env(environment()))
+}
+
+
+
 .onUnload <- function(libpath) {
     # Clean up when package is unloaded
     rm(list = ls(.pkgenv), envir = .pkgenv)

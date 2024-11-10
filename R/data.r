@@ -7,9 +7,9 @@
 #'   \item{list_ctry2iso}{List mapping country names to ISO3 codes}
 #'   \item{list_categories}{Character vector of all valid category codes}
 #'   \item{list_category2iso}{List mapping categories to ISO3 codes}
-#'   \item{list_iso2country}{List mapping ISO3 codes to country names}
-#'   \item{list_iso2country_old}{List mapping historical ISO3 codes to country names}
-#'   \item{list_iso2country_others}{List mapping special ISO3-like codes}
+#'   \item{list_iso2ctry}{List mapping ISO3 codes to country names}
+#'   \item{list_iso2ctry_old}{List mapping historical ISO3 codes to country names}
+#'   \item{list_iso2ctry_others}{List mapping special ISO3-like codes}
 #'   \item{list_iso_old2new}{List mapping old ISO codes to current ones}
 #'   \item{list_iso2_to_iso3}{List mapping ISO2 codes to ISO3 codes}
 #'   \item{category_labels}{List mapping category codes to display labels}

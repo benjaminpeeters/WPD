@@ -13,7 +13,7 @@ plot type based on the number of indicators and specified parameters."></head><b
 
     <a class="navbar-brand me-2" href="../index.html">WPD</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.19</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.23</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -271,7 +271,9 @@ the number of indicators:</p><ul><li><p>Single indicator:</p><ul><li><p>Simple b
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">/!\  The following parameters are not used in bar plots and will be ignored: subfig_title, subfig_title</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [SUBPLOT] call 'in_plot_one_indic_bar'</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ARGS] Unused arguments for function 'plot_func': subfig_title</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in geom_bar(data = all_data, ggplot2::aes(x = Country, y = display_value,     fill = color_group_label), stat = "identity", width = 0.5):</span> could not find function "geom_bar"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [LEGEND] Legend items (display): GDP Growth</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [LEGEND] plot_type = 'bar' | legend_cols = 1' | legend_height = 1.33333333333333' | n_items = 1</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ADD_REF] References: World Bank</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Bar plot with mean values and all statistical indicators</span></span></span>
 <span class="r-in"><span><span class="fu">wp_plot_bar</span><span class="op">(</span><span class="va">data</span>,</span></span>
@@ -284,7 +286,9 @@ the number of indicators:</p><ul><li><p>Single indicator:</p><ul><li><p>Simple b
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">/!\  The following parameters are not used in bar plots and will be ignored: subfig_title, subfig_title</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [SUBPLOT] call 'in_plot_one_indic_bar'</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ARGS] Unused arguments for function 'plot_func': subfig_title</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in geom_bar(data = all_data, ggplot2::aes(x = Country, y = display_value,     fill = color_group_label), stat = "identity", width = 0.5):</span> could not find function "geom_bar"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [LEGEND] Legend items (display): GDP Growth</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [LEGEND] plot_type = 'bar' | legend_cols = 1' | legend_height = 1.33333333333333' | n_items = 1</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ADD_REF] References: World Bank</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Latest values with year labels</span></span></span>
 <span class="r-in"><span><span class="fu">wp_plot_bar</span><span class="op">(</span><span class="va">data</span>,</span></span>
@@ -296,7 +300,9 @@ the number of indicators:</p><ul><li><p>Single indicator:</p><ul><li><p>Simple b
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">/!\  The following parameters are not used in bar plots and will be ignored: subfig_title, subfig_title</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [SUBPLOT] call 'in_plot_one_indic_bar'</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ARGS] Unused arguments for function 'plot_func': subfig_title</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in geom_bar(data = all_data, ggplot2::aes(x = Country, y = display_value,     fill = color_group_label), stat = "identity", width = 0.5):</span> could not find function "geom_bar"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [LEGEND] Legend items (display): GDP Growth</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [LEGEND] plot_type = 'bar' | legend_cols = 1' | legend_height = 1.33333333333333' | n_items = 1</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ADD_REF] References: World Bank</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Multiple indicators</span></span></span>
 <span class="r-in"><span><span class="va">data_multi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
@@ -324,7 +330,11 @@ the number of indicators:</p><ul><li><p>Single indicator:</p><ul><li><p>Simple b
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ORDER] Final country order: Germany, Italy, France</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [POSITION] Bar positioning: width = 0.5 space = 0.2 dodge = 0.75</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [COLORS] Color mapping created</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in geom_bar(ggplot2::aes(fill = Variable), stat = "identity", position = position_dodge(width = position_dodge_width),     width = bar_width):</span> could not find function "geom_bar"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [PLOT] Base plot created</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [PLOT] Plot formatting completed</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [LEGEND] Legend items (display): GDP Growth, Inflation</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [LEGEND] plot_type = 'bar' | legend_cols = 2' | legend_height = 1.33333333333333' | n_items = 2</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ADD_REF] References: World Bank</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

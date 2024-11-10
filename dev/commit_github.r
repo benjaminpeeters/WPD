@@ -170,21 +170,8 @@ main <- function() {
   }
   
   # 4. Package Checks and Documentation
-  message("\n=== Running Package Checks and Updating Documentation ===")
+  message("\n=== Updating Documentation and Website ===")
   
-  # Run R CMD check
-  check_result <- tryCatch({
-    devtools::check(document = FALSE, quiet = FALSE)
-    TRUE
-  }, error = function(e) {
-    message("Warning: Package check failed: ", e$message)
-    response <- readline(prompt = "Continue despite check failure? (y/n): ")
-    tolower(response) == "y"
-  })
-  
-  if (!check_result) {
-    stop("Stopping due to package check failures")
-  }
   
   # Update documentation
   message("Updating package documentation...")
@@ -202,6 +189,23 @@ main <- function() {
     stop("Pkgdown site building failed: ", e$message)
   })
   
+
+  message("\n=== Running Package Checks ===")
+
+  # Run R CMD check
+  check_result <- tryCatch({
+    devtools::check(document = FALSE, quiet = FALSE)
+    TRUE
+  }, error = function(e) {
+    message("Warning: Package check failed: ", e$message)
+    response <- readline(prompt = "Continue despite check failure? (y/n): ")
+    tolower(response) == "y"
+  })
+  
+  if (!check_result) {
+    stop("Stopping due to package check failures")
+  }
+
   # 5. Git Operations
   message("\n=== Handling Git Operations ===")
   

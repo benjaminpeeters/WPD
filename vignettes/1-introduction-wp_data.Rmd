@@ -102,14 +102,8 @@ The WPD database includes various categories of indicators:
 You can view available data using helper functions:
 
 ```{r available-data}
-# View all available variables
-wp_info()
-
-# View only quarterly data
+# View quarterly data
 wp_info("Q")
-
-# View only yearly data
-wp_info("Y")
 ```
 
 ## Advanced Features
