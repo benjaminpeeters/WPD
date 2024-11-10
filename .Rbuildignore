@@ -17,13 +17,12 @@
 # Package development support files
 ^\.gitignore$     # Git ignore file
 ^LICENSE\.md$     # License file in markdown format
+^LICENSE_COMM\.md$     # License file in markdown format
 ^cran-comments\.md$ # CRAN submission comments
 ^CRAN-RELEASE$    # CRAN release marker
 
 # Additional directories
-^vignettes/articles$ # Article source files
 ^\.lintr$         # Lintr configuration
-^LICENSE\.md$
 ^doc$
 ^Meta$
 ^dev$
