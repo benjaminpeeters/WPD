@@ -16,6 +16,11 @@ navbar:
 
 
 reference:
+- title: "Package Documentation"
+  desc: "Overview of the WPD package"
+  contents:
+    - WPD
+
 - title: "Data Management"
   desc: "Core functions for data loading and manipulation"
   contents:

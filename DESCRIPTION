@@ -1,6 +1,6 @@
 Package: WPD
 Title: World Panel Data: A Macroeconomic Data Visualization and Analysis Toolkit
-Version: 0.0.29
+Version: 0.0.32
 Authors@R: 
     person("Benjamin", "Peeters", , "benjaminpeeters@protonmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-5095-2021"))
@@ -13,8 +13,6 @@ Description: A panel-data package providing access to global economic and
     quarterly frequencies. The package focuses on macroeconomic indicators
     including GDP, trade, prices, employment, and financial data across multiple
     countries and regions.
-    Note: Optional seasonal adjustment features depend on the 'seasonal' package 
-    which may use x13binary, subject to additional licensing restrictions.
 SystemRequirements: At least 100MB disk space for installation.
 License: AGPL (>= 3)
 Encoding: UTF-8
@@ -26,12 +24,10 @@ Depends:
 Imports:
     ggplot2 (>= 3.4.0),
     scales,
-    extrafont,
     patchwork,
     cowplot,
     ggrepel,
-    zoo,
-    seasonal
+    zoo
 Suggests:
     knitr,
     rmarkdown,

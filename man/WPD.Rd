@@ -44,16 +44,3 @@ The package includes:
 \references{
 Package website: \url{https://benjaminpeeters.github.io/WPD}
 }
-\seealso{
-Useful links:
-\itemize{
-  \item \url{https://benjaminpeeters.github.io/WPD/}
-  \item Report bugs at \url{https://github.com/benjaminpeeters/WPD/issues}
-}
-
-}
-\author{
-\strong{Maintainer}: Benjamin Peeters \email{benjaminpeeters@protonmail.com} (\href{https://orcid.org/0000-0002-5095-2021}{ORCID})
-
-}
-\keyword{internal}

@@ -31,14 +31,8 @@
 #'
 #' @docType package
 #' @name WPD
-#' @keywords internal
+#' @aliases WPD-package
 #'
 #' @references
 #' Package website: \url{https://benjaminpeeters.github.io/WPD}
-"_PACKAGE"
-
-# The following block is used by usethis to automatically manage
-# roxygen namespace imports. Please do not edit manually.
-## usethis namespace: start
-## usethis namespace: end
 NULL
