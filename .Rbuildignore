@@ -3,7 +3,6 @@
 ^\.Rproj\.user$   # RStudio user files
 
 # Documentation and website
-^data-raw$        # Raw data processing scripts
 ^docs$            # Documentation website
 ^_pkgdown\.yml$   # pkgdown configuration
 ^README\.Rmd$     # R Markdown source of README
@@ -20,6 +19,10 @@
 ^LICENSE_COMM\.md$     # License file in markdown format
 ^cran-comments\.md$ # CRAN submission comments
 ^CRAN-RELEASE$    # CRAN release marker
+
+# Data
+^data-raw$        # Raw data processing scripts
+\.csv$            # Ignore CSV files (use for github only)
 
 # Additional directories
 ^\.lintr$         # Lintr configuration
