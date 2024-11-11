@@ -46,91 +46,10 @@ This function is typically used before wp_data() to discover available variables
 Variables are grouped by their origin (data source) and can be filtered or searched.
 }
 \details{
-The function helps users discover available variables through several features:
 
-\strong{Variable Naming Patterns:}
-Common suffixes:
-\itemize{
-\item _C: Current prices/values
-\item _R_YYYY: Real/constant prices (YYYY is base year)
-\item _ZS: Percentages/shares
-\item _CD: Current US dollars
-\item _KN: Local currency units
-\item _PC: Per capita values
-\item _XD: Indices
-\item _MA/_FE: Male/Female specific
-\item _GD: GDP-related
-\item _IX: Index values
-\item _IN: Count/number
-\item _PT: Points/percentages
-\item _TOT: Total values
-\item _EST: Estimates
-\item _ZG: Growth rates
-\item _KD: Constant dollars
-\item _PPP: Purchasing Power Parity
-\item _SA: Seasonally adjusted
-\item _AD: Adjusted/linked series
-\item _GI: Global/composite indices
-}
-
-Common prefixes:
-\itemize{
-\item NE_\emph{: National accounts expenditure
-\item NY_}: National accounts income
-\item BX_\emph{: Balance of payments credits/exports
-\item BM_}: Balance of payments debits/imports
-\item SL_\emph{: Labor market indicators
-\item SP_}: Population indicators
-\item SE_\emph{: Education indicators
-\item SH_}: Health indicators
-\item FI_\emph{: Financial reserves
-\item EN_}: Environment indicators
-\item IC_\emph{: Investment climate
-\item TX_}: Trade/export indicators
-\item TM_*: Trade/import indicators
-}
-
-\strong{Balance of Payments Mode (special="BOP"):}
-When using special="BOP", displays detailed Balance of Payments relationships with specific prefixes:
-\itemize{
-\item i/o: Inward/outward flows
-\item DI/POR/OI: Direct Investment/Portfolio/Other Investment
-\item E/D: Equity/Debt components
-}
-
-\strong{Data Sources:}
-The output displays data sources in headers, including major sources like:
-\itemize{
-\item IMF IFS (International Financial Statistics)
-\item IMF BOP (Balance of Payments)
-\item BIS Statistics
-\item World Bank Indicators
-}
-
-\strong{Data Availability:}
-Some indicators are available in both quarterly (METADATA_Q) and yearly (METADATA_Y) frequencies,
-while others are specific to one frequency. Both METADATA_Q and METADATA_Y are accessible in the
-package namespace for direct inspection.
-
-\strong{Search Functionality:}
-The search parameter provides flexible filtering:
-\itemize{
-\item Searches across both Symbol and Indicator columns simultaneously
-\item Multiple search terms work as OR condition (matches any term)
-\item Case-insensitive and supports partial matches
-\item Search highlighting makes matches easily visible (can be disabled with color=FALSE)
-}
-
-\strong{Special Modes:}
-Currently supports "BOP" (Balance of Payments) mode for detailed payment relationships.
-Future versions will include additional special modes for other data categories
-and analytical views.
 }
 \examples{
-# Display all available variables
-wp_info()
-
-# Show only quarterly data
+# Show quarterly data
 wp_info("Q")
 
 # Filter by origin

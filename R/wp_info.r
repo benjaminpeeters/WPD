@@ -47,19 +47,19 @@
 #'
 #' Common prefixes:
 #' \itemize{
-#'   \item NE_*: National accounts expenditure
-#'   \item NY_*: National accounts income
-#'   \item BX_*: Balance of payments credits/exports
-#'   \item BM_*: Balance of payments debits/imports
-#'   \item SL_*: Labor market indicators
-#'   \item SP_*: Population indicators
-#'   \item SE_*: Education indicators
-#'   \item SH_*: Health indicators
-#'   \item FI_*: Financial reserves
-#'   \item EN_*: Environment indicators
-#'   \item IC_*: Investment climate
-#'   \item TX_*: Trade/export indicators
-#'   \item TM_*: Trade/import indicators
+#'   \item NE\_\*: National accounts expenditure
+#'   \item NY\_\*: National accounts income
+#'   \item BX\_\*: Balance of payments credits/exports
+#'   \item BM\_\*: Balance of payments debits/imports
+#'   \item SL\_\*: Labor market indicators
+#'   \item SP\_\*: Population indicators
+#'   \item SE\_\*: Education indicators
+#'   \item SH\_\*: Health indicators
+#'   \item FI\_\*: Financial reserves
+#'   \item EN\_\*: Environment indicators
+#'   \item IC\_\*: Investment climate
+#'   \item TX\_\*: Trade/export indicators
+#'   \item TM\_\*: Trade/import indicators
 #' }
 #'
 #' \strong{Balance of Payments Mode (special="BOP"):}
@@ -109,10 +109,7 @@
 #' }
 #'
 #' @examples
-#' # Display all available variables
-#' wp_info()
-#'
-#' # Show only quarterly data
+#' # Show quarterly data
 #' wp_info("Q")
 #'
 #' # Filter by origin
