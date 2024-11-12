@@ -231,6 +231,8 @@ main <- function() {
                 remote = TRUE, 
                 manual = TRUE, 
                 cran = TRUE,
+                run_dont_test = TRUE,
+                error_on = "warning",
                 vignettes = FALSE # Skip rebuilding and rechecking the vignettes
                 )
     TRUE

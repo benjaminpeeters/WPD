@@ -23,43 +23,43 @@
 #' \strong{Variable Naming Patterns:}
 #' Common suffixes:
 #' \itemize{
-#'   \item _C: Current prices/values
-#'   \item _R_YYYY: Real/constant prices (YYYY is base year)
-#'   \item _ZS: Percentages/shares
-#'   \item _CD: Current US dollars
-#'   \item _KN: Local currency units
-#'   \item _PC: Per capita values
-#'   \item _XD: Indices
-#'   \item _MA/_FE: Male/Female specific
-#'   \item _GD: GDP-related
-#'   \item _IX: Index values
-#'   \item _IN: Count/number
-#'   \item _PT: Points/percentages
-#'   \item _TOT: Total values
-#'   \item _EST: Estimates
-#'   \item _ZG: Growth rates
-#'   \item _KD: Constant dollars
-#'   \item _PPP: Purchasing Power Parity
-#'   \item _SA: Seasonally adjusted
-#'   \item _AD: Adjusted/linked series
-#'   \item _GI: Global/composite indices
+#'   \item \_C: Current prices/values
+#'   \item \_R\_YYYY: Real/constant prices (YYYY is base year)
+#'   \item \_ZS: Percentages/shares
+#'   \item \_CD: Current US dollars
+#'   \item \_KN: Local currency units
+#'   \item \_PC: Per capita values
+#'   \item \_XD: Indices
+#'   \item \_MA/\_FE: Male/Female specific
+#'   \item \_GD: GDP-related
+#'   \item \_IX: Index values
+#'   \item \_IN: Count/number
+#'   \item \_PT: Points/percentages
+#'   \item \_TOT: Total values
+#'   \item \_EST: Estimates
+#'   \item \_ZG: Growth rates
+#'   \item \_KD: Constant dollars
+#'   \item \_PPP: Purchasing Power Parity
+#'   \item \_SA: Seasonally adjusted
+#'   \item \_AD: Adjusted/linked series
+#'   \item \_GI: Global/composite indices
 #' }
 #'
 #' Common prefixes:
 #' \itemize{
-#'   \item NE\_\*: National accounts expenditure
-#'   \item NY\_\*: National accounts income
-#'   \item BX\_\*: Balance of payments credits/exports
-#'   \item BM\_\*: Balance of payments debits/imports
-#'   \item SL\_\*: Labor market indicators
-#'   \item SP\_\*: Population indicators
-#'   \item SE\_\*: Education indicators
-#'   \item SH\_\*: Health indicators
-#'   \item FI\_\*: Financial reserves
-#'   \item EN\_\*: Environment indicators
-#'   \item IC\_\*: Investment climate
-#'   \item TX\_\*: Trade/export indicators
-#'   \item TM\_\*: Trade/import indicators
+#'   \item NE\_ : National accounts expenditure
+#'   \item NY\_ : National accounts income
+#'   \item BX\_ : Balance of payments credits/exports
+#'   \item BM\_ : Balance of payments debits/imports
+#'   \item SL\_ : Labor market indicators
+#'   \item SP\_ : Population indicators
+#'   \item SE\_ : Education indicators
+#'   \item SH\_ : Health indicators
+#'   \item FI\_ : Financial reserves
+#'   \item EN\_ : Environment indicators
+#'   \item IC\_ : Investment climate
+#'   \item TX\_ : Trade/export indicators
+#'   \item TM\_ : Trade/import indicators
 #' }
 #'
 #' \strong{Balance of Payments Mode (special="BOP"):}

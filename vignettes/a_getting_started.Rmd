@@ -65,7 +65,7 @@ wp_plot_series(data,
                title = "GDP and Current Account of the United States")
 ```
 
-![](figures/test-01-series-simple-01.png)
+![Description of what the figure shows](figures/test-01-series-simple-01.png)
 
 
 # Data Structure

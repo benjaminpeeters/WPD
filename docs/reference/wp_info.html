@@ -11,7 +11,7 @@ Variables are grouped by their origin (data source) and can be filtered or searc
 
     <a class="navbar-brand me-2" href="../index.html">WPD</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.35</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.41</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,9 +97,63 @@ Invisibly returns:</p><ul><li><p>A data frame combining Q and Y data (with Frequ
 </ul></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-
-
-
+    <p>The function helps users discover available variables through several features:</p>
+<p><strong>Variable Naming Patterns:</strong>
+Common suffixes:</p><ul><li><p>\_C: Current prices/values</p></li>
+<li><p>\_R\_YYYY: Real/constant prices (YYYY is base year)</p></li>
+<li><p>\_ZS: Percentages/shares</p></li>
+<li><p>\_CD: Current US dollars</p></li>
+<li><p>\_KN: Local currency units</p></li>
+<li><p>\_PC: Per capita values</p></li>
+<li><p>\_XD: Indices</p></li>
+<li><p>\_MA/\_FE: Male/Female specific</p></li>
+<li><p>\_GD: GDP-related</p></li>
+<li><p>\_IX: Index values</p></li>
+<li><p>\_IN: Count/number</p></li>
+<li><p>\_PT: Points/percentages</p></li>
+<li><p>\_TOT: Total values</p></li>
+<li><p>\_EST: Estimates</p></li>
+<li><p>\_ZG: Growth rates</p></li>
+<li><p>\_KD: Constant dollars</p></li>
+<li><p>\_PPP: Purchasing Power Parity</p></li>
+<li><p>\_SA: Seasonally adjusted</p></li>
+<li><p>\_AD: Adjusted/linked series</p></li>
+<li><p>\_GI: Global/composite indices</p></li>
+</ul><p>Common prefixes:</p><ul><li><p>NE\_ : National accounts expenditure</p></li>
+<li><p>NY\_ : National accounts income</p></li>
+<li><p>BX\_ : Balance of payments credits/exports</p></li>
+<li><p>BM\_ : Balance of payments debits/imports</p></li>
+<li><p>SL\_ : Labor market indicators</p></li>
+<li><p>SP\_ : Population indicators</p></li>
+<li><p>SE\_ : Education indicators</p></li>
+<li><p>SH\_ : Health indicators</p></li>
+<li><p>FI\_ : Financial reserves</p></li>
+<li><p>EN\_ : Environment indicators</p></li>
+<li><p>IC\_ : Investment climate</p></li>
+<li><p>TX\_ : Trade/export indicators</p></li>
+<li><p>TM\_ : Trade/import indicators</p></li>
+</ul><p><strong>Balance of Payments Mode (special="BOP"):</strong>
+When using special="BOP", displays detailed Balance of Payments relationships with specific prefixes:</p><ul><li><p>i/o: Inward/outward flows</p></li>
+<li><p>DI/POR/OI: Direct Investment/Portfolio/Other Investment</p></li>
+<li><p>E/D: Equity/Debt components</p></li>
+</ul><p><strong>Data Sources:</strong>
+The output displays data sources in headers, including major sources like:</p><ul><li><p>IMF IFS (International Financial Statistics)</p></li>
+<li><p>IMF BOP (Balance of Payments)</p></li>
+<li><p>BIS Statistics</p></li>
+<li><p>World Bank Indicators</p></li>
+</ul><p><strong>Data Availability:</strong>
+Some indicators are available in both quarterly (METADATA_Q) and yearly (METADATA_Y) frequencies,
+while others are specific to one frequency. Both METADATA_Q and METADATA_Y are accessible in the
+package namespace for direct inspection.</p>
+<p><strong>Search Functionality:</strong>
+The search parameter provides flexible filtering:</p><ul><li><p>Searches across both Symbol and Indicator columns simultaneously</p></li>
+<li><p>Multiple search terms work as OR condition (matches any term)</p></li>
+<li><p>Case-insensitive and supports partial matches</p></li>
+<li><p>Search highlighting makes matches easily visible (can be disabled with color=FALSE)</p></li>
+</ul><p><strong>Special Modes:</strong>
+Currently supports "BOP" (Balance of Payments) mode for detailed payment relationships.
+Future versions will include additional special modes for other data categories
+and analytical views.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

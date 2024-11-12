@@ -1,4 +1,3 @@
-
 ---
 title: "Loading data with `wp_data()`"
 author: "Benjamin Peeters"

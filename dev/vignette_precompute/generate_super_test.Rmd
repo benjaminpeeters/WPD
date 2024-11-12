@@ -1,0 +1,178 @@
+---
+title: "Precompute Vignette Data"
+output: html_document
+---
+
+```{r precompute_setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+library(rmarkdown)
+
+# Create directories if they don't exist
+dir.create("../data", showWarnings = FALSE)
+dir.create("../figures", showWarnings = FALSE)
+
+# Load package
+devtools::load_all()
+```
+
+```{r generate_data}
+# Function to save data as R code
+save_data_code <- function(data, filename) {
+  dump_code <- paste(
+    sprintf("%s <- structure(", filename),
+    paste(deparse(data), collapse="\n"),
+    ")",
+    sep="\n"
+  )
+  writeLines(dump_code, file.path("../data", paste0(filename, ".R")))
+}
+
+# Generate basic example
+basic_example <- wp_data(
+  ISO = "USA",
+  formula = "100*CU_C/GDP_C",
+  years = c(2000, 2002)
+)
+save_data_code(basic_example, "basic_example")
+
+# Generate advanced example
+advanced_example <- wp_data(
+  ISO = c("CHN", "JPN"),
+  formula = c("EXg_C/GDP_C"),
+  years = c(2010, 2012)
+)
+save_data_code(advanced_example, "advanced_example")
+
+# Validation step for data generation
+stopifnot(
+  file.exists("../data/basic_example.R"),
+  file.exists("../data/advanced_example.R")
+)
+```
+
+```{r generate_figures}
+# Generate and save plots
+p1 <- wp_plot_series(basic_example, filename = "../figures/basic_plot")
+p2 <- wp_plot_bar(advanced_example, filename = "../figures/advanced_plot")
+
+# Validation step for figure generation
+stopifnot(
+  file.exists("../figures/basic_plot.png"),
+  file.exists("../figures/advanced_plot.png")
+)
+```
+
+```{r generate_vignette}
+# Function to write a code chunk to file
+write_chunk <- function(filename, chunk_name, code, eval = TRUE, include = TRUE) {
+  chunk_options <- sprintf("{r %s%s%s}", 
+                         chunk_name,
+                         if (!eval) ", eval=FALSE" else "",
+                         if (!include) ", include=FALSE" else "")
+  cat(sprintf("\n```%s\n%s\n```\n\n", chunk_options, code), 
+      file = filename, append = TRUE)
+}
+
+# Function to write markdown text to file
+write_md <- function(filename, text) {
+  cat(text, "\n\n", file = filename, append = TRUE)
+}
+
+# Start with fresh file
+file.create("../example_import.Rmd")
+
+# Write YAML header
+write_md("../example_import.Rmd", '---
+title: "Introduction to WPD"
+output: rmarkdown::html_vignette
+vignette: >
+  %\\VignetteIndexEntry{Introduction to WPD}
+  %\\VignetteEngine{knitr::rmarkdown}
+  %\\VignetteEncoding{UTF-8}
+---
+')
+
+# Write setup chunk
+write_chunk("../example_import.Rmd", 
+           "vignette_setup", 
+           'library(WPD)
+# Load precomputed data
+source("data/basic_example.R")
+source("data/advanced_example.R")',
+           include = FALSE)
+
+# Write Basic Analysis section
+write_md("../example_import.Rmd", '## Basic Analysis: Single Country Example
+
+To analyze a country\'s economic indicators, start with a simple example. Here\'s how to calculate the US current account as a percentage of GDP:')
+
+write_chunk("../example_import.Rmd", 
+           "basic_example_code",
+           'basic_example <- wp_data(
+  ISO = "USA",
+  formula = "100*CU_C/GDP_C",
+  years = c(2000, 2002)
+)',
+           eval = FALSE)
+
+write_md("../example_import.Rmd", 'This returns a data frame with the results:')
+
+write_chunk("../example_import.Rmd",
+           "show_basic_results",
+           'head(basic_example)')
+
+write_md("../example_import.Rmd", 'We can visualize this data using `wp_plot_series()`:')
+
+write_chunk("../example_import.Rmd",
+           "basic_plot_code",
+           'wp_plot_series(basic_example)',
+           eval = FALSE)
+
+write_md("../example_import.Rmd", '![Basic Time Series Plot](figures/basic_plot.png)')
+
+# Write Advanced Analysis section
+write_md("../example_import.Rmd", '## Advanced Analysis: Multiple Countries
+
+For comparative analysis, we can examine multiple countries. Let\'s look at export ratios for China and Japan:')
+
+write_chunk("../example_import.Rmd",
+           "advanced_example_code",
+           'advanced_example <- wp_data(
+  ISO = c("CHN", "JPN"),
+  formula = c("EXg_C/GDP_C"),
+  years = c(2010, 2012)
+)',
+           eval = FALSE)
+
+write_md("../example_import.Rmd", 'Here\'s the resulting data:')
+
+write_chunk("../example_import.Rmd",
+           "show_advanced_results",
+           'head(advanced_example)')
+
+write_md("../example_import.Rmd", 'We can create a bar plot to compare these values:')
+
+write_chunk("../example_import.Rmd",
+           "advanced_plot_code",
+           'wp_plot_bar(advanced_example)',
+           eval = FALSE)
+
+write_md("../example_import.Rmd", '![Advanced Bar Plot](figures/advanced_plot.png)')
+
+# Basic validation
+if (!file.exists("../example_import.Rmd")) {
+  stop("Failed to generate vignette file")
+}
+
+message("Successfully generated:")
+message("- Data files in ../data/")
+message("- Figures in ../figures/")
+message("- Vignette file at ../example_import.Rmd")
+```
+
+```{r validate, eval=FALSE}
+# This chunk is not run during generation but can be run manually after
+# to validate the generated vignette
+rmarkdown::render("../example_import.Rmd", output_format = "html_document")
+```
