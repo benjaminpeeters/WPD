@@ -184,7 +184,7 @@ citation("WPD")
 To cite package 'WPD' in publications use:
 
   Benjamin Peeters (2024). WPD: World Panel Data: A Macroeconomic Data
-  Visualization and Analysis Toolkit. R package version 0.0.41.
+  Visualization and Analysis Toolkit. R package version 0.0.42.
   https://benjaminpeeters.github.io/WPD/
 
 A BibTeX entry for LaTeX users is
@@ -193,7 +193,7 @@ A BibTeX entry for LaTeX users is
     title = {WPD: World Panel Data: A Macroeconomic Data Visualization and Analysis Toolkit},
     author = {Benjamin Peeters},
     year = {2024},
-    note = {R package version 0.0.41},
+    note = {R package version 0.0.42},
     url = {https://benjaminpeeters.github.io/WPD/},
   }
 ```

@@ -33,6 +33,9 @@ wp_plot_series(data,
                right_axis = "Current Account",
                title = "GDP and Current Account of the United States")
 
+## ----fig.cap="", echo=FALSE---------------------------------------------------
+knitr::include_graphics("figures/test-01-series-simple-01.png")
+
 ## ----available-data-----------------------------------------------------------
 # View quarterly data
 wp_info("Q")
