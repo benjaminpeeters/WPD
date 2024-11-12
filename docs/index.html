@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">WPD</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.34</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.35</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -209,7 +209,7 @@
 To cite package 'WPD' in publications use:
 
   Benjamin Peeters (2024). WPD: World Panel Data: A Macroeconomic Data
-  Visualization and Analysis Toolkit. R package version 0.0.34.
+  Visualization and Analysis Toolkit. R package version 0.0.35.
   https://benjaminpeeters.github.io/WPD/
 
 A BibTeX entry for LaTeX users is
@@ -218,7 +218,7 @@ A BibTeX entry for LaTeX users is
     title = {WPD: World Panel Data: A Macroeconomic Data Visualization and Analysis Toolkit},
     author = {Benjamin Peeters},
     year = {2024},
-    note = {R package version 0.0.34},
+    note = {R package version 0.0.35},
     url = {https://benjaminpeeters.github.io/WPD/},
   }</code></pre>
 </div>
@@ -298,14 +298,37 @@ Maddison Project Database 2023.</p></li>
 <h2 id="development-and-contributions">Development and Contributions<a class="anchor" aria-label="anchor" href="#development-and-contributions"></a>
 </h2>
 <p>We welcome contributions! Please read our <a href="CONTRIBUTING.html">Contributing Guide</a> for details on how to submit pull requests, report issues, and contribute to documentation.</p>
-<p>In the future I would like to:</p>
+<p>⚠️ <strong>Important Note</strong>: Currently, there are known issues with legend rendering when using ggplot2 3.5.x. For optimal visualization, we recommend using ggplot2 3.4.x. You can install the recommended version using:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Install specific ggplot2 version</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_version.html" class="external-link">install_version</a></span><span class="op">(</span><span class="st">"ggplot2"</span>, version <span class="op">=</span> <span class="st">"3.4.3"</span><span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="future-developments">Future Developments<a class="anchor" aria-label="anchor" href="#future-developments"></a>
+</h3>
+<p>We are actively working on extending the package’s functionality. Here are our planned features:</p>
 <ul>
-<li>include additional database such as WID data, work by Aizenman, etc.</li>
-<li>make possible to use ISO2 and full names instead of only ISO3</li>
-<li>make possible to enter only one year</li>
-<li>make wp_get_category able to return previous URSS ISO codes</li>
-<li>create wp_quick which jointly use wp_data and wp_plot_* to produce useful graphs (for example, on balance of payments)</li>
+<li>Expand database coverage:<ul>
+<li>Include World Inequality Database (WID)</li>
+<li>Incorporate Aizenman’s research data</li>
+<li>Add datasets from additional researchers</li>
 </ul>
+</li>
+<li>Enhance country identification flexibility:<ul>
+<li>Support ISO2 codes and full country names in <code><a href="reference/wp_data.html">wp_data()</a></code>
+</li>
+<li>Enable single-year queries in <code><a href="reference/wp_data.html">wp_data()</a></code>
+</li>
+<li>Add support for historical USSR ISO codes in <code><a href="reference/wp_get_category.html">wp_get_category()</a></code>
+</li>
+</ul>
+</li>
+<li>Improve user experience:<ul>
+<li>Develop <code>wp_quick()</code> for streamlined data visualization (e.g., balance of payments graphs)</li>
+<li>Enhance <code><a href="reference/wp_info.html">wp_info()</a></code> to display timespan and country coverage for each indicator</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

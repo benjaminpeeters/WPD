@@ -49,7 +49,10 @@ validate_commit_message <- function(msg) {
 #' @return Valid commit message
 get_valid_commit_message <- function() {
   while (TRUE) {
-    commit_msg <- readline(prompt = "Enter commit message (or press Enter for default message): ")
+    # commit_msg <- readline(prompt = "Enter commit message (or press Enter for default message): ")
+
+    # Skip question (to comment to have the question back)
+    commit_msg <- ""
     
     # Handle empty input (default message)
     if (commit_msg == "") {

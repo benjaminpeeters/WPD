@@ -182,7 +182,7 @@ citation("WPD")
 To cite package 'WPD' in publications use:
 
   Benjamin Peeters (2024). WPD: World Panel Data: A Macroeconomic Data
-  Visualization and Analysis Toolkit. R package version 0.0.34.
+  Visualization and Analysis Toolkit. R package version 0.0.35.
   https://benjaminpeeters.github.io/WPD/
 
 A BibTeX entry for LaTeX users is
@@ -191,7 +191,7 @@ A BibTeX entry for LaTeX users is
     title = {WPD: World Panel Data: A Macroeconomic Data Visualization and Analysis Toolkit},
     author = {Benjamin Peeters},
     year = {2024},
-    note = {R package version 0.0.34},
+    note = {R package version 0.0.35},
     url = {https://benjaminpeeters.github.io/WPD/},
   }
 ```
@@ -275,11 +275,31 @@ We welcome contributions\! Please read our [Contributing
 Guide](CONTRIBUTING.md) for details on how to submit pull requests,
 report issues, and contribute to documentation.
 
-In the future I would like to:
+⚠️ **Important Note**: Currently, there are known issues with legend
+rendering when using ggplot2 3.5.x. For optimal visualization, we
+recommend using ggplot2 3.4.x. You can install the recommended version
+using:
 
-  - include additional database such as WID data, work by Aizenman, etc.
-  - make possible to use ISO2 and full names instead of only ISO3
-  - make possible to enter only one year
-  - make wp\_get\_category able to return previous URSS ISO codes
-  - create wp\_quick which jointly use wp\_data and wp\_plot\_\* to
-    produce useful graphs (for example, on balance of payments)
+``` r
+# Install specific ggplot2 version
+remotes::install_version("ggplot2", version = "3.4.3")
+```
+
+### Future Developments
+
+We are actively working on extending the package’s functionality. Here
+are our planned features:
+
+  - Expand database coverage:
+      - Include World Inequality Database (WID)
+      - Incorporate Aizenman’s research data
+      - Add datasets from additional researchers
+  - Enhance country identification flexibility:
+      - Support ISO2 codes and full country names in `wp_data()`
+      - Enable single-year queries in `wp_data()`
+      - Add support for historical USSR ISO codes in `wp_get_category()`
+  - Improve user experience:
+      - Develop `wp_quick()` for streamlined data visualization (e.g.,
+        balance of payments graphs)
+      - Enhance `wp_info()` to display timespan and country coverage for
+        each indicator
