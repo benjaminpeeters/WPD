@@ -421,7 +421,7 @@ in_create_title_panel <- function(title = NULL,           # string/NULL: main ti
 #' - Margins: Optimized for readability
 #'
 #' @keywords internal
-in_theme_plot <- function(base_size = 16) {         # numeric: base font size that scales all text elements
+in_theme_plot <- function(base_size = 16, bg = "transparent") {         # numeric: base font size that scales all text elements
 
     ggplot2::theme_minimal(base_size = base_size) +
         ggplot2::theme(
@@ -442,10 +442,10 @@ in_theme_plot <- function(base_size = 16) {         # numeric: base font size th
             # Panel elements
             panel.grid.major = ggplot2::element_line(color = "gray50", size = 0.05),
             panel.grid.minor = ggplot2::element_blank(),
-            plot.background = ggplot2::element_rect(fill = "white", color = NA),
-            panel.background = ggplot2::element_rect(fill = NA),
+            panel.background = ggplot2::element_rect(fill = bg, color = NA),
+            plot.background = ggplot2::element_rect(fill = bg, color = NA),
             plot.margin = ggplot2::margin(t = 5, r = 0, b = 0, l = 5, unit = "pt"),
-            panel.ontop = TRUE,
+            # panel.ontop = TRUE,
             
             # Strip text (for faceting)
             strip.text = ggplot2::element_text(size = base_size, face = "bold"),
@@ -554,12 +554,15 @@ in_scale_y <- function(y_axis = NULL,             # string/NULL: axis label
 in_print_and_save <- function(plot,                    # ggplot2 object: the plot to display/save
                              print = TRUE,              # logical: whether to display the plot in current device
                              filename = NULL,           # string/NULL: output filename without extension
-                             dim) {                     # numeric vector: plot dimensions c(width, height) in inches
-    # Create new device with specified dimensions
-    dev.new(width = dim[1], height = dim[2], unit = "in", noRStudioGD = TRUE)
+                             dim,
+                             bg = TRUE) {                     # numeric vector: plot dimensions c(width, height) in inches
 
+    plot <- plot & ggplot2::theme(plot.background = ggplot2::element_rect(fill = "transparent", color = NA),
+                                panel.background = ggplot2::element_rect(fill = "transparent", color = NA))
 
     if (print) {
+        # Create new device with specified dimensions
+        dev.new(width = dim[1], height = dim[2], unit = "in", noRStudioGD = TRUE)
         print(plot)
     }
     
@@ -569,8 +572,8 @@ in_print_and_save <- function(plot,                    # ggplot2 object: the plo
                plot = plot, 
                width = dim[1], 
                height = dim[2], 
-               dpi = 300, 
-               bg = "white")
+               bg = "transparent",
+               dpi = 300)
         
         ggplot2::ggsave(paste0(filename, ".pdf"), 
                plot = plot, 

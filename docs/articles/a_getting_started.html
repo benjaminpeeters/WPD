@@ -11,6 +11,164 @@
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Getting Started with WPD">
+<!-- Dark Mode Implementation --><!-- Cookie Functions --><script>
+  function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+
+  function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  // Initial dark mode check
+  (function() {
+    if (getCookie('darkMode') === 'true') {
+      document.documentElement.classList.add('dark-mode');
+      document.documentElement.style.backgroundColor = '#1a1a1a';
+      document.documentElement.style.color = '#e6e6e6';
+    }
+  })();
+
+  // Dark mode toggle setup
+  document.addEventListener('DOMContentLoaded', function() {
+    const button = document.createElement('button');
+    button.className = 'dark-mode-toggle';
+    button.setAttribute('aria-label', 'Toggle dark mode');
+
+    function updateButtonIcon() {
+      const isDark = document.documentElement.classList.contains('dark-mode');
+      button.innerHTML = isDark ? '☀️' : '🌒';
+      button.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+    }
+
+    button.onclick = function() {
+      const isDark = !document.documentElement.classList.contains('dark-mode');
+      if (isDark) {
+        document.documentElement.classList.add('dark-mode');
+      } else {
+        document.documentElement.classList.remove('dark-mode');
+      }
+      setCookie('darkMode', isDark, 365);
+      updateButtonIcon();
+    };
+
+    updateButtonIcon();
+    document.body.appendChild(button);
+  });
+</script><!-- Dark Mode Styles --><style>
+  .dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    padding: 10px;
+    border-radius: 50%;
+    border: none;
+    background: #333;
+    color: white;
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    font-size: 20px;
+  }
+
+  .dark-mode-toggle:hover {
+    background: #444;
+  }
+
+  .dark-mode {
+    --bs-body-bg: #1a1a1a !important;
+    --bs-body-color: #e6e6e6 !important;
+    --bs-link-color: #7cb7ff !important;
+  }
+
+  .dark-mode body {
+    background-color: #1a1a1a !important;
+    color: #e6e6e6 !important;
+  }
+
+  .dark-mode .navbar {
+    background-color: #2d2d2d !important;
+  }
+
+  .dark-mode footer,
+  .dark-mode .authors,
+  .dark-mode .footer small,
+  .dark-mode .developer,
+  .dark-mode .roles,
+  .dark-mode [class^="developers"],
+  .dark-mode .citation small {
+    color: #e6e6e6 !important;
+  }
+
+  .dark-mode .roles li {
+    color: #e6e6e6 !important;
+    background-color: #2d2d2d !important;
+  }
+
+  .dark-mode pre.sourceCode {
+    background-color: #1a1a1a !important;
+    border: 1px solid #2d2d2d !important;
+  }
+
+  .dark-mode code {
+    background-color: #2d2d2d !important;
+    color: #e6e6e6 !important;
+  }
+
+  .dark-mode pre code {
+    color: #e6e6e6 !important;
+  }
+
+  .dark-mode pre:not(.sourceCode) {
+    background-color: #2d2d2d !important;
+    color: #e6e6e6 !important;
+    border: 1px solid #3d3d3d !important;
+  }
+
+  .dark-mode pre code span.co { color: #6a9955 !important; }
+  .dark-mode pre code span.st { color: #ce9178 !important; }
+  .dark-mode pre code span.dv { color: #b5cea8 !important; }
+  .dark-mode pre code span.kw { color: #569cd6 !important; }
+  .dark-mode pre code span.fu { color: #dcdcaa !important; }
+  .dark-mode pre code span.op { color: #d4d4d4 !important; }
+  .dark-mode pre code span.va { color: #9cdcfe !important; }
+
+  .dark-mode img:not([src*=".png"]) {
+    filter: invert(0.85) hue-rotate(180deg);
+  }
+
+  .dark-mode table {
+    color: #e6e6e6;
+    background-color: #2d2d2d;
+  }
+
+  .dark-mode .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #333333;
+  }
+
+  .dark-mode .text-muted,
+  .dark-mode .text-secondary {
+    color: #a0a0a0 !important;
+  }
+</style>
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -20,7 +178,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">WPD</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.42</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.43</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +210,7 @@
       <h1>Getting Started with WPD</h1>
                         <h4 data-toc-skip class="author">Benjamin Peeters</h4>
             
-            <h4 data-toc-skip class="date">2024-11-12</h4>
+            <h4 data-toc-skip class="date">2024-11-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/benjaminpeeters/WPD/blob/HEAD/vignettes/a_getting_started.Rmd" class="external-link"><code>vignettes/a_getting_started.Rmd</code></a></small>
       <div class="d-none name"><code>a_getting_started.Rmd</code></div>
@@ -130,7 +288,7 @@
 <span><span class="co">#&gt; <span style="color: #00BBBB;"> [LEGEND] Legend items (display): GDP, Current Account</span> </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;"> [LEGEND] plot_type = 'series' | legend_cols = 2' | legend_height = 1.33333333333333' | n_items = 2</span> </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;"> [ADD_REF] References: IMF's Balance of Payments and International Investment Position; World Bank Indicators</span></span></span></code></pre></div>
-<p><img src="figures%2Ftest-01-series-simple-01.png" width="1500" style="display: block; margin: auto;"></p>
+<p><img src="figures%2Ftest-01-series-simple-01.png" width="1500" alt="Time series plot showing GDP and Current Account of the United States" style="display: block; margin: auto;"></p>
 </div>
 </div>
 <div class="section level2">

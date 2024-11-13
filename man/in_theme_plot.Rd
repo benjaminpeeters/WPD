@@ -4,7 +4,7 @@
 \alias{in_theme_plot}
 \title{Create Consistent Theme for All Plots}
 \usage{
-in_theme_plot(base_size = 16)
+in_theme_plot(base_size = 16, bg = "transparent")
 }
 \description{
 Internal function that defines the common visual theme used across all plot types.

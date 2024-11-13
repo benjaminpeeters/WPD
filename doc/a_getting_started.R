@@ -33,7 +33,7 @@ wp_plot_series(data,
                right_axis = "Current Account",
                title = "GDP and Current Account of the United States")
 
-## ----fig.cap="", echo=FALSE---------------------------------------------------
+## ----fig.cap="", echo=FALSE, out.extra='alt="Time series plot showing GDP and Current Account of the United States"'----
 knitr::include_graphics("figures/test-01-series-simple-01.png")
 
 ## ----available-data-----------------------------------------------------------

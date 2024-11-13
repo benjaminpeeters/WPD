@@ -7,7 +7,164 @@ based on the input data structure and specified parameters."><meta property="og:
 single or multiple countries, stacked area plots, dual axes, and various visual
 customizations (e.g., references and legend).
 The function automatically determines the most appropriate plot type
-based on the input data structure and specified parameters."></head><body>
+based on the input data structure and specified parameters."><!-- Dark Mode Implementation --><!-- Cookie Functions --><script>
+  function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+
+  function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  // Initial dark mode check
+  (function() {
+    if (getCookie('darkMode') === 'true') {
+      document.documentElement.classList.add('dark-mode');
+      document.documentElement.style.backgroundColor = '#1a1a1a';
+      document.documentElement.style.color = '#e6e6e6';
+    }
+  })();
+
+  // Dark mode toggle setup
+  document.addEventListener('DOMContentLoaded', function() {
+    const button = document.createElement('button');
+    button.className = 'dark-mode-toggle';
+    button.setAttribute('aria-label', 'Toggle dark mode');
+
+    function updateButtonIcon() {
+      const isDark = document.documentElement.classList.contains('dark-mode');
+      button.innerHTML = isDark ? '☀️' : '🌒';
+      button.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+    }
+
+    button.onclick = function() {
+      const isDark = !document.documentElement.classList.contains('dark-mode');
+      if (isDark) {
+        document.documentElement.classList.add('dark-mode');
+      } else {
+        document.documentElement.classList.remove('dark-mode');
+      }
+      setCookie('darkMode', isDark, 365);
+      updateButtonIcon();
+    };
+
+    updateButtonIcon();
+    document.body.appendChild(button);
+  });
+</script><!-- Dark Mode Styles --><style>
+  .dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    padding: 10px;
+    border-radius: 50%;
+    border: none;
+    background: #333;
+    color: white;
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    font-size: 20px;
+  }
+
+  .dark-mode-toggle:hover {
+    background: #444;
+  }
+
+  .dark-mode {
+    --bs-body-bg: #1a1a1a !important;
+    --bs-body-color: #e6e6e6 !important;
+    --bs-link-color: #7cb7ff !important;
+  }
+
+  .dark-mode body {
+    background-color: #1a1a1a !important;
+    color: #e6e6e6 !important;
+  }
+
+  .dark-mode .navbar {
+    background-color: #2d2d2d !important;
+  }
+
+  .dark-mode footer,
+  .dark-mode .authors,
+  .dark-mode .footer small,
+  .dark-mode .developer,
+  .dark-mode .roles,
+  .dark-mode [class^="developers"],
+  .dark-mode .citation small {
+    color: #e6e6e6 !important;
+  }
+
+  .dark-mode .roles li {
+    color: #e6e6e6 !important;
+    background-color: #2d2d2d !important;
+  }
+
+  .dark-mode pre.sourceCode {
+    background-color: #1a1a1a !important;
+    border: 1px solid #2d2d2d !important;
+  }
+
+  .dark-mode code {
+    background-color: #2d2d2d !important;
+    color: #e6e6e6 !important;
+  }
+
+  .dark-mode pre code {
+    color: #e6e6e6 !important;
+  }
+
+  .dark-mode pre:not(.sourceCode) {
+    background-color: #2d2d2d !important;
+    color: #e6e6e6 !important;
+    border: 1px solid #3d3d3d !important;
+  }
+
+  .dark-mode pre code span.co { color: #6a9955 !important; }
+  .dark-mode pre code span.st { color: #ce9178 !important; }
+  .dark-mode pre code span.dv { color: #b5cea8 !important; }
+  .dark-mode pre code span.kw { color: #569cd6 !important; }
+  .dark-mode pre code span.fu { color: #dcdcaa !important; }
+  .dark-mode pre code span.op { color: #d4d4d4 !important; }
+  .dark-mode pre code span.va { color: #9cdcfe !important; }
+
+  .dark-mode img:not([src*=".png"]) {
+    filter: invert(0.85) hue-rotate(180deg);
+  }
+
+  .dark-mode table {
+    color: #e6e6e6;
+    background-color: #2d2d2d;
+  }
+
+  .dark-mode .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #333333;
+  }
+
+  .dark-mode .text-muted,
+  .dark-mode .text-secondary {
+    color: #a0a0a0 !important;
+  }
+</style></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -15,7 +172,7 @@ based on the input data structure and specified parameters."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">WPD</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.42</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.43</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">

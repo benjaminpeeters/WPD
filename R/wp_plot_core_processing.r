@@ -192,6 +192,10 @@ in_plot_core <- function(data,                   # data.frame with required colu
         dimensions["height"] <- dimensions["height"] + 1  # Add extra inch for title/subtitle
     }
     
+
+
+
+
     # Print and save
     in_print_and_save(plot = final_plot, print = print, filename = filename, dim = dimensions)
     

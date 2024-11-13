@@ -4,7 +4,7 @@
 \alias{in_print_and_save}
 \title{Handle Plot Display and File Output}
 \usage{
-in_print_and_save(plot, print = TRUE, filename = NULL, dim)
+in_print_and_save(plot, print = TRUE, filename = NULL, dim, bg = TRUE)
 }
 \description{
 Internal function that manages plot display and file saving operations.

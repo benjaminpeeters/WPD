@@ -1,6 +1,6 @@
 Package: WPD
 Title: World Panel Data: A Macroeconomic Data Visualization and Analysis Toolkit
-Version: 0.0.42
+Version: 0.0.43
 Authors@R: 
     person("Benjamin", "Peeters", , "benjaminpeeters@protonmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-5095-2021"))
@@ -38,5 +38,5 @@ Config/testthat/edition: 3
 VignetteBuilder: knitr
 URL: https://benjaminpeeters.github.io/WPD/
 BugReports: https://github.com/benjaminpeeters/WPD/issues
-Date: 2024-11-12
+Date: 2024-11-13
 Language: en-US

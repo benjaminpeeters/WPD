@@ -359,23 +359,35 @@ pre code {
 </div>
 
 
-<pre class="r"><code># Function to save data as R code
+<pre class="r"><code># Define the actual code as strings
+basic_code &lt;- &#39;basic_example &lt;- wp_data(
+  ISO = &quot;USA&quot;,
+  formula = &quot;100*CU_C/GDP_C&quot;,
+  years = c(2000, 2002)
+)&#39;
+
+advanced_code &lt;- &#39;advanced_example &lt;- wp_data(
+  ISO = c(&quot;CHN&quot;, &quot;JPN&quot;),
+  formula = c(&quot;EXg_C/GDP_C&quot;),
+  years = c(2010, 2012)
+)&#39;
+
+write_md &lt;- function(text) {
+  cat(text, &quot;\n&quot;, file = VIGNETTE_FILE, append = TRUE)
+}
+
 save_data_code &lt;- function(data, filename) {
   dump_code &lt;- paste(
     sprintf(&quot;%s &lt;- structure(&quot;, filename),
     paste(deparse(data), collapse=&quot;\n&quot;),
     &quot;)&quot;,
-    sep=&quot;\n&quot;
+    sep = &quot;\n&quot;
   )
-  writeLines(dump_code, file.path(&quot;../data&quot;, paste0(filename, &quot;.R&quot;)))
+  writeLines(dump_code, file.path(DATA_DIR, paste0(filename, &quot;.R&quot;)))
 }
 
-# Generate basic example
-basic_example &lt;- wp_data(
-  ISO = &quot;USA&quot;,
-  formula = &quot;100*CU_C/GDP_C&quot;,
-  years = c(2000, 2002)
-)</code></pre>
+# Execute the code strings to create the data
+eval(parse(text = basic_code))</code></pre>
 <pre><code>## [0;36m [Step 1] Input Validation.[0m 
 ## [0;36m [Step 2] Data Filtering (ISO codes, Symbols, and Years).[0m 
 ## [0;36m [LOADING] Loading quarterly data (first use)[0m 
@@ -385,14 +397,7 @@ basic_example &lt;- wp_data(
 ## [0;32m  ---  Step 6-7: Data Processing (Loop for each country).[0m 
 ## [0;32m  ---  [0m 
 ## [0;36m [Step 10] Clean database [remove NAs in output] - clean is TRUE.[0m</code></pre>
-<pre class="r"><code>save_data_code(basic_example, &quot;basic_example&quot;)
-
-# Generate advanced example
-advanced_example &lt;- wp_data(
-  ISO = c(&quot;CHN&quot;, &quot;JPN&quot;),
-  formula = c(&quot;EXg_C/GDP_C&quot;),
-  years = c(2010, 2012)
-)</code></pre>
+<pre class="r"><code>eval(parse(text = advanced_code))</code></pre>
 <pre><code>## [0;36m [Step 1] Input Validation.[0m 
 ## [0;36m [Step 2] Data Filtering (ISO codes, Symbols, and Years).[0m 
 ## [0;36m [Steps 3 to 7] Loop through each formula.[0m 
@@ -401,15 +406,12 @@ advanced_example &lt;- wp_data(
 ## [0;32m  ---  Step 6-7: Data Processing (Loop for each country).[0m 
 ## [0;32m  ---  [0m 
 ## [0;36m [Step 10] Clean database [remove NAs in output] - clean is TRUE.[0m</code></pre>
-<pre class="r"><code>save_data_code(advanced_example, &quot;advanced_example&quot;)
+<pre class="r"><code># Save the generated data
+save_data_code(basic_example, &quot;basic_example&quot;)
+save_data_code(advanced_example, &quot;advanced_example&quot;)
 
-# Validation step for data generation
-stopifnot(
-  file.exists(&quot;../data/basic_example.R&quot;),
-  file.exists(&quot;../data/advanced_example.R&quot;)
-)</code></pre>
-<pre class="r"><code># Generate and save plots
-p1 &lt;- wp_plot_series(basic_example, filename = &quot;../figures/basic_plot&quot;)</code></pre>
+# Generate plots
+wp_plot_series(basic_example, filename = file.path(FIGURES_DIR, &quot;basic_plot&quot;))</code></pre>
 <pre><code>## [0;36m [COUNTRY] Column Country added to data[0m 
 ## [0;36m [CONFIG] n_countries = 1 | n_indicators = 1 | plot_type = series[0m 
 ## [0;36m [SUBPLOT] call &#39;in_plot_multi_indic_one_ctry&#39;[0m 
@@ -417,7 +419,7 @@ p1 &lt;- wp_plot_series(basic_example, filename = &quot;../figures/basic_plot&qu
 ## [0;36m [LEGEND] Legend items (display): 100*CU_C/GDP_C[0m 
 ## [0;36m [LEGEND] plot_type = &#39;series&#39; | legend_cols = 1&#39; | legend_height = 1.33333333333333&#39; | n_items = 1[0m 
 ## [0;36m [ADD_REF] References: IMF&#39;s Balance of Payments and International Investment Position; World Bank Indicators[0m</code></pre>
-<pre class="r"><code>p2 &lt;- wp_plot_bar(advanced_example, filename = &quot;../figures/advanced_plot&quot;)</code></pre>
+<pre class="r"><code>wp_plot_bar(advanced_example, filename = file.path(FIGURES_DIR, &quot;advanced_plot&quot;))</code></pre>
 <pre><code>## [0;36m [COUNTRY] Column Country added to data[0m 
 ## [0;36m [CONFIG] n_countries = 2 | n_indicators = 1 | plot_type = bar[0m 
 ## [0;31m/!\  The following parameters are not used in bar plots and will be ignored: subfig_title, subfig_title[0m 
@@ -429,32 +431,11 @@ p1 &lt;- wp_plot_series(basic_example, filename = &quot;../figures/basic_plot&qu
 ## [0;36m [ADD_REF] References: IMF&#39;s Balance of Payments and International Investment Position; World Bank Indicators[0m</code></pre>
 <pre><code>## Warning: Removed 3 rows containing missing values (`geom_point()`).
 ## Removed 3 rows containing missing values (`geom_point()`).
+## Removed 3 rows containing missing values (`geom_point()`).
 ## Removed 3 rows containing missing values (`geom_point()`).</code></pre>
-<pre class="r"><code># Validation step for figure generation
-stopifnot(
-  file.exists(&quot;../figures/basic_plot.png&quot;),
-  file.exists(&quot;../figures/advanced_plot.png&quot;)
-)</code></pre>
-<pre class="r"><code># Function to write a code chunk to file
-write_chunk &lt;- function(filename, chunk_name, code, eval = TRUE, include = TRUE) {
-  chunk_options &lt;- sprintf(&quot;{r %s%s%s}&quot;, 
-                         chunk_name,
-                         if (!eval) &quot;, eval=FALSE&quot; else &quot;&quot;,
-                         if (!include) &quot;, include=FALSE&quot; else &quot;&quot;)
-  cat(sprintf(&quot;\n```%s\n%s\n```\n\n&quot;, chunk_options, code), 
-      file = filename, append = TRUE)
-}
-
-# Function to write markdown text to file
-write_md &lt;- function(filename, text) {
-  cat(text, &quot;\n\n&quot;, file = filename, append = TRUE)
-}
-
-# Start with fresh file
-file.create(&quot;../example_import.Rmd&quot;)</code></pre>
-<pre><code>## [1] TRUE</code></pre>
+<!-- ########################## GENERATE THE VIGNETTE ########################## -->
 <pre class="r"><code># Write YAML header
-write_md(&quot;../example_import.Rmd&quot;, &#39;---
+write_md(&#39;---
 title: &quot;Introduction to WPD&quot;
 output: rmarkdown::html_vignette
 vignette: &gt;
@@ -462,91 +443,79 @@ vignette: &gt;
   %\\VignetteEngine{knitr::rmarkdown}
   %\\VignetteEncoding{UTF-8}
 ---
-&#39;)
 
 # Write setup chunk
-write_chunk(&quot;../example_import.Rmd&quot;, 
-           &quot;vignette_setup&quot;, 
-           &#39;library(WPD)
+\```{r setup, include=FALSE}
+library(WPD)
 # Load precomputed data
 source(&quot;data/basic_example.R&quot;)
-source(&quot;data/advanced_example.R&quot;)&#39;,
-           include = FALSE)
+source(&quot;data/advanced_example.R&quot;)
+\```&#39;)
 
-# Write Basic Analysis section
-write_md(&quot;../example_import.Rmd&quot;, &#39;## Basic Analysis: Single Country Example
 
-To analyze a country\&#39;s economic indicators, start with a simple example. Here\&#39;s how to calculate the US current account as a percentage of GDP:&#39;)
+##################################################################################
+# Write basic analysis section
+write_md(sprintf(&#39;## Basic Analysis: Single Country Example
 
-write_chunk(&quot;../example_import.Rmd&quot;, 
-           &quot;basic_example_code&quot;,
-           &#39;basic_example &lt;- wp_data(
-  ISO = &quot;USA&quot;,
-  formula = &quot;100*CU_C/GDP_C&quot;,
-  years = c(2000, 2002)
-)&#39;,
-           eval = FALSE)
+To analyze a country\&#39;s economic indicators, start with a simple example. Here\&#39;s how to calculate the US current account as a percentage of GDP:
 
-write_md(&quot;../example_import.Rmd&quot;, &#39;This returns a data frame with the results:&#39;)
+\```{r basic_example_code, eval=FALSE}
+%s
+\```
 
-write_chunk(&quot;../example_import.Rmd&quot;,
-           &quot;show_basic_results&quot;,
-           &#39;head(basic_example)&#39;)
+This returns a data frame with the results:
 
-write_md(&quot;../example_import.Rmd&quot;, &#39;We can visualize this data using `wp_plot_series()`:&#39;)
+\```{r show_basic_results}
+head(basic_example)
+\```
 
-write_chunk(&quot;../example_import.Rmd&quot;,
-           &quot;basic_plot_code&quot;,
-           &#39;wp_plot_series(basic_example)&#39;,
-           eval = FALSE)
+We can visualize this data using `wp_plot_series()`:
 
-write_md(&quot;../example_import.Rmd&quot;, &#39;![Basic Time Series Plot](figures/basic_plot.png)&#39;)
+\```{r basic_plot_code, eval=FALSE}
+wp_plot_series(basic_example)
+\```
 
-# Write Advanced Analysis section
-write_md(&quot;../example_import.Rmd&quot;, &#39;## Advanced Analysis: Multiple Countries
+![Basic Time Series Plot](figures/basic_plot.png)&#39;, basic_code))
 
-For comparative analysis, we can examine multiple countries. Let\&#39;s look at export ratios for China and Japan:&#39;)
 
-write_chunk(&quot;../example_import.Rmd&quot;,
-           &quot;advanced_example_code&quot;,
-           &#39;advanced_example &lt;- wp_data(
-  ISO = c(&quot;CHN&quot;, &quot;JPN&quot;),
-  formula = c(&quot;EXg_C/GDP_C&quot;),
-  years = c(2010, 2012)
-)&#39;,
-           eval = FALSE)
 
-write_md(&quot;../example_import.Rmd&quot;, &#39;Here\&#39;s the resulting data:&#39;)
+##################################################################################
+# Write advanced analysis section
+write_md(&#39;## Advanced Analysis: Multiple Countries
 
-write_chunk(&quot;../example_import.Rmd&quot;,
-           &quot;show_advanced_results&quot;,
-           &#39;head(advanced_example)&#39;)
+For comparative analysis, we can examine multiple countries. Let\&#39;s look at export ratios for China and Japan:
 
-write_md(&quot;../example_import.Rmd&quot;, &#39;We can create a bar plot to compare these values:&#39;)
+\```{r advanced_example_code, eval=FALSE}&#39;)
+write_md(advanced_code)
+write_md(&#39;\```
 
-write_chunk(&quot;../example_import.Rmd&quot;,
-           &quot;advanced_plot_code&quot;,
-           &#39;wp_plot_bar(advanced_example)&#39;,
-           eval = FALSE)
+Here\&#39;s the resulting data:
 
-write_md(&quot;../example_import.Rmd&quot;, &#39;![Advanced Bar Plot](figures/advanced_plot.png)&#39;)
+\```{r show_advanced_results}
+head(advanced_example)
+\```
 
-# Basic validation
-if (!file.exists(&quot;../example_import.Rmd&quot;)) {
-  stop(&quot;Failed to generate vignette file&quot;)
-}
+We can create a bar plot to compare these values:
 
-message(&quot;Successfully generated:&quot;)</code></pre>
-<pre><code>## Successfully generated:</code></pre>
-<pre class="r"><code>message(&quot;- Data files in ../data/&quot;)</code></pre>
-<pre><code>## - Data files in ../data/</code></pre>
-<pre class="r"><code>message(&quot;- Figures in ../figures/&quot;)</code></pre>
-<pre><code>## - Figures in ../figures/</code></pre>
-<pre class="r"><code>message(&quot;- Vignette file at ../example_import.Rmd&quot;)</code></pre>
-<pre><code>## - Vignette file at ../example_import.Rmd</code></pre>
-<pre class="r"><code># This chunk is not run during generation but can be run manually after
-# to validate the generated vignette
-rmarkdown::render(&quot;../example_import.Rmd&quot;, output_format = &quot;html_document&quot;)</code></pre>
+\```{r advanced_plot_code, eval=FALSE}
+wp_plot_bar(advanced_example)
+\```
+
+![Advanced Bar Plot](figures/advanced_plot.png)&#39;)</code></pre>
+<pre class="r"><code># Validation checks
+required_files &lt;- c(
+  file.path(DATA_DIR, &quot;basic_example.R&quot;),
+  file.path(DATA_DIR, &quot;advanced_example.R&quot;),
+  file.path(FIGURES_DIR, &quot;basic_plot.png&quot;),
+  file.path(FIGURES_DIR, &quot;advanced_plot.png&quot;),
+  VIGNETTE_FILE
+)
+
+missing_files &lt;- required_files[!file.exists(required_files)]
+
+if (length(missing_files) &gt; 0) {
+  stop(&quot;Missing files: &quot;, paste(missing_files, collapse = &quot;, &quot;))
+}</code></pre>
 
 
 
