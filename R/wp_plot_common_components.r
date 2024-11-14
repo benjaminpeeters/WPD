@@ -413,9 +413,8 @@ in_create_title_panel <- function(title = NULL,           # string/NULL: main ti
 #' Uses: theme_minimal
 #' 
 #' Theme elements:
-#' - Font family: CM Roman
 #' - Grid: Major lines only, minimal appearance
-#' - Panel: White background, no border
+#' - Panel: transparent background, no border
 #' - Text: Consistent sizing and positioning
 #' - Legend: Bottom position with spacing rules
 #' - Margins: Optimized for readability
@@ -461,8 +460,6 @@ in_theme_plot <- function(base_size = 16, bg = "transparent") {         # numeri
             ),
             plot.caption.position = "plot"
             
-            # Common text properties
-            # text = ggplot2::element_text(family = "CM Roman")
         )
 }
 
@@ -533,8 +530,6 @@ in_scale_y <- function(y_axis = NULL,             # string/NULL: axis label
 # PRINT AND SAVE
 
 
-
-
 #' Handle Plot Display and File Output
 #' 
 #' @description
@@ -546,7 +541,7 @@ in_scale_y <- function(y_axis = NULL,             # string/NULL: axis label
 #' Uses: dev.new, ggsave
 #' 
 #' File output details:
-#' - PNG: 300 DPI with white background
+#' - PNG: 300 DPI with background controlled by parameter bg
 #' - PDF: Uses cairo_pdf device for better font handling
 #' - Both files saved in 'img/' directory
 #'
@@ -554,11 +549,10 @@ in_scale_y <- function(y_axis = NULL,             # string/NULL: axis label
 in_print_and_save <- function(plot,                    # ggplot2 object: the plot to display/save
                              print = TRUE,              # logical: whether to display the plot in current device
                              filename = NULL,           # string/NULL: output filename without extension
-                             dim,
-                             bg = TRUE) {                     # numeric vector: plot dimensions c(width, height) in inches
+                             dim,                       # numeric vector: plot dimensions c(width, height) in inches
+                             bg = "transparent") {
 
-    plot <- plot & ggplot2::theme(plot.background = ggplot2::element_rect(fill = "transparent", color = NA),
-                                panel.background = ggplot2::element_rect(fill = "transparent", color = NA))
+    plot <- plot & ggplot2::theme(plot.background = ggplot2::element_rect(fill = bg, color = NA))
 
     if (print) {
         # Create new device with specified dimensions
@@ -572,7 +566,7 @@ in_print_and_save <- function(plot,                    # ggplot2 object: the plo
                plot = plot, 
                width = dim[1], 
                height = dim[2], 
-               bg = "transparent",
+               bg = bg,
                dpi = 300)
         
         ggplot2::ggsave(paste0(filename, ".pdf"), 

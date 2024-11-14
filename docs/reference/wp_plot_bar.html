@@ -5,7 +5,31 @@ color grouping and value labels. The function automatically determines the most 
 plot type based on the number of indicators and specified parameters."><meta property="og:description" content="Creates bar plots for comparing values across countries, with support for mean or latest values,
 statistical indicators (range, median), and various visual customizations including
 color grouping and value labels. The function automatically determines the most appropriate
-plot type based on the number of indicators and specified parameters."><!-- Dark Mode Implementation --><!-- Cookie Functions --><script>
+plot type based on the number of indicators and specified parameters."><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-2W88ME92PL"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2W88ME92PL');
+</script><!-- SEO Meta Tags --><meta name="description" content="WPD: A comprehensive R package for accessing, analyzing and visualizing global economic and social data. Features panel data analysis, visualization tools, and country code utilities."><meta name="keywords" content="R package, economic data, panel data, data visualization, statistical analysis, country codes, time series, macroeconomic indicators, cross-country analysis"><meta name="author" content="Benjamin Peeters"><meta name="robots" content="index, follow"><link rel="canonical" href="https://benjaminpeeters.github.io/WPD/"><!-- Schema.org markup for better search results --><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "WPD",
+  "description": "A comprehensive R package for accessing, analyzing and visualizing global economic and social data",
+  "applicationCategory": "Statistical Software",
+  "operatingSystem": "Cross-platform",
+  "programmingLanguage": "R",
+  "author": {
+    "@type": "Person",
+    "name": "Benjamin Peeters"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script><!-- Dark Mode Implementation --><!-- Cookie Functions --><script>
   function setCookie(name, value, days) {
     var expires = "";
     if (days) {
@@ -117,35 +141,45 @@ plot type based on the number of indicators and specified parameters."><!-- Dark
     background-color: #2d2d2d !important;
   }
 
+  /* GitHub Dark theme for code blocks */
   .dark-mode pre.sourceCode {
-    background-color: #1a1a1a !important;
-    border: 1px solid #2d2d2d !important;
+    background-color: #0D1117 !important;
+    border: 1px solid #30363D !important;
   }
 
   .dark-mode code {
-    background-color: #2d2d2d !important;
-    color: #e6e6e6 !important;
+    background-color: #0D1117 !important;
+    color: #C9D1D9 !important;
   }
 
   .dark-mode pre code {
-    color: #e6e6e6 !important;
+    color: #C9D1D9 !important;
   }
 
   .dark-mode pre:not(.sourceCode) {
-    background-color: #2d2d2d !important;
-    color: #e6e6e6 !important;
-    border: 1px solid #3d3d3d !important;
+    background-color: #0D1117 !important;
+    color: #C9D1D9 !important;
+    border: 1px solid #30363D !important;
   }
 
-  .dark-mode pre code span.co { color: #6a9955 !important; }
-  .dark-mode pre code span.st { color: #ce9178 !important; }
-  .dark-mode pre code span.dv { color: #b5cea8 !important; }
-  .dark-mode pre code span.kw { color: #569cd6 !important; }
-  .dark-mode pre code span.fu { color: #dcdcaa !important; }
-  .dark-mode pre code span.op { color: #d4d4d4 !important; }
-  .dark-mode pre code span.va { color: #9cdcfe !important; }
+  /* GitHub Dark syntax highlighting */
+  .dark-mode pre code span.co { color: #8B949E !important; } /* Comments */
+  .dark-mode pre code span.st { color: #A5D6FF !important; } /* Strings */
+  .dark-mode pre code span.dv { color: #79C0FF !important; } /* Decimal values */
+  .dark-mode pre code span.kw { color: #FF7B72 !important; } /* Keywords */
+  .dark-mode pre code span.fu { color: #D2A8FF !important; } /* Functions */
+  .dark-mode pre code span.op { color: #C9D1D9 !important; } /* Operators */
+  .dark-mode pre code span.va { color: #FFA657 !important; } /* Variables */
+  .dark-mode pre code span.cn { color: #79C0FF !important; } /* Constants */
+  .dark-mode pre code span.sc { color: #C9D1D9 !important; } /* Special chars */
+  .dark-mode pre code span.ss { color: #A5D6FF !important; } /* Special strings */
+  .dark-mode pre code span.im { color: #D2A8FF !important; } /* Imports */
+  .dark-mode pre code span.dt { color: #FF7B72 !important; } /* Data types */
+  .dark-mode pre code span.dv { color: #79C0FF !important; } /* Decimal values */
+  .dark-mode pre code span.bn { color: #79C0FF !important; } /* Base N numbers */
+  .dark-mode pre code span.fl { color: #79C0FF !important; } /* Float numbers */
 
-  .dark-mode img:not([src*=".png"]) {
+  .dark-mode img {
     filter: invert(0.85) hue-rotate(180deg);
   }
 
@@ -162,6 +196,22 @@ plot type based on the number of indicators and specified parameters."><!-- Dark
   .dark-mode .text-secondary {
     color: #a0a0a0 !important;
   }
+</style><style>
+  /* Fixed TOC with only main sections */
+  #toc .nav .nav {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+  }
+  #toc .nav > li {
+      display: block !important;
+  }
+  #toc {
+      position: fixed !important;
+      overflow-x: hidden !important;
+  }
 </style></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
@@ -170,7 +220,7 @@ plot type based on the number of indicators and specified parameters."><!-- Dark
 
     <a class="navbar-brand me-2" href="../index.html">WPD</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.43</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.45</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -178,8 +228,8 @@ plot type based on the number of indicators and specified parameters."><!-- Dark
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="nav-item"><a class="nav-link" href="../articles/index.html">Articles</a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/index.html">Tutorials</a></li>
+<li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/benjaminpeeters/WPD/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
@@ -225,7 +275,8 @@ plot type based on the number of indicators and specified parameters.</p>
 <span>  verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  debug <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  size <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  base_size <span class="op">=</span> <span class="fl">16</span></span>
+<span>  base_size <span class="op">=</span> <span class="fl">16</span>,</span>
+<span>  bg <span class="op">=</span> <span class="st">"transparent"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -380,6 +431,12 @@ Default is FALSE.</p></dd>
 - Must be positive number
 Default is 16.</p></dd>
 
+
+<dt id="arg-bg">bg<a class="anchor" aria-label="anchor" href="#arg-bg"></a></dt>
+<dd><p>character; controls plot background color:
+- "transparent": transparent background (default)
+- Any valid color string: sets background to that color</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -427,7 +484,7 @@ the number of indicators:</p><ul><li><p>Single indicator:</p><ul><li><p>Simple b
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [CONFIG] n_countries = 3 | n_indicators = 1 | plot_type = bar</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">/!\  The following parameters are not used in bar plots and will be ignored: subfig_title, subfig_title</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [SUBPLOT] call 'in_plot_one_indic_bar'</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ARGS] Unused arguments for function 'plot_func': subfig_title</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ARGS] Unused arguments for function 'plot_func': subfig_title, bg</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [LEGEND] Legend items (display): GDP Growth</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [LEGEND] plot_type = 'bar' | legend_cols = 1' | legend_height = 1.33333333333333' | n_items = 1</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ADD_REF] References: World Bank</span> </span>
@@ -442,7 +499,7 @@ the number of indicators:</p><ul><li><p>Single indicator:</p><ul><li><p>Simple b
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [CONFIG] n_countries = 3 | n_indicators = 1 | plot_type = bar</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">/!\  The following parameters are not used in bar plots and will be ignored: subfig_title, subfig_title</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [SUBPLOT] call 'in_plot_one_indic_bar'</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ARGS] Unused arguments for function 'plot_func': subfig_title</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ARGS] Unused arguments for function 'plot_func': subfig_title, bg</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [LEGEND] Legend items (display): GDP Growth</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [LEGEND] plot_type = 'bar' | legend_cols = 1' | legend_height = 1.33333333333333' | n_items = 1</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ADD_REF] References: World Bank</span> </span>
@@ -456,7 +513,7 @@ the number of indicators:</p><ul><li><p>Single indicator:</p><ul><li><p>Simple b
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [CONFIG] n_countries = 3 | n_indicators = 1 | plot_type = bar</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">/!\  The following parameters are not used in bar plots and will be ignored: subfig_title, subfig_title</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [SUBPLOT] call 'in_plot_one_indic_bar'</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ARGS] Unused arguments for function 'plot_func': subfig_title</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ARGS] Unused arguments for function 'plot_func': subfig_title, bg</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [LEGEND] Legend items (display): GDP Growth</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [LEGEND] plot_type = 'bar' | legend_cols = 1' | legend_height = 1.33333333333333' | n_items = 1</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ADD_REF] References: World Bank</span> </span>
@@ -477,7 +534,7 @@ the number of indicators:</p><ul><li><p>Single indicator:</p><ul><li><p>Simple b
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">/!\  Setting color to 'Variable' for multi-indicator bar plot</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">/!\  The following parameters are not used in bar plots and will be ignored: subfig_title, subfig_title</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [SUBPLOT] call 'in_plot_multi_indic_bar'</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ARGS] Unused arguments for function 'plot_func': subfig_title, show_year</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [ARGS] Unused arguments for function 'plot_func': subfig_title, bg, show_year</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [MAIN] Starting multi-indicator bar plot</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [DATA] Starting data processing</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;"> [DATA] Variables found: GDP Growth, Inflation</span> </span>

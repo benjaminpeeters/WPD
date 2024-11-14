@@ -4,7 +4,7 @@
 \alias{in_print_and_save}
 \title{Handle Plot Display and File Output}
 \usage{
-in_print_and_save(plot, print = TRUE, filename = NULL, dim, bg = TRUE)
+in_print_and_save(plot, print = TRUE, filename = NULL, dim, bg = "transparent")
 }
 \description{
 Internal function that manages plot display and file saving operations.
@@ -16,7 +16,7 @@ Uses: dev.new, ggsave
 
 File output details:
 \itemize{
-\item PNG: 300 DPI with white background
+\item PNG: 300 DPI with background controlled by parameter bg
 \item PDF: Uses cairo_pdf device for better font handling
 \item Both files saved in 'img/' directory
 }

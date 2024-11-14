@@ -15,9 +15,8 @@ Uses: theme_minimal
 
 Theme elements:
 \itemize{
-\item Font family: CM Roman
 \item Grid: Major lines only, minimal appearance
-\item Panel: White background, no border
+\item Panel: transparent background, no border
 \item Text: Consistent sizing and positioning
 \item Legend: Bottom position with spacing rules
 \item Margins: Optimized for readability

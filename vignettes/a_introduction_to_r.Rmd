@@ -1,0 +1,284 @@
+---
+title: "R Basics: Getting Ready for WPD"
+author: "Benjamin Peeters"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{R Basics: Getting Ready for WPD}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# 🚀 Getting Started with R: Preparing for WPD
+
+Welcome! Before we can use the World Panel Data (WPD) package, we need to set up our working environment. This guide assumes you have no prior experience with R or programming. We'll walk through everything step by step.
+
+## 📥 Part 1: Setting Up Your Environment
+
+### What is R and RStudio?
+
+Before we start installing anything, let's understand what we're working with:
+
+- **R** is a programming language specifically designed for statistical computing and data analysis. Think of it as a powerful calculator that can handle large amounts of data.
+- **RStudio** is what we call an Integrated Development Environment (IDE) for R. Think of it as a sophisticated text editor that makes working with R much easier. It's like Microsoft Word, but for writing R code instead of documents.
+
+### Installing R
+
+#### Windows Installation
+1. Open your web browser and visit the [R Project Website](https://cran.r-project.org/)
+2. Look for the "Download R for Windows" link and click it
+3. Click on "base" (this is what you need for a first-time installation)
+4. Click the big download link at the top (it will say something like "Download R-4.x.x for Windows")
+5. Once downloaded, double-click the installer file (.exe)
+6. Important: When prompted, select "Yes" to all default settings
+   - ⚠️ Make note of where R is being installed (usually C:\Program Files\R\R-4.x.x)
+
+#### macOS Installation
+1. Visit the [R Project Website](https://cran.r-project.org/)
+2. Click "Download R for macOS"
+3. If you have a recent Mac (2021 or later), look for "Apple silicon arm64 build"
+   - For older Macs, use the "Intel 64-bit build"
+4. Download the .pkg file
+5. Double-click the downloaded file
+6. Follow the installation steps, keeping all default settings
+
+#### Linux Installation
+For Ubuntu/Debian:
+```bash
+# Open terminal (Ctrl + Alt + T) and type:
+sudo apt update
+sudo apt install r-base r-base-dev
+```
+
+For Fedora:
+```bash
+sudo dnf install R
+```
+
+For other distributions, check the [R Installation Guide](https://cran.r-project.org/doc/manuals/r-release/R-admin.html)
+
+### Installing RStudio
+
+After installing R, install RStudio:
+
+1. Visit the [RStudio Download Page](https://posit.co/download/rstudio-desktop/)
+2. Scroll down to find the installer for your operating system
+3. Download and run the installer
+4. Keep all default settings during installation
+
+### Verifying Your Installation
+
+Let's make sure everything is working:
+
+1. Open RStudio (not R itself)
+2. In the bottom panel (called the "Console"), type:
+   ```r
+   1 + 1
+   ```
+3. Press Enter. You should see:
+   ```r
+   [1] 2
+   ```
+
+If you see this result, congratulations! Your installation is working.
+
+## 📦 Part 2: Understanding R Packages
+
+### What are R Packages?
+
+R packages are collections of additional functions and data that extend R's capabilities. Think of R as a smartphone, and packages as apps you can install to add new features.
+
+There are two main ways to install R packages:
+
+1. **From CRAN** (The Comprehensive R Archive Network)
+   - This is like an official app store for R
+   - Most packages are available here
+   - Installation is simple and standardized
+
+2. **From GitHub**
+   - This is like installing apps directly from developers
+   - Gives access to the latest versions
+   - Requires an extra package called `devtools` to install
+
+### Installing Packages from CRAN
+
+Let's practice by installing a popular package called `ggplot2`:
+
+```r
+# Type this in the RStudio console:
+install.packages("ggplot2")
+
+# You might see some text output during installation
+# When it's done, load the package:
+library(ggplot2)
+```
+
+If you see any red text (called "errors" or "warnings"), don't panic! Here are some common issues:
+
+- **"Could not find package"**: Check your spelling
+- **"Permission denied"**: On Windows, try running RStudio as administrator
+- **"Dependencies"**: Say yes if asked to install additional packages
+
+### Installing Packages from GitHub
+
+Installing from GitHub requires more steps:
+
+1. First, install the `devtools` package:
+   ```r
+   install.packages("devtools")
+   ```
+
+2. Load devtools:
+   ```r
+   library(devtools)
+   ```
+
+3. Now you can install packages from GitHub. For example, to install WPD:
+   ```r
+   install_github("benjaminpeeters/WPD")
+   ```
+
+### Understanding Package Messages
+
+When installing packages, you might see different types of messages:
+
+- **Notes** (black text): Just information, nothing to worry about
+- **Warnings** (yellow/orange text): Something to be aware of, but not critical
+- **Errors** (red text): Something went wrong and needs to be fixed
+
+Example warning you might see:
+```r
+Warning: package 'ggplot2' was built under R version 4.1.2
+```
+This is usually fine - it just means the package was tested with a different R version.
+
+## 🔧 Part 3: Basic R Usage
+
+Before we start using WPD, let's learn some R basics:
+
+### The RStudio Interface
+
+RStudio has four main panels:
+1. **Source Editor** (top-left): Where you write your code
+2. **Console** (bottom-left): Where you run code and see results
+3. **Environment** (top-right): Shows your data and variables
+4. **Files/Plots/Help** (bottom-right): Shows files, plots, and documentation
+
+### Creating an R Script
+
+1. Click File → New File → R Script (or press Ctrl+Shift+N)
+2. A new blank document appears in the Source Editor
+3. Save it (Ctrl+S) with a name like "my_first_script.R"
+
+### Running Code
+
+There are several ways to run code:
+- Type directly in the console and press Enter
+- In a script, click "Run" or press Ctrl+Enter to run the selected line(s)
+- Select multiple lines to run them together
+
+Try these examples:
+```r
+# Basic calculations
+2 + 2
+10 * 5
+100 / 10
+
+# Creating variables
+my_number <- 42
+my_text <- "Hello, R!"
+
+# Display variables
+print(my_number)
+print(my_text)
+
+# Create a list of numbers
+numbers <- c(1, 2, 3, 4, 5)
+mean(numbers)  # Calculate average
+sum(numbers)   # Calculate sum
+```
+
+### Getting Help
+
+R has a built-in help system:
+```r
+# Get help about a function
+?mean
+help(sum)
+
+# Search help
+??regression  # Search for topics about regression
+```
+
+## ✨ Practice Exercises
+
+Try these exercises to build your skills:
+
+1. **Basic R Operations**:
+   ```r
+   # Calculate these expressions:
+   # 1. 15 plus 7
+   # 2. 20 divided by 4
+   # 3. 3 times 8
+   # 4. 10 minus 3
+   ```
+
+2. **Working with Variables**:
+   ```r
+   # Create variables for:
+   # 1. Your age
+   # 2. Your name
+   # 3. A list of five numbers
+   # Then try to calculate the mean of your number list
+   ```
+
+3. **Package Installation**:
+   ```r
+   # Try to:
+   # 1. Install the 'dplyr' package from CRAN
+   # 2. Load the package using library()
+   # 3. Check if you get any errors
+   ```
+
+4. **Getting Help**:
+   ```r
+   # Look up help for these functions:
+   # 1. sqrt
+   # 2. paste
+   # 3. length
+   # Read the examples in each help page
+   ```
+
+## 🌐 Additional Resources
+
+1. **R Learning Resources**:
+   - [R for Data Science (Free Book)](https://r4ds.hadley.nz/)
+   - [RStudio Education](https://education.rstudio.com/learn/beginner/)
+   - [Coursera's R Programming](https://www.coursera.org/learn/r-programming)
+
+2. **Video Tutorials**:
+   - [RStudio Primers](https://posit.cloud/learn/primers)
+   - [R Programming Tutorials on YouTube](https://www.youtube.com/watch?v=_V8eKsto3Ug)
+   - [R Ladies Global YouTube Channel](https://www.youtube.com/c/RLadiesGlobal)
+
+3. **Interactive Learning**:
+   - [Swirl (Learn R in R)](https://swirlstats.com/)
+   - [DataCamp's Introduction to R (Free)](https://www.datacamp.com/courses/free-introduction-to-r)
+   - [R-exercises](https://www.r-exercises.com/start-here-to-learn-r/)
+
+## 🤝 Getting Help
+
+1. **When You're Stuck**:
+   - Google the error message (this is what professionals do!)
+   - Check [Stack Overflow](https://stackoverflow.com/questions/tagged/r)
+   - Join the [RStudio Community](https://community.rstudio.com/)
+
+2. **Best Practices When Asking for Help**:
+   - Share the exact error message
+   - Show the code that caused the error
+   - Explain what you were trying to do
+   - Mention your operating system and R version
+
+Remember: Everyone was a beginner once! Don't be afraid to ask questions or make mistakes - that's how you learn.
+
+In the next vignette, we'll start using WPD to analyze economic data. Make sure you're comfortable with these basics before moving on.

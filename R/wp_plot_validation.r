@@ -47,6 +47,29 @@ in_validate_common_args <- function(args) {                    # list: full set 
     }
     
 
+    # Validate bg parameter
+    if (!is.null(args$bg)) {
+        if (!is.character(args$bg)) {
+            in_print_debug("Invalid 'bg' parameter type. Must be character. Using default: 'transparent'", 
+                       args$verbose, args$debug, type = "warning")
+            args$bg <- "transparent"
+        }
+        # Try to convert the color string - this will throw an error if invalid
+        tryCatch({
+            if (!args$bg %in% colors() && !grepl("^#[0-9A-Fa-f]{6}$", args$bg) && args$bg != "transparent") {
+                in_print_debug("Invalid color value for 'bg'. Using default: 'transparent'", 
+                           args$verbose, args$debug, type = "warning")
+                args$bg <- "transparent"
+            }
+        }, error = function(e) {
+            in_print_debug("Error parsing 'bg' color value. Using default: 'transparent'", 
+                       args$verbose, args$debug, type = "warning")
+            args$bg <- "transparent"
+        })
+    } else {
+        args$bg <- "transparent"  # Set default value if not provided
+    }
+
     if (is.null(args$print)) {
         args$print <- TRUE
         in_print_debug("Parameter 'print' was NULL, converted to TRUE", 

@@ -19,6 +19,7 @@ in_plot_core(
   debug = FALSE,
   size = NULL,
   base_size = 16,
+  bg = "transparent",
   ...
 )
 }
@@ -69,6 +70,10 @@ in_plot_core(
 - NULL: auto-size based on data}
 
 \item{base_size}{numeric; base font size in points}
+
+\item{bg}{character; controls plot background color:
+- "transparent": transparent background (default)
+- Any valid color string: sets background to that color}
 
 \item{...}{Additional arguments passed to specific plotting functions}
 }

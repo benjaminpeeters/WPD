@@ -1,14 +1,11 @@
-
-#######################################
-# Option
-filename <- "example_import.Rmd"
-print <- TRUE
-
 # Load helper functions and paths
 source("dev/vignettes/init.r")
 
-# Create vignette file
-file.create(file.path(VIGNETTE_PATH, filename))
+#######################################
+# Option
+
+title <- "Introduction to WPD"
+print <- TRUE
 
 #######################################
 # Create code, data, and plot
@@ -33,34 +30,42 @@ advanced_example <- wp_data(
 exec_save_code(basic_code, advanced_code)
 
 # Generate plots
+basic_plot <- '
 wp_plot_series(basic_example, 
                filename = file.path(FIGURES_DIR, "basic_plot"), 
                print = print)
+'
 
+advanced_plot <- '
 wp_plot_bar(advanced_example, 
             title = "Exports of Goods and Services", 
             subtitle = "Values are expressed in percent of GDP", 
             y_axis = "%",
             color = "Subregion", 
             filename = file.path(FIGURES_DIR, "advanced_plot"), 
-            print = print)
+            print = print,
+            bg = "#CCCCCC")
+'
+
+exec_plot(basic_plot, advanced_plot)
+
 
 
 #######################################
 # Generate the vignette content
 
 # Write YAML header
-write_yaml_header(title = "Introduction to WPD", 
-                  data_sources = c("basic_code", "advanced_code"))
+write_yaml_header(title, data_sources = c("basic_code", "advanced_code"))
 
 
 # Write basic analysis section
-write_md('## Basic Analysis: Single Country Example
+write_md('
+## Basic Analysis: Single Country Example
 
 To analyze a country\'s economic indicators, start with a simple example. Here\'s how to calculate the US current account as a percentage of GDP:
 
 ```{r basic_example_code, eval=FALSE}
-%s
+${basic_code}
 ```
 
 This returns a data frame with the results:
@@ -72,19 +77,17 @@ head(basic_code)
 We can visualize this data using `wp_plot_series()`:
 
 ```{r basic_plot_code, eval=FALSE}
-wp_plot_series(basic_example)
+${basic_plot}
 ```
 
-![Basic Time Series Plot](figures/basic_plot.png)', 
-code = basic_code)
+![Basic Time Series Plot](figures/basic_plot.png)
 
-# Write advanced analysis section
-write_md('## Advanced Analysis: Multiple Countries
+## Advanced Analysis: Multiple Countries
 
 For comparative analysis, we can examine multiple countries. Let\'s look at export ratios for China and Japan:
 
 ```{r advanced_example_code, eval=FALSE}
-%s
+${advanced_code}
 ```
 
 Here\'s the resulting data:
@@ -96,9 +99,8 @@ head(advanced_code)
 We can create a bar plot to compare these values:
 
 ```{r advanced_plot_code, eval=FALSE}
-wp_plot_bar(advanced_example)
+${advanced_plot}
 ```
 
-![Advanced Bar Plot](figures/advanced_plot.png)',
-code = advanced_code)
+![Advanced Bar Plot](figures/advanced_plot.png)')
 

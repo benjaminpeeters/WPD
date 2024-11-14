@@ -34,6 +34,8 @@ gc()
 library(devtools)
 load_all()  # Load the package functions
 
+# Close all current plot devices 
+graphics.off()
 
 
 # Better printing width

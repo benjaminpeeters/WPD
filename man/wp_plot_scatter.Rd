@@ -28,7 +28,8 @@ wp_plot_scatter(
   no_other = TRUE,
   size = 4,
   base_size = 16,
-  common_var = TRUE
+  common_var = TRUE,
+  bg = "transparent"
 )
 }
 \arguments{
@@ -172,6 +173,10 @@ Default is 16.}
 - Character: specified variable used as common x-axis
 - FALSE: sequential pairing of variables
 Default is TRUE.}
+
+\item{bg}{character; controls plot background color:
+- "transparent": transparent background (default)
+- Any valid color string: sets background to that color}
 }
 \value{
 A ggplot2 object containing the scatter plot(s)

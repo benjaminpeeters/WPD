@@ -24,7 +24,8 @@ wp_plot_bar(
   verbose = TRUE,
   debug = FALSE,
   size = NULL,
-  base_size = 16
+  base_size = 16,
+  bg = "transparent"
 )
 }
 \arguments{
@@ -135,6 +136,10 @@ Default is FALSE.}
 - Controls text size throughout the plot
 - Must be positive number
 Default is 16.}
+
+\item{bg}{character; controls plot background color:
+- "transparent": transparent background (default)
+- Any valid color string: sets background to that color}
 }
 \value{
 A ggplot2 object containing the bar plot

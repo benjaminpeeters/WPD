@@ -4,8 +4,48 @@ template:
   bootstrap: 5
   params:
     bootswatch: flatly
+    description: "WPD: A comprehensive R package for accessing, analyzing and visualizing global economic and social data. Features panel data analysis, visualization tools, and country code utilities."
+    keywords: [R package, economic data, panel data, data visualization, statistical analysis, country codes, time series, macroeconomic indicators, cross-country analysis]
   includes:
     in_header: |
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-2W88ME92PL"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-2W88ME92PL');
+      </script>
+
+      <!-- SEO Meta Tags -->
+      <meta name="description" content="WPD: A comprehensive R package for accessing, analyzing and visualizing global economic and social data. Features panel data analysis, visualization tools, and country code utilities.">
+      <meta name="keywords" content="R package, economic data, panel data, data visualization, statistical analysis, country codes, time series, macroeconomic indicators, cross-country analysis">
+      <meta name="author" content="Benjamin Peeters">
+      <meta name="robots" content="index, follow">
+      <link rel="canonical" href="https://benjaminpeeters.github.io/WPD/" />
+      
+      <!-- Schema.org markup for better search results -->
+      <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "WPD",
+        "description": "A comprehensive R package for accessing, analyzing and visualizing global economic and social data",
+        "applicationCategory": "Statistical Software",
+        "operatingSystem": "Cross-platform",
+        "programmingLanguage": "R",
+        "author": {
+          "@type": "Person",
+          "name": "Benjamin Peeters"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+      </script>
+
       <!-- Dark Mode Implementation -->
       <!-- Cookie Functions -->
       <script>
@@ -123,35 +163,45 @@ template:
           background-color: #2d2d2d !important;
         }
 
+        /* GitHub Dark theme for code blocks */
         .dark-mode pre.sourceCode {
-          background-color: #1a1a1a !important;
-          border: 1px solid #2d2d2d !important;
+          background-color: #0D1117 !important;
+          border: 1px solid #30363D !important;
         }
         
         .dark-mode code {
-          background-color: #2d2d2d !important;
-          color: #e6e6e6 !important;
+          background-color: #0D1117 !important;
+          color: #C9D1D9 !important;
         }
         
         .dark-mode pre code {
-          color: #e6e6e6 !important;
+          color: #C9D1D9 !important;
         }
 
         .dark-mode pre:not(.sourceCode) {
-          background-color: #2d2d2d !important;
-          color: #e6e6e6 !important;
-          border: 1px solid #3d3d3d !important;
+          background-color: #0D1117 !important;
+          color: #C9D1D9 !important;
+          border: 1px solid #30363D !important;
         }
         
-        .dark-mode pre code span.co { color: #6a9955 !important; }
-        .dark-mode pre code span.st { color: #ce9178 !important; }
-        .dark-mode pre code span.dv { color: #b5cea8 !important; }
-        .dark-mode pre code span.kw { color: #569cd6 !important; }
-        .dark-mode pre code span.fu { color: #dcdcaa !important; }
-        .dark-mode pre code span.op { color: #d4d4d4 !important; }
-        .dark-mode pre code span.va { color: #9cdcfe !important; }
+        /* GitHub Dark syntax highlighting */
+        .dark-mode pre code span.co { color: #8B949E !important; } /* Comments */
+        .dark-mode pre code span.st { color: #A5D6FF !important; } /* Strings */
+        .dark-mode pre code span.dv { color: #79C0FF !important; } /* Decimal values */
+        .dark-mode pre code span.kw { color: #FF7B72 !important; } /* Keywords */
+        .dark-mode pre code span.fu { color: #D2A8FF !important; } /* Functions */
+        .dark-mode pre code span.op { color: #C9D1D9 !important; } /* Operators */
+        .dark-mode pre code span.va { color: #FFA657 !important; } /* Variables */
+        .dark-mode pre code span.cn { color: #79C0FF !important; } /* Constants */
+        .dark-mode pre code span.sc { color: #C9D1D9 !important; } /* Special chars */
+        .dark-mode pre code span.ss { color: #A5D6FF !important; } /* Special strings */
+        .dark-mode pre code span.im { color: #D2A8FF !important; } /* Imports */
+        .dark-mode pre code span.dt { color: #FF7B72 !important; } /* Data types */
+        .dark-mode pre code span.dv { color: #79C0FF !important; } /* Decimal values */
+        .dark-mode pre code span.bn { color: #79C0FF !important; } /* Base N numbers */
+        .dark-mode pre code span.fl { color: #79C0FF !important; } /* Float numbers */
 
-        .dark-mode img:not([src*=".png"]) {
+        .dark-mode img {
           filter: invert(0.85) hue-rotate(180deg);
         }
 
@@ -169,35 +219,111 @@ template:
           color: #a0a0a0 !important;
         }
       </style>
+      <style>
+        /* Fixed TOC with only main sections */
+        #toc .nav .nav {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+        #toc .nav > li {
+            display: block !important;
+        }
+        #toc {
+            position: fixed !important;
+            overflow-x: hidden !important;
+        }
+      </style>
+
+
 
 navbar:
   structure:
-    left: [intro, reference, articles]
+    left: [intro, articles, reference]
     right: [search, github]
   components:
     articles:
-      text: Articles
+      text: Tutorials
       href: articles/index.html
 
+
+
+# VIGNETTES
+
+articles:
+- title: "New to R"
+  contents:
+    - starts_with("a_")
+  desc: >
+    Never used R before? Start here! These guides will help you take your first steps
+    with R programming and prepare you for using the WPD package.
+
+- title: "Getting Started"
+  desc: >
+    Essential information for all users of the WPD package, including installation, 
+    basic setup, and fundamental concepts to get you up and running.
+  contents:
+    - starts_with("b_")
+
+- title: "Fundamentals"
+  desc: >
+    Core functionality of the WPD package: learn how to load data, manipulate datasets,
+    and create your first visualizations.
+  contents:
+    - starts_with("c_")
+
+- title: "Advanced"
+  desc: >
+    Take your WPD skills to the next level with advanced data loading techniques,
+    plot customization, and formula manipulation.
+  contents:
+    - starts_with("d_")
+
+- title: "Special Features"
+  desc: >
+    Explore specialized capabilities like complex visualizations, custom aggregations,
+    and performance optimization techniques.
+  contents:
+    - starts_with("e_")
+
+- title: "Contributing"
+  desc: >
+    Want to contribute to WPD? These guides will help you understand the package
+    architecture.
+  contents:
+    - starts_with("z_")
+
+# REFERENCE
+
 reference:
-- title: "Package Documentation"
-  desc: "Overview of the WPD package"
+- title: "Package Overview"
+  desc: >
+    WPD provides tools for working with global economic and social data, 
+    featuring comprehensive visualization capabilities and data analysis functions.
   contents:
     - WPD
 
 - title: "Data Management"
-  desc: "Core functions for data loading and manipulation"
+  desc: >
+    Core functions for loading, filtering, and manipulating panel data 
+    with built-in seasonal adjustment and frequency conversion capabilities.
   contents:
   - wp_data
   - wp_info
   
-- title: "Plotting Functions"
-  desc: "Main plotting functions"
+- title: "Visualization Functions"
+  desc: >
+    Advanced plotting functions supporting various chart types with 
+    extensive customization options for professional-quality visualizations.
   contents:
   - starts_with("wp_plot")
 
-- title: "ISO Code Utilities"
-  desc: "Country ISO3 code handling functions"
+- title: "Country Code Utilities"
+  desc: >
+    Functions for handling country codes and classifications, supporting
+    various international standards and grouping schemes.
   contents:
   - starts_with("wp_iso")
   - wp_ctry2iso
@@ -205,13 +331,16 @@ reference:
   - wp_get_category
 
 - title: "Internal Functions"
-  desc: "Internal helper functions"
+  desc: "Helper functions for package operations."
   contents:
   - starts_with("in_")
 
 - title: "Datasets"
-  desc: "Package datasets documentation"
+  desc: >
+    Documentation for included datasets covering economic, financial,
+    and development indicators.
   contents:
   - METADATA_Q
   - METADATA_Y
   - ISO_DATA
+

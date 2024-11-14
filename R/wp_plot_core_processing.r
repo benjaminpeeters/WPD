@@ -41,6 +41,9 @@
 #'        - 4: extra large (20x10 inches)
 #'        - NULL: auto-size based on data
 #' @param base_size numeric; base font size in points
+#' @param bg character; controls plot background color:
+#'        - "transparent": transparent background (default)
+#'        - Any valid color string: sets background to that color
 #' @param ... Additional arguments passed to specific plotting functions
 #'
 #' @details
@@ -93,6 +96,7 @@ in_plot_core <- function(data,                   # data.frame with required colu
                         debug = FALSE,           # logical: print debugging output
                         size = NULL,             # 1/2/3/4/NULL: plot size preset or auto-sizing
                         base_size = 16,          # numeric: base font size in points
+                        bg = "transparent",      # character: background color for plot ("transparent" or color string)
                         ...) {                   # additional arguments passed to specific plotting functions
 
     # Capture all arguments
@@ -191,13 +195,13 @@ in_plot_core <- function(data,                   # data.frame with required colu
         final_plot <- final_plot + title_result$annotation
         dimensions["height"] <- dimensions["height"] + 1  # Add extra inch for title/subtitle
     }
-    
-
-
-
 
     # Print and save
-    in_print_and_save(plot = final_plot, print = print, filename = filename, dim = dimensions)
+    in_print_and_save(plot = final_plot, 
+                      print = print, 
+                      filename = filename, 
+                      dim = dimensions, 
+                      bg = bg)
     
     return(final_plot)
 }

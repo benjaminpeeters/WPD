@@ -2,10 +2,12 @@ pandoc: 2.9.2.1
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
-  a_getting_started: a_getting_started.html
+  a_introduction_to_r: a_introduction_to_r.html
+  b_example_import: b_example_import.html
   b_loading_data_with_wp_data: b_loading_data_with_wp_data.html
-  example_import: example_import.html
-last_built: 2024-11-13T15:45Z
+  b_test_vignettes_second: b_test_vignettes_second.html
+  c_getting_started: c_getting_started.html
+last_built: 2024-11-14T10:57Z
 urls:
   reference: https://benjaminpeeters.github.io/WPD/reference
   article: https://benjaminpeeters.github.io/WPD/articles

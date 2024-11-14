@@ -92,6 +92,9 @@
 #'        - Controls text size throughout the plot
 #'        - Must be positive number
 #'        - Default is 16
+#' @param bg character; controls plot background color:
+#'        - "transparent": transparent background (default)
+#'        - Any valid color string: sets background to that color
 #'
 #' @return A ggplot2 object containing the time series plot
 #'
@@ -179,7 +182,8 @@ wp_plot_series <- function(data,                # data.frame with required colum
                           verbose = TRUE,       # logical: print processing information
                           debug = FALSE,        # logical: print detailed debugging information
                           size = NULL,          # 1-4 or NULL: plot size presets or auto-sizing
-                          base_size = 16) {     # numeric: base font size in points, must be positive
+                          base_size = 16,           # numeric: base font size in points
+                          bg = "transparent") {     # character: background color for plot ("transparent" or color string)
     
     args <- as.list(environment())
     args$plot_type <- "series"

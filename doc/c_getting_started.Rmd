@@ -1,10 +1,10 @@
 ---
-title: "Getting Started with WPD"
+title: "Getting Started"
 author: "Benjamin Peeters"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Getting Started with WPD}
+  %\VignetteIndexEntry{Getting Started}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

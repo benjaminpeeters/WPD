@@ -2,6 +2,7 @@
 # WPD: World Panel Data
 
 [![R-CMD-check](https://github.com/benjaminpeeters/WPD/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/benjaminpeeters/WPD/actions)
+[![Website](https://img.shields.io/badge/website-WPD-blue)](https://benjaminpeeters.github.io/WPD/)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)
 [![License: AGPL
@@ -55,12 +56,15 @@ Visit our [Documentation
 Website](https://benjaminpeeters.github.io/WPD/index.html) for
 comprehensive guides and tutorials. We recommend starting with:
 
-1.  [Getting Started with
-    WPD](https://benjaminpeeters.github.io/WPD/articles/a_getting_started.html)
-2.  [Loading data with
+1.  [R Basics: Getting Ready for
+    WPD](https://benjaminpeeters.github.io/WPD/articles/a_introduction_to_r.html)
+2.  [Introduction to
+    WPD](https://benjaminpeeters.github.io/WPD/articles/b_example_import.html)
+3.  [Loading data with
     `wp_data()`](https://benjaminpeeters.github.io/WPD/articles/b_loading_data_with_wp_data.html)
-3.  [Introduction to
-    WPD](https://benjaminpeeters.github.io/WPD/articles/example_import.html)
+4.  [Introduction](https://benjaminpeeters.github.io/WPD/articles/b_test_vignettes_second.html)
+5.  [Getting
+    Started](https://benjaminpeeters.github.io/WPD/articles/c_getting_started.html)
 
 Click here for [complete function
 reference](https://benjaminpeeters.github.io/WPD/reference/index.html).
@@ -183,8 +187,7 @@ citation("WPD")
 
 To cite package 'WPD' in publications use:
 
-  Benjamin Peeters (2024). WPD: World Panel Data: A Macroeconomic Data
-  Visualization and Analysis Toolkit. R package version 0.0.43.
+  Benjamin Peeters (2024). WPD: World Panel Data: A Macroeconomic Data Visualization and Analysis Toolkit. R package version 0.0.45.
   https://benjaminpeeters.github.io/WPD/
 
 A BibTeX entry for LaTeX users is
@@ -193,7 +196,7 @@ A BibTeX entry for LaTeX users is
     title = {WPD: World Panel Data: A Macroeconomic Data Visualization and Analysis Toolkit},
     author = {Benjamin Peeters},
     year = {2024},
-    note = {R package version 0.0.43},
+    note = {R package version 0.0.45},
     url = {https://benjaminpeeters.github.io/WPD/},
   }
 ```

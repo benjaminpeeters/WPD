@@ -125,6 +125,9 @@
 #'        - Character: specified variable used as common x-axis
 #'        - FALSE: sequential pairing of variables
 #'        Default is TRUE.
+#' @param bg character; controls plot background color:
+#'        - "transparent": transparent background (default)
+#'        - Any valid color string: sets background to that color
 #'
 #' @return A ggplot2 object containing the scatter plot(s)
 #'
@@ -216,7 +219,8 @@ wp_plot_scatter <- function(data,                    # data.frame with required 
                            no_other = TRUE,          # logical: exclude unclassified countries
                            size = 4,                 # 1/2/3/4/NULL: plot size presets or auto-sizing
                            base_size = 16,           # numeric: base font size in points
-                           common_var = TRUE) {      # TRUE/char/FALSE: variable pairing mode for multi-variable plots
+                           common_var = TRUE,        # TRUE/char/FALSE: variable pairing mode for multi-variable plots
+                           bg = "transparent") {     # character: background color for plot ("transparent" or color string)
     
     args <- as.list(environment())
     args$plot_type <- "scatter"

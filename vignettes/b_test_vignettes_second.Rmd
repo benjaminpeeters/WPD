@@ -1,21 +1,22 @@
 ---
-title: "Introduction to WPD"
+title: "Introduction"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to WPD}
+  %\VignetteIndexEntry{Introduction}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
 
-# Write setup chunk
 ```{r setup, include=FALSE}
+# Write setup chunk
 library(WPD)
 # Load precomputed data
 source("data/basic_code.R")
 source("data/advanced_code.R")
 ```
  
+
 
 ## Basic Analysis: Single Country Example
 
@@ -39,10 +40,12 @@ head(basic_code)
 We can visualize this data using `wp_plot_series()`:
 
 ```{r basic_plot_code, eval=FALSE}
+
 wp_plot_series(basic_example)
+
 ```
 
-![Basic Time Series Plot](figures/basic_plot.png) 
+![Basic Time Series Plot](figures/basic_plot.png)
 
 ## Advanced Analysis: Multiple Countries
 
@@ -67,7 +70,14 @@ head(advanced_code)
 We can create a bar plot to compare these values:
 
 ```{r advanced_plot_code, eval=FALSE}
-wp_plot_bar(advanced_example)
+
+wp_plot_bar(advanced_example, 
+            title = "Exports of Goods and Services", 
+            subtitle = "Values are expressed in percent of GDP", 
+            y_axis = "%",
+            color = "Subregion",
+            bg = "#CCCCCC")
+
 ```
 
 ![Advanced Bar Plot](figures/advanced_plot.png) 

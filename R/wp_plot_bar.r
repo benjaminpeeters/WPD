@@ -97,6 +97,9 @@
 #'        - Controls text size throughout the plot
 #'        - Must be positive number
 #'        Default is 16.
+#' @param bg character; controls plot background color:
+#'        - "transparent": transparent background (default)
+#'        - Any valid color string: sets background to that color
 #'
 #' @return A ggplot2 object containing the bar plot
 #'
@@ -183,7 +186,8 @@ wp_plot_bar <- function(data,                    # data.frame with required colu
                        verbose = TRUE,           # logical: print processing information
                        debug = FALSE,            # logical: print debugging information
                        size = NULL,              # 1/2/3/4/NULL: plot size presets or auto-sizing
-                       base_size = 16) {         # numeric: base font size in points
+                       base_size = 16,           # numeric: base font size in points
+                       bg = "transparent") {     # character: background color for plot ("transparent" or color string)
     
     args <- as.list(environment())
     args$plot_type <- "bar"

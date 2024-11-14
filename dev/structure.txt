@@ -56,6 +56,8 @@
 │   │   ├── 5.1-code-structure-wp_data.Rmd
 │   │   ├── 5.2-code-structure-wp_plot.Rmd
 │   │   └── 6-data.Rmd
+│   ├── generate_super_test.Rmd
+│   ├── generate_super_test.html
 │   ├── img
 │   │   ├── test-01-series-simple-01.pdf
 │   │   ├── test-01-series-simple-01.png
@@ -71,13 +73,14 @@
 │   ├── test-04-series-dual-axis.r
 │   ├── test-scatter-multi.r
 │   ├── test-scatter-simple.r
-│   └── vignette_precompute
-│       ├── example_import_old.R
-│       ├── example_import_old.Rmd
-│       ├── generate_data.r
-│       ├── generate_figures.r
-│       ├── generate_super_test.Rmd
-│       └── generate_super_test.html
+│   ├── vignette_precompute
+│   │   ├── example_import_old.R
+│   │   ├── example_import_old.Rmd
+│   │   ├── generate_data.r
+│   │   └── generate_figures.r
+│   └── vignettes
+│       ├── a-test.r
+│       └── init.r
 ├── doc
 │   ├── a_getting_started.R
 │   ├── a_getting_started.Rmd
@@ -93,23 +96,23 @@
 │   ├── LICENSE.html
 │   ├── LICENSE_COMM.html
 │   ├── articles
-│   │   ├── a_getting_started.html
-│   │   ├── a_getting_started_files
-│   │   │   └── accessible-code-block-0.0.1
-│   │   │       └── empty-anchor.js
-│   │   ├── b_loading_data_with_wp_data.html
-│   │   ├── b_loading_data_with_wp_data_files
-│   │   │   └── accessible-code-block-0.0.1
-│   │   │       └── empty-anchor.js
-│   │   ├── example_import.html
-│   │   ├── example_import_files
+│   │   ├── article_loading_data_with_wp_data.html
+│   │   ├── article_loading_data_with_wp_data_files
 │   │   │   └── accessible-code-block-0.0.1
 │   │   │       └── empty-anchor.js
 │   │   ├── figures
 │   │   │   ├── advanced_plot.png
 │   │   │   ├── basic_plot.png
 │   │   │   └── test-01-series-simple-01.png
-│   │   └── index.html
+│   │   ├── index.html
+│   │   ├── tutorial_example_import.html
+│   │   ├── tutorial_example_import_files
+│   │   │   └── accessible-code-block-0.0.1
+│   │   │       └── empty-anchor.js
+│   │   ├── tutorial_getting_started.html
+│   │   └── tutorial_getting_started_files
+│   │       └── accessible-code-block-0.0.1
+│   │           └── empty-anchor.js
 │   ├── authors.html
 │   ├── deps
 │   │   ├── bootstrap-5.3.1
@@ -503,15 +506,15 @@
 │   ├── wp_plot_scatter.Rd
 │   └── wp_plot_series.Rd
 └── vignettes
-    ├── a_getting_started.Rmd
-    ├── b_loading_data_with_wp_data.Rmd
+    ├── article_loading_data_with_wp_data.Rmd
     ├── data
-    │   ├── advanced_example.R
-    │   └── basic_example.R
-    ├── example_import.Rmd
-    └── figures
-        ├── advanced_plot.pdf
-        ├── advanced_plot.png
-        ├── basic_plot.pdf
-        ├── basic_plot.png
-        └── test-01-series-simple-01.png
+    │   ├── advanced_code.R
+    │   └── basic_code.R
+    ├── figures
+    │   ├── advanced_plot.pdf
+    │   ├── advanced_plot.png
+    │   ├── basic_plot.pdf
+    │   ├── basic_plot.png
+    │   └── test-01-series-simple-01.png
+    ├── tutorial_example_import.Rmd
+    └── tutorial_getting_started.Rmd

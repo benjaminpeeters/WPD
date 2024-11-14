@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Benjamin Peeters" />
+
+<meta name="date" content="2024-11-14" />
+
+<title>R Basics: Getting Ready for WPD</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
+// v0.0.1
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeList = document.getElementsByClassName("sourceCode");
+  for (var i = 0; i < codeList.length; i++) {
+    var linkList = codeList[i].getElementsByTagName('a');
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
+        linkList[j].setAttribute('aria-hidden', 'true');
+      }
+    }
+  }
+});
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">R Basics: Getting Ready for WPD</h1>
+<h4 class="author">Benjamin Peeters</h4>
+<h4 class="date">2024-11-14</h4>
+
+
+
+<div id="getting-started-with-r-preparing-for-wpd" class="section level1">
+<h1>🚀 Getting Started with R: Preparing for WPD</h1>
+<p>Welcome! Before we can use the World Panel Data (WPD) package, we need to set up our working environment. This guide assumes you have no prior experience with R or programming. We’ll walk through everything step by step.</p>
+<div id="part-1-setting-up-your-environment" class="section level2">
+<h2>📥 Part 1: Setting Up Your Environment</h2>
+<div id="what-is-r-and-rstudio" class="section level3">
+<h3>What is R and RStudio?</h3>
+<p>Before we start installing anything, let’s understand what we’re working with:</p>
+<ul>
+<li><strong>R</strong> is a programming language specifically designed for statistical computing and data analysis. Think of it as a powerful calculator that can handle large amounts of data.</li>
+<li><strong>RStudio</strong> is what we call an Integrated Development Environment (IDE) for R. Think of it as a sophisticated text editor that makes working with R much easier. It’s like Microsoft Word, but for writing R code instead of documents.</li>
+</ul>
+</div>
+<div id="installing-r" class="section level3">
+<h3>Installing R</h3>
+<div id="windows-installation" class="section level4">
+<h4>Windows Installation</h4>
+<ol style="list-style-type: decimal">
+<li>Open your web browser and visit the <a href="https://cran.r-project.org/">R Project Website</a></li>
+<li>Look for the “Download R for Windows” link and click it</li>
+<li>Click on “base” (this is what you need for a first-time installation)</li>
+<li>Click the big download link at the top (it will say something like “Download R-4.x.x for Windows”)</li>
+<li>Once downloaded, double-click the installer file (.exe)</li>
+<li>Important: When prompted, select “Yes” to all default settings
+<ul>
+<li>⚠️ Make note of where R is being installed (usually C:Files-4.x.x)</li>
+</ul></li>
+</ol>
+</div>
+<div id="macos-installation" class="section level4">
+<h4>macOS Installation</h4>
+<ol style="list-style-type: decimal">
+<li>Visit the <a href="https://cran.r-project.org/">R Project Website</a></li>
+<li>Click “Download R for macOS”</li>
+<li>If you have a recent Mac (2021 or later), look for “Apple silicon arm64 build”
+<ul>
+<li>For older Macs, use the “Intel 64-bit build”</li>
+</ul></li>
+<li>Download the .pkg file</li>
+<li>Double-click the downloaded file</li>
+<li>Follow the installation steps, keeping all default settings</li>
+</ol>
+</div>
+<div id="linux-installation" class="section level4">
+<h4>Linux Installation</h4>
+<p>For Ubuntu/Debian:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="co"># Open terminal (Ctrl + Alt + T) and type:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="fu">sudo</span> apt install r-base r-base-dev</span></code></pre></div>
+<p>For Fedora:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">sudo</span> dnf install R</span></code></pre></div>
+<p>For other distributions, check the <a href="https://cran.r-project.org/doc/manuals/r-release/R-admin.html">R Installation Guide</a></p>
+</div>
+</div>
+<div id="installing-rstudio" class="section level3">
+<h3>Installing RStudio</h3>
+<p>After installing R, install RStudio:</p>
+<ol style="list-style-type: decimal">
+<li>Visit the <a href="https://posit.co/download/rstudio-desktop/">RStudio Download Page</a></li>
+<li>Scroll down to find the installer for your operating system</li>
+<li>Download and run the installer</li>
+<li>Keep all default settings during installation</li>
+</ol>
+</div>
+<div id="verifying-your-installation" class="section level3">
+<h3>Verifying Your Installation</h3>
+<p>Let’s make sure everything is working:</p>
+<ol style="list-style-type: decimal">
+<li><p>Open RStudio (not R itself)</p></li>
+<li><p>In the bottom panel (called the “Console”), type:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div></li>
+<li><p>Press Enter. You should see:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>[<span class="dv">1</span>] <span class="dv">2</span></span></code></pre></div></li>
+</ol>
+<p>If you see this result, congratulations! Your installation is working.</p>
+</div>
+</div>
+<div id="part-2-understanding-r-packages" class="section level2">
+<h2>📦 Part 2: Understanding R Packages</h2>
+<div id="what-are-r-packages" class="section level3">
+<h3>What are R Packages?</h3>
+<p>R packages are collections of additional functions and data that extend R’s capabilities. Think of R as a smartphone, and packages as apps you can install to add new features.</p>
+<p>There are two main ways to install R packages:</p>
+<ol style="list-style-type: decimal">
+<li><strong>From CRAN</strong> (The Comprehensive R Archive Network)
+<ul>
+<li>This is like an official app store for R</li>
+<li>Most packages are available here</li>
+<li>Installation is simple and standardized</li>
+</ul></li>
+<li><strong>From GitHub</strong>
+<ul>
+<li>This is like installing apps directly from developers</li>
+<li>Gives access to the latest versions</li>
+<li>Requires an extra package called <code>devtools</code> to install</li>
+</ul></li>
+</ol>
+</div>
+<div id="installing-packages-from-cran" class="section level3">
+<h3>Installing Packages from CRAN</h3>
+<p>Let’s practice by installing a popular package called <code>ggplot2</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="co"># Type this in the RStudio console:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="co"># You might see some text output during installation</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="co"># When it&#39;s done, load the package:</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="kw">library</span>(ggplot2)</span></code></pre></div>
+<p>If you see any red text (called “errors” or “warnings”), don’t panic! Here are some common issues:</p>
+<ul>
+<li><strong>“Could not find package”</strong>: Check your spelling</li>
+<li><strong>“Permission denied”</strong>: On Windows, try running RStudio as administrator</li>
+<li><strong>“Dependencies”</strong>: Say yes if asked to install additional packages</li>
+</ul>
+</div>
+<div id="installing-packages-from-github" class="section level3">
+<h3>Installing Packages from GitHub</h3>
+<p>Installing from GitHub requires more steps:</p>
+<ol style="list-style-type: decimal">
+<li><p>First, install the <code>devtools</code> package:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span></code></pre></div></li>
+<li><p>Load devtools:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="kw">library</span>(devtools)</span></code></pre></div></li>
+<li><p>Now you can install packages from GitHub. For example, to install WPD:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="kw">install_github</span>(<span class="st">&quot;benjaminpeeters/WPD&quot;</span>)</span></code></pre></div></li>
+</ol>
+</div>
+<div id="understanding-package-messages" class="section level3">
+<h3>Understanding Package Messages</h3>
+<p>When installing packages, you might see different types of messages:</p>
+<ul>
+<li><strong>Notes</strong> (black text): Just information, nothing to worry about</li>
+<li><strong>Warnings</strong> (yellow/orange text): Something to be aware of, but not critical</li>
+<li><strong>Errors</strong> (red text): Something went wrong and needs to be fixed</li>
+</ul>
+<p>Example warning you might see:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>Warning<span class="op">:</span><span class="st"> </span>package <span class="st">&#39;ggplot2&#39;</span> was built under R version <span class="dv">4</span>.<span class="fl">1.2</span></span></code></pre></div>
+<p>This is usually fine - it just means the package was tested with a different R version.</p>
+</div>
+</div>
+<div id="part-3-basic-r-usage" class="section level2">
+<h2>🔧 Part 3: Basic R Usage</h2>
+<p>Before we start using WPD, let’s learn some R basics:</p>
+<div id="the-rstudio-interface" class="section level3">
+<h3>The RStudio Interface</h3>
+<p>RStudio has four main panels: 1. <strong>Source Editor</strong> (top-left): Where you write your code 2. <strong>Console</strong> (bottom-left): Where you run code and see results 3. <strong>Environment</strong> (top-right): Shows your data and variables 4. <strong>Files/Plots/Help</strong> (bottom-right): Shows files, plots, and documentation</p>
+</div>
+<div id="creating-an-r-script" class="section level3">
+<h3>Creating an R Script</h3>
+<ol style="list-style-type: decimal">
+<li>Click File → New File → R Script (or press Ctrl+Shift+N)</li>
+<li>A new blank document appears in the Source Editor</li>
+<li>Save it (Ctrl+S) with a name like “my_first_script.R”</li>
+</ol>
+</div>
+<div id="running-code" class="section level3">
+<h3>Running Code</h3>
+<p>There are several ways to run code: - Type directly in the console and press Enter - In a script, click “Run” or press Ctrl+Enter to run the selected line(s) - Select multiple lines to run them together</p>
+<p>Try these examples:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="co"># Basic calculations</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="dv">10</span> <span class="op">*</span><span class="st"> </span><span class="dv">5</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="dv">100</span> <span class="op">/</span><span class="st"> </span><span class="dv">10</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="co"># Creating variables</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a>my_number &lt;-<span class="st"> </span><span class="dv">42</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a>my_text &lt;-<span class="st"> &quot;Hello, R!&quot;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true"></a><span class="co"># Display variables</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true"></a><span class="kw">print</span>(my_number)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true"></a><span class="kw">print</span>(my_text)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true"></a><span class="co"># Create a list of numbers</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true"></a>numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true"></a><span class="kw">mean</span>(numbers)  <span class="co"># Calculate average</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true"></a><span class="kw">sum</span>(numbers)   <span class="co"># Calculate sum</span></span></code></pre></div>
+</div>
+<div id="getting-help" class="section level3">
+<h3>Getting Help</h3>
+<p>R has a built-in help system:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="co"># Get help about a function</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>?mean</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a><span class="kw">help</span>(sum)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a><span class="co"># Search help</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a>??regression  <span class="co"># Search for topics about regression</span></span></code></pre></div>
+</div>
+</div>
+<div id="practice-exercises" class="section level2">
+<h2>✨ Practice Exercises</h2>
+<p>Try these exercises to build your skills:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Basic R Operations</strong>:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="co"># Calculate these expressions:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="co"># 1. 15 plus 7</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a><span class="co"># 2. 20 divided by 4</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a><span class="co"># 3. 3 times 8</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a><span class="co"># 4. 10 minus 3</span></span></code></pre></div></li>
+<li><p><strong>Working with Variables</strong>:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="co"># Create variables for:</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="co"># 1. Your age</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="co"># 2. Your name</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="co"># 3. A list of five numbers</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a><span class="co"># Then try to calculate the mean of your number list</span></span></code></pre></div></li>
+<li><p><strong>Package Installation</strong>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="co"># Try to:</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="co"># 1. Install the &#39;dplyr&#39; package from CRAN</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a><span class="co"># 2. Load the package using library()</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a><span class="co"># 3. Check if you get any errors</span></span></code></pre></div></li>
+<li><p><strong>Getting Help</strong>:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="co"># Look up help for these functions:</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a><span class="co"># 1. sqrt</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a><span class="co"># 2. paste</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a><span class="co"># 3. length</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a><span class="co"># Read the examples in each help page</span></span></code></pre></div></li>
+</ol>
+</div>
+<div id="additional-resources" class="section level2">
+<h2>🌐 Additional Resources</h2>
+<ol style="list-style-type: decimal">
+<li><strong>R Learning Resources</strong>:
+<ul>
+<li><a href="https://r4ds.hadley.nz/">R for Data Science (Free Book)</a></li>
+<li><a href="https://education.rstudio.com/learn/beginner/">RStudio Education</a></li>
+<li><a href="https://www.coursera.org/learn/r-programming">Coursera’s R Programming</a></li>
+</ul></li>
+<li><strong>Video Tutorials</strong>:
+<ul>
+<li><a href="https://posit.cloud/learn/primers">RStudio Primers</a></li>
+<li><a href="https://www.youtube.com/watch?v=_V8eKsto3Ug">R Programming Tutorials on YouTube</a></li>
+<li><a href="https://www.youtube.com/c/RLadiesGlobal">R Ladies Global YouTube Channel</a></li>
+</ul></li>
+<li><strong>Interactive Learning</strong>:
+<ul>
+<li><a href="https://swirlstats.com/">Swirl (Learn R in R)</a></li>
+<li><a href="https://www.datacamp.com/courses/free-introduction-to-r">DataCamp’s Introduction to R (Free)</a></li>
+<li><a href="https://www.r-exercises.com/start-here-to-learn-r/">R-exercises</a></li>
+</ul></li>
+</ol>
+</div>
+<div id="getting-help-1" class="section level2">
+<h2>🤝 Getting Help</h2>
+<ol style="list-style-type: decimal">
+<li><strong>When You’re Stuck</strong>:
+<ul>
+<li>Google the error message (this is what professionals do!)</li>
+<li>Check <a href="https://stackoverflow.com/questions/tagged/r">Stack Overflow</a></li>
+<li>Join the <a href="https://community.rstudio.com/">RStudio Community</a></li>
+</ul></li>
+<li><strong>Best Practices When Asking for Help</strong>:
+<ul>
+<li>Share the exact error message</li>
+<li>Show the code that caused the error</li>
+<li>Explain what you were trying to do</li>
+<li>Mention your operating system and R version</li>
+</ul></li>
+</ol>
+<p>Remember: Everyone was a beginner once! Don’t be afraid to ask questions or make mistakes - that’s how you learn.</p>
+<p>In the next vignette, we’ll start using WPD to analyze economic data. Make sure you’re comfortable with these basics before moving on.</p>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
